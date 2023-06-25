@@ -19,6 +19,33 @@ export default function BlogIndexPage(props: PageProps<Post[]>) {
         <meta name="author" content="Gustavo Maltez" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.svg" />
+        <style>
+          {`
+            body {
+              scroll-behavior: smooth;
+            }
+            
+            * {
+              scrollbar-width: auto;
+              scrollbar-color: #333333 #1e2022;
+            }
+          
+            /* Chrome, Edge, and Safari */
+            *::-webkit-scrollbar {
+              width: 16px;
+            }
+          
+            *::-webkit-scrollbar-track {
+              background: #1e2022;
+            }
+          
+            *::-webkit-scrollbar-thumb {
+              background-color: #333333;
+              border-radius: 10px;
+              border: 3px solid #1e2022;
+            }
+          `}
+        </style>
       </Head>
       <div className="bg-background text-text min-h-screen px-4">
         <Header />
@@ -37,7 +64,7 @@ export default function BlogIndexPage(props: PageProps<Post[]>) {
             <p className="text-[#d997b1]">
               Thank you for accessing my blog! <span className="line-through opacity-75 italic">By the way, how did you get here?</span> {' '}
               Anyways, I am still working on it, so it is not ready yet. However, I hope to have it ready soon!
-              The posts are just a bunch of dummy data, the design is not finished, and there are still some bugs to fix.
+              The posts are just a bunch of dummy data, the design is not finished, and there are still some missing features and bugs to squash.
             </p>
           </div>
           <h1 className="text-3xl font-bold my-1">Latest Posts</h1>

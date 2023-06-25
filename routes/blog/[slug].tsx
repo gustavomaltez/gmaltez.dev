@@ -36,6 +36,30 @@ export default function PostPage(props: PageProps<Post>) {
               background-color: #1b1a1f;
               border-radius: 0.5rem;
             }
+
+            body {
+              scroll-behavior: smooth;
+            }
+            
+            * {
+              scrollbar-width: auto;
+              scrollbar-color: #333333 #1e2022;
+            }
+          
+            /* Chrome, Edge, and Safari */
+            *::-webkit-scrollbar {
+              width: 16px;
+            }
+          
+            *::-webkit-scrollbar-track {
+              background: #1e2022;
+            }
+          
+            *::-webkit-scrollbar-thumb {
+              background-color: #333333;
+              border-radius: 10px;
+              border: 3px solid #1e2022;
+            }
           `}
         </style>
       </Head>
