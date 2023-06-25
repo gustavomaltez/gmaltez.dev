@@ -35,10 +35,9 @@ export default function BlogIndexPage(props: PageProps<Post[]>) {
           <div className="border-[#ff3b6b] bg-[#4b2f36] border p-4 shadow flex flex-col rounded-xl mb-1 mt-3">
             <h2 className="text-2xl font-bold text-[#ff3b6b] mb-2">🚧 This blog is under development! 🚧</h2>
             <p className="text-[#d997b1]">
-              Thank you for accessing, my blog! <span className="line-through opacity-75 italic">By the way, how did you get here?</span> {' '}
+              Thank you for accessing my blog! <span className="line-through opacity-75 italic">By the way, how did you get here?</span> {' '}
               Anyways, I am still working on it, so it is not ready yet. However, I hope to have it ready soon!
-              The posts currently displayed are just dummy data, and the design is not yet finalized. There may also be some bugs present.
-              If you are interested in seeing the source code, you can access it on <a href="https://github.com/gustavomaltez/gmaltez.dev">GitHub</a>.
+              The posts are just a bunch of dummy data, the design is not finished, and there are still some bugs to fix.
             </p>
           </div>
           <h1 className="text-3xl font-bold my-1">Latest Posts</h1>
@@ -71,7 +70,24 @@ export default function BlogIndexPage(props: PageProps<Post[]>) {
               </div>
             ))}
           </div>
+          <footer className="flex flex-col gap-2 mt-4">
+            <hr className="border-[#a3a3a3] border-opacity-50" />
 
+            <div className="flex flex-row m-4 justify-between">
+              <p className="text-[#a3a3a3] text-sm">
+                Made with ❤️ and ☕ by Gustavo Maltez. <br />
+                © 2023 Gustavo Maltez. All rights reserved.
+              </p>
+              <a href="https://fresh.deno.dev" className="justify-self-end">
+                <img
+                  width="197"
+                  height="37"
+                  src="https://fresh.deno.dev/fresh-badge.svg"
+                  alt="Made with Fresh"
+                />
+              </a>
+            </div>
+          </footer>
         </main>
       </div>
     </>
