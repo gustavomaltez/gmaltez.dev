@@ -4,12 +4,16 @@ export default {
   selfURL: import.meta.url,
   theme: {
     extend: {
+      fontFamily: { 
+        'sans': ['Saira', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+      },
       colors: {
-        'text': '#ffffff',
-        'background': '#010405',
-        'primary-button': '#a0baf3',
-        'secondary-button': '#060317',
-        'accent': '#6345e8',
+        'text': '#fff',	
+        'background': '#1e2022',
+        'gray-a': '#1b1a1f',
+        'gray-b': '#4e4b57',
+        'primary': '#34A269',
+        'secondary': '#06a261',
       },
     },
   }

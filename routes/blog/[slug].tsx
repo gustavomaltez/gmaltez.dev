@@ -22,15 +22,35 @@ export default function PostPage(props: PageProps<Post>) {
       <Head>
         <title>{post.title} - GMaltez.dev</title>
         <style dangerouslySetInnerHTML={{ __html: CSS }} />
+        <style>
+          {`
+            .markdown-body h1,h2,h3,h4,h5,h6 {
+              color: #fff;
+            }
+
+            .markdown-body p {
+              color: #a3a3a3;
+            }
+
+            .markdown-body .highlight pre {
+              background-color: #1b1a1f;
+              border-radius: 0.5rem;
+            }
+          `}
+        </style>
       </Head>
-      <div className="bg-background text-text min-h-screen ">
+      <div className="bg-background text-text min-h-screen px-4">
         <Header />
-        <main className="mx-auto max-w-screen-lg px-4 flex gap-6 flex-col">
+        <main className="flex flex-col max-w-screen-lg mx-auto mt-5">
+          <h1 className="text-3xl font-bold my-2">{post.title}</h1>
           <div
             data-color-mode="dark"
             data-dark-theme="dark"
-            class="mt-8 markdown-body "
+            class="mt-8 markdown-body bg-background"
             dangerouslySetInnerHTML={{ __html: render(post.content) }}
+            style={{
+              backgroundColor: '#1e2022',
+            }}
           />
         </main>
       </div>

@@ -16,24 +16,62 @@ export default function BlogIndexPage(props: PageProps<Post[]>) {
     <>
       <Head>
         <title>GMaltez.dev</title>
+        <meta name="author" content="Gustavo Maltez" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
-      <div className="bg-background text-text min-h-screen">
+      <div className="bg-background text-text min-h-screen px-4">
         <Header />
         <main className="mx-auto max-w-screen-lg px-4 flex gap-6 flex-col">
-          <h1 className="text-3xl font-bold mb-4">Latest Posts</h1>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {/* <div className="flex flex-col my-4">
+            <h1 className="text-3xl font-bold my-2">Hello there!</h1>
+            <p class="text-xl text-[#a3a3a3]">
+              I'm Gustavo Maltez, a 21-year-old software developer
+              from Brazil who is truly passionate about software development and modern
+              web technologies. This is my personal website where I share my thoughts
+              and experiences about software development, programming, English, and career.
+            </p>
+          </div> */}
+          <div className="border-[#ff3b6b] bg-[#4b2f36] border p-4 shadow flex flex-col rounded-xl mb-1 mt-3">
+            <h2 className="text-2xl font-bold text-[#ff3b6b] mb-2">🚧 This blog is under development! 🚧</h2>
+            <p className="text-[#d997b1]">
+              Thank you for accessing, my blog! <span className="line-through opacity-75 italic">By the way, how did you get here?</span> {' '}
+              Anyways, I am still working on it, so it is not ready yet. However, I hope to have it ready soon!
+              The posts currently displayed are just dummy data, and the design is not yet finalized. There may also be some bugs present.
+              If you are interested in seeing the source code, you can access it on <a href="https://github.com/gustavomaltez/gmaltez.dev">GitHub</a>.
+            </p>
+          </div>
+          <h1 className="text-3xl font-bold my-1">Latest Posts</h1>
+          <hr className="border-[#a3a3a3] border-opacity-50" />
+          <div className="flex flex-col gap-5">
             {posts.map((post) => (
-              <div className="bg-secondary-button p-4 shadow">
-                <h2 className="text-xl font-bold mb-2">{post.title}</h2>
-                <p className="text-text">{post.snippet}</p>
+              <div className="bg-[#1e2022] p-4 shadow flex flex-col rounded-xl">
+                <div className="flex flex-row justify-between my-2">
+                  <span className="text-gray-500">
+                    {Intl.DateTimeFormat('en-US', {
+                      year: 'numeric',
+                      month: 'short',
+                      day: 'numeric',
+                    }).format(new Date(post.publishedAt))}
+                  </span>
+                  <div className="flex flex-row gap-2">
+                    {["Javascript", "React", "Example"].map((tag) => (
+                      <a className="text-white rounded-md bg-blue-300 px-2 cursor-pointer">{tag}</a>
+                    ))}
+                  </div>
+                </div>
+                <h2 className="text-2xl font-bold text-white mb-2">{post.title}</h2>
+                <p className="text-gray-300">{post.snippet}</p>
                 <a
                   href={`/blog/${post.slug}`}
-                  className="text-primary-button hover:underline">
+                  className="text-white hover:text-[#34a269] self-end"
+                >
                   Read more
                 </a>
               </div>
             ))}
           </div>
+
         </main>
       </div>
     </>
