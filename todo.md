@@ -1,10 +1,15 @@
 # Blog ToDo
 
-List of thing I need to do:
+List of things I need to do:
 
-- [ ] Create the main page design
-- [ ] Define color palette
+- [X] Create the main page design
+- [X] Define color palette
 - [ ] Refactor logic to read posts
 - [ ] Create logic to search by slug
 - [ ] Create estimated reading time for each post
-- [ ] Create footer component
+- [X] Create footer component
+- [X] Create global wrapper component
+- [ ] Make header responsive
+- [ ] Make footer responsive
+- [ ] Make blog post responsive
+- [ ] Make blog post list responsive
