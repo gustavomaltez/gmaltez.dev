@@ -5,7 +5,6 @@ import { Footer } from "./Footer.tsx";
 
 type WrapperProps = {
   title?: string;
-  styles?: string;
   children: ComponentChildren;
   head?: ComponentChildren;
 };
@@ -45,8 +44,6 @@ export function Wrapper(props: WrapperProps) {
               border-radius: 10px;
               border: 3px solid #1e2022;
             }
-
-            ${props.styles ?? ""}
           `}
         </style>
         {props.head ?? null}
