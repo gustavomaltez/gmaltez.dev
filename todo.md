@@ -13,3 +13,11 @@ List of things I need to do:
 - [ ] Make footer responsive
 - [ ] Make blog post responsive
 - [ ] Make blog post list responsive
+- [ ] Create a page to show all posts
+- [ ] Add a search bar to search posts
+- [ ] Add animations to the blog
+- [ ] Add comments to the blog
+- [ ] Add logic to show related posts
+- [ ] Add logic to show popular posts
+- [ ] Add logic to show how many people have read the post
+- [ ] Add logic to notify people through email when a new post is published
