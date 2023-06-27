@@ -30,7 +30,6 @@ export function Wrapper(props: WrapperProps) {
               scrollbar-color: #333333 #1e2022;
             }
           
-            /* Chrome, Edge, and Safari */
             *::-webkit-scrollbar {
               width: 16px;
             }
@@ -48,7 +47,7 @@ export function Wrapper(props: WrapperProps) {
         </style>
         {props.head ?? null}
       </Head>
-      <div className="bg-background text-text min-h-screen flex flex-col">
+      <div className="bg-background text-text min-h-screen flex flex-col min-w-[350px]">
         <Header />
         <main className="m-4 max-w-screen-lg flex gap-6 flex-col h-full flex-1 lg:mx-auto">
           {props.children}

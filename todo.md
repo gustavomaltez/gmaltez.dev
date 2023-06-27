@@ -9,8 +9,9 @@ List of things I need to do:
 - [ ] Create estimated reading time for each post
 - [X] Create footer component
 - [X] Create global wrapper component
-- [ ] Make header responsive
-- [ ] Make footer responsive
+- [X] Create 404 page
+- [X] Make header responsive
+- [X] Make footer responsive
 - [ ] Make blog post responsive
 - [ ] Make blog post list responsive
 - [ ] Create a page to show all posts
