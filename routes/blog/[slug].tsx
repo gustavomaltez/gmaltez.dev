@@ -1,6 +1,6 @@
 import { Handlers, PageProps } from '$fresh/server.ts';
 import { CSS, render } from '$gfm';
-import { getPost, Post } from '@utils/posts.ts';
+import { getPostBySlug, Post } from '@utils/posts.ts';
 import 'https://esm.sh/prismjs/components/prism-json?no-check';
 import 'https://esm.sh/prismjs/components/prism-jsx?no-check';
 import 'https://esm.sh/prismjs@1.29.0/components/prism-typescript?no-check';
@@ -8,7 +8,7 @@ import { Wrapper } from '../../components/Wrapper.tsx';
 
 export const handler: Handlers<Post> = {
   async GET(_req, ctx) {
-    const post = await getPost(ctx.params.slug);
+    const post = await getPostBySlug(ctx.params.slug);
     if (post === null) return ctx.renderNotFound();
     return ctx.render(post);
   },

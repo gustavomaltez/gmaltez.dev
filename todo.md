@@ -4,7 +4,7 @@ List of things I need to do:
 
 - [X] Create the main page design
 - [X] Define color palette
-- [ ] Refactor logic to read posts
+- [X] Refactor logic to read posts
 - [ ] Create logic to search by slug
 - [ ] Create estimated reading time for each post
 - [X] Create footer component
@@ -22,3 +22,4 @@ List of things I need to do:
 - [ ] Add logic to show popular posts
 - [ ] Add logic to show how many people have read the post
 - [ ] Add logic to notify people through email when a new post is published
+- [ ] Create changelog page

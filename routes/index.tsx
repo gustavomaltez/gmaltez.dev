@@ -1,10 +1,10 @@
 import { Handlers, PageProps } from '$fresh/server.ts';
-import { getPosts, Post } from '@utils/posts.ts';
+import { getAllPosts, Post } from '@utils/posts.ts';
 import { Wrapper } from '../components/Wrapper.tsx';
 
 export const handler: Handlers<Post[]> = {
   async GET(_req, ctx) {
-    const posts = await getPosts();
+    const posts = await getAllPosts();
     return ctx.render(posts);
   },
 };
@@ -24,10 +24,10 @@ export default function BlogIndexPage(props: PageProps<Post[]>) {
       <div className="flex flex-col my-4">
         <h1 className="text-3xl font-bold my-2">Hello there!</h1>
         <p class="text-xl text-[#a3a3a3]">
-          I'm Gustavo Maltez, a 21-year-old software developer
-          from Brazil who is truly passionate about software development and modern
+          I'm Gustavo Maltez, a 22-year-old software developer
+          from Brazil who is truly passionate about programming and modern
           web technologies. This is my personal website where I share my thoughts
-          and experiences about software development, programming, English, and career.
+          and experiences about coding, software development and english.
         </p>
       </div>
       <h1 className="text-3xl font-bold my-1">Latest Posts</h1>
