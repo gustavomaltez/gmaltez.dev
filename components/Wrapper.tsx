@@ -2,6 +2,7 @@ import { Head } from "https://deno.land/x/fresh@1.1.6/runtime.ts";
 import { ComponentChildren } from "preact";
 import { Header } from "./Header.tsx";
 import { Footer } from "./Footer.tsx";
+import ProgressBar from "../islands/ProgressBar.tsx";
 
 type WrapperProps = {
   title?: string;
@@ -47,6 +48,7 @@ export function Wrapper(props: WrapperProps) {
         </style>
         {props.head ?? null}
       </Head>
+      <ProgressBar />
       <div className="bg-background text-text min-h-screen flex flex-col min-w-[350px]">
         <Header />
         <main className="m-4 max-w-screen-lg flex gap-6 flex-col h-full flex-1 lg:mx-auto">

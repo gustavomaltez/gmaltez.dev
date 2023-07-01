@@ -12,6 +12,7 @@ List of things I need to do:
 - [X] Create 404 page
 - [X] Make header responsive
 - [X] Make footer responsive
+- [X] Add animated progress bar to the top of the page
 - [ ] Make blog post responsive
 - [ ] Make blog post list responsive
 - [ ] Create a page to show all posts
