@@ -4,6 +4,10 @@ export default function ProgressBar() {
   const [_progress, _setProgress] = useState(retrieveLastProgress());
   const progressRef = useRef(_progress);
 
+  function isMobile() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  }
+
   function retrieveLastProgress() {
     return Number(globalThis.localStorage?.getItem("progress")) || 0;
   }
@@ -17,7 +21,7 @@ export default function ProgressBar() {
   function onPageUnload() {
     const interval = setInterval(() => {
       const current = progressRef.current;
-      if(current > 70) return clearInterval(interval);
+      if (current > 70) return clearInterval(interval);
       setProgress(current + 1);
     }, 10);
   }
@@ -25,13 +29,14 @@ export default function ProgressBar() {
   function onPageLoad() {
     const interval = setInterval(() => {
       const current = progressRef.current;
-      if(current < 100) return setProgress(current + 5);
+      if (current < 100) return setProgress(current + 5);
       setTimeout(() => setProgress(0), 100);
       clearInterval(interval);
     }, 1);
   }
 
   useEffect(() => {
+    if (isMobile()) return;
     onPageLoad();
     globalThis.addEventListener("beforeunload", onPageUnload);
   }, []);
