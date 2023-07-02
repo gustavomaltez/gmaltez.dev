@@ -6,7 +6,7 @@ export function Tag(props: TagProps) {
   const { backgroundColor, textColor } = getTagColors(props.tag);
   return (
     <a
-      className={`rounded-md px-2 cursor-pointer my-1 text-[${textColor}] bg-[${backgroundColor}] `}
+      className={`rounded-md px-2 cursor-pointer text-[${textColor}] bg-[${backgroundColor}] `}
       href={`/blog/tags/${props.tag}`}
     >
       {props.tag}
