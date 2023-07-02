@@ -5,13 +5,13 @@ export default function ProgressBar() {
   const progressRef = useRef(_progress);
 
   function retrieveLastProgress() {
-    return Number(globalThis.localStorage.getItem?.("progress")) || 0;
+    return Number(globalThis.localStorage?.getItem("progress")) || 0;
   }
 
   function setProgress(value: number) {
     _setProgress(value);
     progressRef.current = value;
-    globalThis.localStorage.setItem?.("progress", String(value));
+    globalThis.localStorage?.setItem("progress", String(value));
   }
 
   function onPageUnload() {
