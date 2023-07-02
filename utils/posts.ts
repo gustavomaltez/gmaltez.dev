@@ -20,9 +20,11 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     const text = await Deno.readTextFile(`./posts/${slug}.md`);
     const { metadata, body } = getPostContentFromText(text);
     const { title, snippet } = metadata;
+    const tags = metadata.tags ? metadata.tags.split(",").map(tag => tag.trim()) : [];
+    const estimatedReadingTime = getTextReadingTime(body);
     const publishedAt = new Date(metadata.published_at);
     if (!title || !snippet || publishedAt.toString() === "Invalid Date") return null;
-    return { slug, title, publishedAt, content: body, snippet };
+    return { slug, title, publishedAt, content: body, snippet, tags, estimatedReadingTime };
   } catch (_error) {
     return null;
   }
@@ -50,6 +52,17 @@ function getPostContentFromText(text: string): PostContent {
   }
   return { metadata, body };
 }
+
+const WORDS_PER_MINUTE = 200;
+
+/**
+ * Returns the estimated reading time for a post, in minutes.
+ */
+export function getTextReadingTime(text: string): number {
+  const words = text.split(" ").length;
+  return Math.ceil(words / WORDS_PER_MINUTE);
+}
+
 // Types -----------------------------------------------------------------------
 
 type PostContent = {
@@ -63,4 +76,6 @@ export type Post = {
   publishedAt: Date;
   content: string;
   snippet: string;
+  tags: string[];
+  estimatedReadingTime: number;
 };

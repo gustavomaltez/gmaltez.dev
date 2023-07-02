@@ -1,6 +1,7 @@
 import { Handlers, PageProps } from '$fresh/server.ts';
 import { getAllPosts, Post } from '@utils/posts.ts';
 import { Wrapper } from '../components/Wrapper.tsx';
+import { Tag } from '../components/Tag.tsx';
 
 export const handler: Handlers<Post[]> = {
   async GET(_req, ctx) {
@@ -43,14 +44,17 @@ export default function BlogIndexPage(props: PageProps<Post[]>) {
                   day: 'numeric',
                 }).format(new Date(post.publishedAt))}
               </span>
-              <div className="flex flex-row gap-2">
-                {["Javascript", "React", "Example"].map((tag) => (
-                  <a className="text-white rounded-md bg-blue-300 px-2 cursor-pointer">{tag}</a>
-                ))}
-              </div>
+              <span className="text-gray-500">
+                {post.estimatedReadingTime} min read
+              </span>
             </div>
             <h2 className="text-2xl font-bold text-white mb-2">{post.title}</h2>
             <p className="text-gray-300">{post.snippet}</p>
+            <div className="flex flex-row gap-2 flex-wrap">
+              {post.tags.map((tag) => (
+                <Tag tag={tag} />
+              ))}
+            </div>
             <a
               href={`/blog/${post.slug}`}
               className="text-white hover:text-[#34a269] self-end"

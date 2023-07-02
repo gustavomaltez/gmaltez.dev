@@ -2,6 +2,7 @@
 title: Building Robust Applications with Typescript and React
 published_at: 2023-04-12T09:15:00.000Z
 snippet: Explore the seamless integration of Typescript with React and unlock the full potential of type-safe development. In this enlightening blog post, we will dive into the world of static typing and see how it enhances code quality and maintainability. Discover how to annotate components, hooks, and state variables with types, and how to leverage advanced TypeScript features to catch errors early and build robust applications with ease.
+tags: typescript, react, types, type-safe, development, robust, applications
 ---
 
 # What is Typescript?

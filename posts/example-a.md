@@ -2,6 +2,7 @@
 title: Exploring React Hooks
 published_at: 2023-01-15T10:00:00.000Z
 snippet: A deep dive into React hooks and their usage in functional components. In this blog post, we will explore some commonly used React hooks and see how they can simplify our code. For example, we will see how to use the useState hook to manage state in a functional component. Furthermore, we will see how to use the useEffect hook to perform side effects in a functional component. Finally, we will see how to use the useContext hook to access the context in a functional component.
+tags: react, hooks, useState, useEffect, useContext
 ---
 
 # What are React hooks?

@@ -24,3 +24,5 @@ List of things I need to do:
 - [ ] Add logic to show how many people have read the post
 - [ ] Add logic to notify people through email when a new post is published
 - [ ] Create changelog page
+- [ ] Create changelog component
+- [ ] Create logic to read changelog from changelog.md
