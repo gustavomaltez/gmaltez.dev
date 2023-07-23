@@ -27,6 +27,10 @@ export default function PostPage(props: PageProps<Post>) {
   return (
     <Wrapper
       title={post.title}
+      meta={{
+        description: post.snippet,
+        keywords: post.tags,
+      }}
       head={
         <>
           <style dangerouslySetInnerHTML={{ __html: CSS }} />
@@ -48,7 +52,7 @@ export default function PostPage(props: PageProps<Post>) {
           </style>
         </>
       }
-    > 
+    >
       <Disclaimer />
       <div
         data-color-mode="dark"

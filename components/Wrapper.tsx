@@ -8,6 +8,15 @@ type WrapperProps = {
   title?: string;
   children: ComponentChildren;
   head?: ComponentChildren;
+  meta?: {
+    description: string;
+    keywords: string[];
+  };
+};
+
+const meta = {
+  description: "Gustavo Maltez's personal website",
+  keywords: ["Gustavo Maltez", "GMaltez", "GMaltez.dev", "GMaltez.dev blog", "GMaltez.dev posts"],
 };
 
 export function Wrapper(props: WrapperProps) {
@@ -18,6 +27,8 @@ export function Wrapper(props: WrapperProps) {
       <Head>
         <title>{title}</title>
         <meta name="author" content="Gustavo Maltez" />
+        <meta name="description" content={props.meta?.description ?? meta.description} />
+        <meta name="keywords" content={props.meta?.keywords?.join(", ") ?? meta.keywords.join(", ")} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.svg" />
         <style>
