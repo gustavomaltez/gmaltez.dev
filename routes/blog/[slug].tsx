@@ -28,8 +28,9 @@ export default function PostPage(props: PageProps<Post>) {
     <Wrapper
       title={post.title}
       meta={{
-        description: post.snippet,
         keywords: post.tags,
+        description: post.snippet,
+        url: `https://gmaltez.dev/blog/${post.slug}`,
       }}
       head={
         <>

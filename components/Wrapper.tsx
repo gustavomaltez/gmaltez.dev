@@ -9,19 +9,23 @@ type WrapperProps = {
   children: ComponentChildren;
   head?: ComponentChildren;
   meta?: {
-    description: string;
-    keywords: string[];
+    url?: string;
+    image?: string;
+    description?: string;
+    keywords?: string[];
   };
 };
 
 const meta = {
+  image: "https://gmaltez.dev/og.svg",
+  url: "https://gmaltez.dev",
   description: "Gustavo Maltez's personal website",
   keywords: ["Gustavo Maltez", "GMaltez", "GMaltez.dev", "GMaltez.dev blog", "GMaltez.dev posts"],
 };
 
 export function Wrapper(props: WrapperProps) {
   const title = props.title ? `${props.title} | GMaltez.dev` : "GMaltez.dev";
-
+  
   return (
     <>
       <Head>
@@ -29,6 +33,12 @@ export function Wrapper(props: WrapperProps) {
         <meta name="author" content="Gustavo Maltez" />
         <meta name="description" content={props.meta?.description ?? meta.description} />
         <meta name="keywords" content={props.meta?.keywords?.join(", ") ?? meta.keywords.join(", ")} />
+        <meta property="og:title" content={title} />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:url" content={props.meta?.url ?? meta.url} />
+        <meta property="og:image" content={props.meta?.image ?? meta.image} />
+        <meta property="og:description" content={props.meta?.description ?? meta.description} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.svg" />
         <style>
