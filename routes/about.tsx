@@ -4,10 +4,10 @@ export default function About() {
   return (
     <Wrapper title='About'>
       <main className="flex flex-col justify-items-center gap-3">
-        <div className="flex flex-col items-center justify-center gap-5 sm:flex-row sm:justify-start my-3">
+        <div className="flex flex-col items-center justify-center gap-5 sm:flex-row sm:justify-start mb-3 mt-2">
           <img
-            height="100"
-            width="100"
+            height="95"
+            width="95"
             className="rounded-full"
             alt="Picture of the author (Gustavo Maltez)"
             src="https://github.com/gustavomaltez.png"
@@ -18,10 +18,10 @@ export default function About() {
         </div>
         <hr className="border-text-tertiary border-opacity-50" />
         <p className="text-text-secondary">
-          I'm a 22-year-old software developer from Brazil who is truly passionate
-          about programming and technology. Welcome to my personal website, where
-          I share my thoughts and experiences about coding, software development,
-          English, and a few other topics.
+          Welcome to my personal website, here I share my thoughts and experiences
+          about coding, software development,English, and a few other topics. I'm
+          a 22-year-old software developer from Brazil who is truly passionate
+          about programming and technology.
         </p>
         <p className="text-text-secondary">
           I embarked on my programming journey at the age of 14, driven by my
@@ -39,7 +39,7 @@ export default function About() {
           In 2019, I began my bachelor's degree in Software Engineering at the
           Federal University of Ceará (UFC). A few months into my college journey,
           I seized an exciting opportunity and landed my first job as a software
-          developer at IncludeJr, a college-run startup. I dedicated around 9
+          developer at IncludeJr, a college-run software house. I dedicated around 9
           months to this role, gaining valuable experience and skills. Later,
           I transitioned to a position at a US-based company, where I currently
           work as a full-stack software developer.
@@ -50,7 +50,7 @@ export default function About() {
           just a job for me; it's my true passion and what motivates me to wake
           up every day, eager to work and explore new horizons in technology.
           I thrive on embracing fresh challenges that push my boundaries and
-          allow me to grow both professionally and personally
+          allow me to grow both professionally and personally.
         </p>
         <p className="text-text-secondary">
           At this stage in my life, my ultimate goal is to develop software that
