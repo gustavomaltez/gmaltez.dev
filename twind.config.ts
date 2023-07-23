@@ -8,12 +8,12 @@ export default {
         'sans': ['Saira', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       colors: {
-        'text': '#fff',	
-        'background': '#1e2022',
-        'gray-a': '#1b1a1f',
-        'gray-b': '#4e4b57',
-        'primary': '#34A269',
-        'secondary': '#06a261',
+        'background': '#191c23',
+        'background-secondary': '#1e2028',
+        'text-primary': '#c9d4dc',
+        'text-secondary': '#a6b0c3',
+        'text-tertiary': '#636876',
+        'primary': '#0f9d58',
       },
     },
   }
