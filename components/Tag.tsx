@@ -3,38 +3,36 @@ type TagProps = {
 };
 
 export function Tag(props: TagProps) {
-  const { backgroundColor, textColor } = getTagColors(props.tag);
   return (
     <a
-      className={`rounded-md px-2 cursor-pointer text-[${textColor}] bg-[${backgroundColor}] `}
+      className={`rounded-md px-2 py-1 cursor-pointer text-[${getTagColor(props.tag)}] `}
       href={`/blog/tags/${props.tag}`}
     >
-      {props.tag}
+      #{props.tag}
     </a>
   );
 }
 
-const tags: Record<string, [string, string]> = {
-  'javascript': ['#f7df1e', '#000000'],
-  'typescript': ['#007acc', '#ffffff'],
-  'react': ['#61dafb', '#000000'],
-  'tailwindcss': ['#06b6d4', '#ffffff'],
-  'css': ['#264de4', '#ffffff'],
-  'html': ['#e34f26', '#ffffff'],
-  'nodejs': ['#339933', '#ffffff'],
-  'express': ['#000000', '#ffffff'],
-  'mongodb': ['#47a248', '#ffffff'],
-  'postgresql': ['#336791', '#ffffff'],
-  'mysql': ['#4479a1', '#ffffff'],
-  'sqlite': ['#003b57', '#ffffff'],
-  'git': ['#f05032', '#ffffff'],
-  'github': ['#181717', '#ffffff'],
+const tags: Record<string, string> = {
+  'javascript': '#f7df1e',
+  'typescript': '#007acc',
+  'react': '#61dafb',
+  'tailwindcss': '#06b6d4',
+  'css': '#264de4',
+  'html': '#e34f26',
+  'nodejs': '#339933',
+  'express': '#000000',
+  'mongodb': '#47a248',
+  'postgresql': '#336791',
+  'mysql': '#4479a1',
+  'sqlite': '#003b57',
+  'git': '#f05032',
+  'github': '#181717',
 };
 
-function getTagColors(tag: string) {
+function getTagColor(tag: string) {
   const color = tags[tag.toLowerCase()];
-  if (color) return { backgroundColor: color[0], textColor: color[1] };
-  else return { backgroundColor: getRandomHexColor(tag), textColor: '#ffffff' };
+  return color ?? getRandomHexColor(tag);
 }
 
 function getRandomHexColor(input: string) {

@@ -28,28 +28,28 @@ export function Wrapper(props: WrapperProps) {
             
             * {
               scrollbar-width: auto;
-              scrollbar-color: #333333 #1e2022;
+              scrollbar-color: #4d4e52 #191c23;
             }
           
             *::-webkit-scrollbar {
-              width: 16px;
+              width: 12px;
             }
           
             *::-webkit-scrollbar-track {
-              background: #1e2022;
+              background: #191c23;
             }
           
             *::-webkit-scrollbar-thumb {
-              background-color: #333333;
+              background-color: #4d4e52;
               border-radius: 10px;
-              border: 3px solid #1e2022;
+              border: 3px solid #191c23;
             }
           `}
         </style>
         {props.head ?? null}
       </Head>
       <ProgressBar />
-      <div className="bg-background text-text min-h-screen flex flex-col min-w-[350px]">
+      <div className="bg-background text-text-primary min-h-screen flex flex-col min-w-[350px]">
         <Header />
         <main className="m-4 max-w-screen-lg flex gap-6 flex-col h-full flex-1 lg:mx-auto">
           {props.children}

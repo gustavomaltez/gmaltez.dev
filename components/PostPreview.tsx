@@ -3,22 +3,24 @@ import { Tag } from "./Tag.tsx";
 
 export function PostPreview(props: Post) {
   return (
-    <div className="bg-[#1e2022] p-4 flex flex-col rounded-xl">
-      <div className="flex flex-row justify-between my-2">
+    <div
+      className="bg-background-secondary p-4 flex flex-col rounded-xl 
+      ">
+      <div className="flex flex-row justify-between mb-2">
         <PublishDate date={props.publishedAt} />
         <EstimatedReadingTime time={props.estimatedReadingTime} />
       </div>
       <a
-        className="flex flex-row items-center text-2xl font-bold text-white mb-2 
-        hover:text-[#34a269] gap-2 transition-all duration-200"
+        className="flex flex-row items-center text-2xl font-bold text-text-primary mb-2 
+        hover:text-primary gap-2 transition-all duration-200 cursor-pointer"
         href={`/blog/${props.slug}`}
       >
         {props.title}
       </a>
-      <p className="text-gray-300">
+      <p className="text-text-secondary">
         {props.snippet}
       </p>
-      <div className="flex flex-row gap-2 flex-wrap mt-1">
+      <div className="flex flex-row flex-wrap mt-2">
         {props.tags.map(tag => <Tag tag={tag} />)}
       </div>
     </div>
@@ -27,14 +29,14 @@ export function PostPreview(props: Post) {
 
 function PublishDate(props: { date: Date; }) {
   return (
-    <span className="text-gray-500 flex flex-row gap-1">
+    <span className="text-text-tertiary flex flex-row items-center gap-1">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
         stroke-width="1.5"
         stroke="currentColor"
-        class="w-6 h-6"
+        class="w-5 h-5"
       >
         <path
           stroke-linecap="round"
@@ -53,14 +55,14 @@ function PublishDate(props: { date: Date; }) {
 
 function EstimatedReadingTime(props: { time: number; }) {
   return (
-    <span className="text-gray-500 flex flex-row gap-1">
+    <span className="text-text-tertiary flex flex-row items-center gap-1">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
         stroke-width="1.5"
         stroke="currentColor"
-        class="w-6 h-6"
+        class="w-5 h-5"
       >
         <path
           stroke-linecap="round"

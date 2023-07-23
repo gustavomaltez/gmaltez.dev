@@ -33,15 +33,15 @@ export default function PostPage(props: PageProps<Post>) {
           <style>
             {`
               .markdown-body h1,h2,h3,h4,h5,h6 {
-                color: #fff;
+                color: #c9d4dc;
               }
   
               .markdown-body p {
-                color: #a3a3a3;
+                color: #a6b0c3;
               }
-  
+              
               .markdown-body .highlight pre {
-                background-color: #1b1a1f;
+                background-color: #1e2028;
                 border-radius: 0.5rem;
               }
             `}
@@ -49,8 +49,6 @@ export default function PostPage(props: PageProps<Post>) {
         </>
       }
     > 
-      <h1 className="text-3xl font-bold m-2">{post.title}</h1>
-      <hr className="border-[#a3a3a3] border-opacity-50" />
       <Disclaimer />
       <div
         data-color-mode="dark"
@@ -58,7 +56,7 @@ export default function PostPage(props: PageProps<Post>) {
         class="markdown-body bg-background"
         dangerouslySetInnerHTML={{ __html: render(post.content) }}
         style={{
-          backgroundColor: '#1e2022',
+          backgroundColor: 'transparent',
         }}
       />
     </Wrapper>

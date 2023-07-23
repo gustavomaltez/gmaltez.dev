@@ -17,7 +17,7 @@ export default function BlogIndexPage(props: PageProps<Post[]>) {
       <UnderDevelopmentMessage />
       <WelcomeMessage />
       <h1 className="text-3xl font-bold my-1">Latest Posts</h1>
-      <hr className="border-[#a3a3a3] border-opacity-50" />
+      <hr className="border-text-tertiary border-opacity-50" />
       <div className="flex flex-col gap-5">
         {posts.map((post) => <PostPreview {...post} />)}
       </div>
@@ -41,8 +41,8 @@ function UnderDevelopmentMessage() {
 function WelcomeMessage() {
   return (
     <div className="flex flex-col my-4">
-      <h1 className="text-3xl font-bold my-2">Hello there!</h1>
-      <p class="text-xl text-[#a3a3a3]">
+      <h1 className="text-3xl font-bold my-2 text-text-primary">Hello there!</h1>
+      <p class="text-xl text-text-secondary">
         I'm Gustavo Maltez, a 22-year-old software developer
         from Brazil who is truly passionate about programming and modern
         web technologies. This is my personal website where I share my thoughts
