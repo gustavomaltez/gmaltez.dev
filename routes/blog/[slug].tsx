@@ -13,6 +13,7 @@ import 'https://esm.sh/prismjs@1.29.0/components/prism-typescript?no-check';
 
 import { Wrapper } from '../../components/Wrapper.tsx';
 import { Disclaimer } from "../../components/Disclaimer.tsx";
+import { Tag } from '../../components/Tag.tsx';
 
 export const handler: Handlers<Post> = {
   async GET(_req, ctx) {
@@ -59,6 +60,32 @@ export default function PostPage(props: PageProps<Post>) {
         and it's being used only for testing purposes. Thanks for accessing during 
         this early stage :)"
       />
+      <h1 className="text-4xl font-bold">{post.title}</h1>
+      <div className="-my-2">
+        {post.tags.map(tag => <Tag tag={tag} />)}
+      </div>
+      <hr className="border-text-tertiary border-opacity-50" />
+      <div className="flex flex-row items-center justify-start gap-2 min-w-max">
+        <img
+          height="50"
+          width="50"
+          className="rounded-full"
+          alt="Picture of the author (Gustavo Maltez)"
+          src="https://github.com/gustavomaltez.png"
+        />
+        <div className="flex flex-col">
+          <p className="text-1xl">Gustavo Maltez</p>
+          <span className="flex flex-row items-center justify-center gap-2 text-text-secondary">
+            {Intl.DateTimeFormat('en-US', {
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric',
+            }).format(post.publishedAt)}
+            <div className="rounded-full h-1 w-1 bg-text-secondary" />
+            {post.estimatedReadingTime} min read
+          </span>
+        </div>
+      </div>
       <div
         data-color-mode="dark"
         data-dark-theme="dark"
