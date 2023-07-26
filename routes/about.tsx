@@ -3,7 +3,7 @@ import { Wrapper } from '../components/Wrapper.tsx';
 export default function About() {
   return (
     <Wrapper title='About'>
-      <main className="flex flex-col justify-items-center gap-3">
+      <section className="flex flex-col justify-items-center gap-3">
         <div className="flex flex-col items-center justify-center gap-5 sm:flex-row sm:justify-start mb-3 mt-2">
           <img
             height="95"
@@ -19,7 +19,7 @@ export default function About() {
         <hr className="border-text-tertiary border-opacity-50" />
         <p className="text-text-secondary">
           Welcome to my personal website, here I share my thoughts and experiences
-          about coding, software development,English, and a few other topics. I'm
+          about coding, software development, English, and a few other topics. I'm
           a 22-year-old software developer from Brazil who is truly passionate
           about programming and technology.
         </p>
@@ -70,7 +70,7 @@ export default function About() {
           I sincerely hope you find value in the content I provide, and I welcome
           you to reach out to me with any questions or suggestions you may have.
         </p>
-      </main>
+      </section>
     </Wrapper>
   );
 }
