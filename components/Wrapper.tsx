@@ -49,7 +49,7 @@ export function Wrapper(props: WrapperProps) {
             
             * {
               scrollbar-width: auto;
-              scrollbar-color: #4d4e52 #191c23;
+              scrollbar-color: #3d3c42 #191c23;
             }
           
             *::-webkit-scrollbar {
@@ -61,7 +61,7 @@ export function Wrapper(props: WrapperProps) {
             }
           
             *::-webkit-scrollbar-thumb {
-              background-color: #4d4e52;
+              background-color: #3d3c42;
               border-radius: 10px;
               border: 3px solid #191c23;
             }
