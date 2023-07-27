@@ -22,7 +22,6 @@ const data = [
     version: "0.6.0",
     date: "2023-07-24",
     changes: [
-      "New lorem ipsum feature",
       "Fixed dolor sit amet",
       "Changed consectetur adipiscing elit",
       "Removed sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
