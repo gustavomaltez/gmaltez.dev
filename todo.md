@@ -37,3 +37,5 @@ List of things I need to do:
 - [ ] Research about the best way to organize components and islands
 - [ ] Code review and clean up
 - [ ] Add tests (you should add it before coding -duuuh-)
+- [ ] Break css into isolated files and when importing it, minify by making everything in one line
+- [ ] Update size of texts for mobile
