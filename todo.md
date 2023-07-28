@@ -6,15 +6,15 @@ List of things I need to do:
 - [X] Define color palette
 - [X] Refactor logic to read posts
 - [ ] Create logic to search by slug
-- [ ] Create estimated reading time for each post
+- [X] Create estimated reading time for each post
 - [X] Create footer component
 - [X] Create global wrapper component
 - [X] Create 404 page
 - [X] Make header responsive
 - [X] Make footer responsive
 - [X] Add animated progress bar to the top of the page
-- [ ] Make blog post responsive
-- [ ] Make blog post list responsive
+- [X] Make blog post responsive
+- [X] Make blog post list responsive
 - [ ] Create a page to show all posts
 - [ ] Add a search bar to search posts
 - [ ] Add animations to the blog
@@ -23,6 +23,13 @@ List of things I need to do:
 - [ ] Add logic to show popular posts
 - [ ] Add logic to show how many people have read the post
 - [ ] Add logic to notify people through email when a new post is published
-- [ ] Create changelog page
-- [ ] Create changelog component
+- [X] Create changelog page
+- [X] Create changelog component
 - [ ] Create logic to read changelog from changelog.md
+- [ ] Add animated svg animation to changelog page
+- [ ] Index pages on google
+- [ ] Improve Open Graph tags
+- [ ] Improve SEO
+- [ ] Improve accessibility
+- [ ] Add switch to change theme
+- [ ] Add multi language support (maybe)
