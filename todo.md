@@ -33,3 +33,7 @@ List of things I need to do:
 - [ ] Improve accessibility
 - [ ] Add switch to change theme
 - [ ] Add multi language support (maybe)
+- [ ] Add aliases to components
+- [ ] Research about the best way to organize components and islands
+- [ ] Code review and clean up
+- [ ] Add tests (you should add it before coding -duuuh-)
