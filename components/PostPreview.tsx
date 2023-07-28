@@ -48,7 +48,7 @@ function PublishDate(props: { date: Date; }) {
         year: 'numeric',
         month: 'short',
         day: 'numeric',
-      }).format(props.date)}
+      }).format(new Date(props.date))}
     </span>
   );
 }
