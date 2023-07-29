@@ -24,9 +24,9 @@ export function SearchBar(props: SearchBarProps) {
     <div className="relative w-full">
       <input
         type="text"
-        placeholder="Search..."
         value={value}
         onInput={onInput}
+        placeholder="Search..."
         className="w-full py-2 px-4 pr-12 border
         border-text-tertiary bg-background-secondary text-text-primary rounded-lg"
       />
