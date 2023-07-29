@@ -26,12 +26,12 @@ export default function PostSearch(props: { posts: PostWithoutContent[]; }) {
         <div className="flex flex-row flex-wrap mt-2 justify-center">
           {state.tags.map(({ tag, isSelected }) => (
             <button
-              className={`px-4 py-2 rounded-lg transition-all duration-200 mr-2 mb-2
-              bg-background-secondary hover:bg-primary hover:text-white
-              ${isSelected
-                  ? 'text-white border border-primary'
-                  : 'text-text-primary border border-background-secondary'}`}
+              className={`px-3 py-1 rounded-lg transition-all duration-200 mr-2 mb-2
+              text-text-primary border border-background-secondary
+              ${isSelected ? 'text-white border-primary' : ''}`}
               onClick={() => dispatch({ type: 'TAG_CLICK', tag })}
+              onMouseEnter={e => e.currentTarget.classList.add('bg-primary', 'text-white')}
+              onMouseLeave={e => e.currentTarget.classList.remove('bg-primary', 'text-white')}
             >
               {tag}
             </button>
@@ -41,7 +41,7 @@ export default function PostSearch(props: { posts: PostWithoutContent[]; }) {
       <div className="flex flex-col gap-5 mt-5">
         {state.filteredPosts.map(post => <PostPreview {...post} />)}
       </div>
-    </div>
+    </div >
   );
 }
 
@@ -82,6 +82,7 @@ function searchReducer(state: State, action: Action) {
     const filteredPosts = getFilteredPosts(query, tags);
     return { filteredPosts, noPostsFound: filteredPosts.length === 0 };
   }
+
   function handleTagClick(tag: string) {
     const tags = state.tags.map(({ tag: _tag, isSelected }) => ({
       tag: _tag,
