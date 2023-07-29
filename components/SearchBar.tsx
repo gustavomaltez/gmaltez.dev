@@ -27,10 +27,16 @@ export function SearchBar(props: SearchBarProps) {
         placeholder="Search..."
         value={value}
         onInput={onInput}
-        className="w-full py-2 px-4 pr-12 border rounded focus:outline-none focus:border-blue-400"
+        className="w-full py-2 px-4 pr-12 border
+        border-text-tertiary bg-background-secondary text-text-primary rounded-lg"
       />
       <div className="absolute top-0 right-0 h-full px-3 flex items-center">
-        <button disabled={!hasValue} onClick={onClear}>
+        <button
+          disabled={!hasValue}
+          onClick={onClear}
+          className={`text-text-secondary transition-all duration-200
+          ${hasValue ? "hover:text-red-500 cursor-pointer" : "cursor-auto"}`}
+        >
           {hasValue ? <CloseIcon /> : <SearchIcon />}
         </button>
       </div>
