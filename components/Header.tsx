@@ -24,7 +24,7 @@ function Link(props: { href: string; label: string; }) {
     <a
       href={props.href}
       aria-label={props.label}
-      className="text-xs sm:text-base text-text-primary hover:text-primary"
+      className="text-xs sm:text-base text-text-white hover:text-primary"
     >
       {props.label}
     </a>

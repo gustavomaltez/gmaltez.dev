@@ -17,7 +17,7 @@ export function PostPreview(props: Post) {
       >
         {props.title}
       </a>
-      <p className="text-text-secondary">
+      <p className="text-text-primary opacity-90">
         {props.snippet}
       </p>
       <div className="flex flex-row flex-wrap mt-2">
