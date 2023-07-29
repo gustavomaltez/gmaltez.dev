@@ -14,6 +14,10 @@ export default function Posts(props: PageProps<Post[]>) {
   return (
     <Wrapper
       title='Posts'
+      meta={{
+        keywords: ["Gustavo Maltez", "GMaltez", "GMaltez.dev", "GMaltez.dev blog", "GMaltez.dev posts"],
+        description: "Check out all the available posts on gmaltez.dev! Search by title, tag or content.",
+      }}
     >
       <section className="lg:w-screen max-w-screen-lg flex flex-col flex-1 gap-2">
         <h1 className="text-xl mobile-high:text-2xl sm:text-3xl font-bold my-2">
