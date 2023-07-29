@@ -12,6 +12,15 @@ export async function getAllPosts(): Promise<Post[]> {
 }
 
 /**
+ * Returns all available posts, sorted by published date (newest first), but
+ * without the post content.
+ */
+export async function getAllPostsWithoutContent(): Promise<PostWithoutContent[]> {
+  const posts = await getAllPosts();
+  return posts.map(({ content: _content, ...post }) => post);
+}
+
+/**
  * Returns the post with the given slug. If no post exists or the post has any
  * missing metadata, null is returned.
  */
@@ -79,3 +88,5 @@ export type Post = {
   tags: string[];
   estimatedReadingTime: number;
 };
+
+export type PostWithoutContent = Omit<Post, "content">;
