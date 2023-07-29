@@ -15,6 +15,10 @@ export default {
         'text-tertiary': '#5f6677',
         'primary': '#0f9d58',
       },
+      screens: {
+        'mobile-low': '320px',
+        'mobile-high': '480px',
+      }
     },
   }
 } as Options;
