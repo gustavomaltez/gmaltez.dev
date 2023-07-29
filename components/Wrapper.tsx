@@ -25,7 +25,7 @@ const meta = {
 
 export function Wrapper(props: WrapperProps) {
   const title = props.title ? `${props.title} | GMaltez.dev` : "GMaltez.dev";
-  
+
   return (
     <>
       <Head>
@@ -65,6 +65,11 @@ export function Wrapper(props: WrapperProps) {
               border-radius: 10px;
               border: 3px solid #1c212d;
             }
+
+            input, button, input:focus, button:focus {
+              outline: none;
+            }
+          }
           `}
         </style>
         {props.head ?? null}
