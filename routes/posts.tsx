@@ -1,22 +1,22 @@
 import { Wrapper } from '../components/index.ts';
 import { Handlers, PageProps } from '$fresh/server.ts';
-import { getAllPosts, Post } from '@utils/posts.ts';
+import { getAllPostsWithoutContent, PostWithoutContent } from '@utils/posts.ts';
 import PostSearch from '../islands/PostSearch.tsx';
 
-export const handler: Handlers<Post[]> = {
+export const handler: Handlers<PostWithoutContent[]> = {
   async GET(_req, ctx) {
-    const posts = await getAllPosts();
+    const posts = await getAllPostsWithoutContent();
     return ctx.render(posts);
   },
 };
 
-export default function Posts(props: PageProps<Post[]>) {
+export default function Posts(props: PageProps<PostWithoutContent[]>) {
   return (
     <Wrapper
       title='Posts'
       meta={{
-        keywords: ["Gustavo Maltez", "GMaltez", "GMaltez.dev", "GMaltez.dev blog", "GMaltez.dev posts"],
         description: "Check out all the available posts on gmaltez.dev! Search by title, tag or content.",
+        keywords: ["Gustavo Maltez", "GMaltez", "GMaltez.dev", "GMaltez.dev blog", "GMaltez.dev posts"],
       }}
     >
       <section className="lg:w-screen max-w-screen-lg flex flex-col flex-1 gap-2">

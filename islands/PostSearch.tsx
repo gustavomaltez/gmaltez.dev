@@ -1,11 +1,11 @@
-import { Post } from '@utils/posts.ts';
+import { PostWithoutContent } from '@utils/posts.ts';
 import { useReducer } from 'https://esm.sh/preact@10.13.1/hooks';
 
 import { PostPreview, SearchBar } from '../components/index.ts';
 
 // ToDo: Refactor this component, clear the code and make it more readable.
 
-export default function PostSearch(props: { posts: Post[]; }) {
+export default function PostSearch(props: { posts: PostWithoutContent[]; }) {
   const [state, dispatch] = useReducer(searchReducer, buildInitialReducerState(props.posts));
   return (
     <div className="flex flex-col w-full h-full">
@@ -92,7 +92,7 @@ function searchReducer(state: State, action: Action) {
   }
 }
 
-function buildInitialReducerState(posts: Post[]) {
+function buildInitialReducerState(posts: PostWithoutContent[]) {
   const tags = getInitialTags(posts);
   const selectedTags = getSelectedTags(tags);
   return {
@@ -124,19 +124,19 @@ function setTagsToUrl(tags: string[]) {
   if (tags.length === 0) return url.searchParams.delete('tags');
 }
 
-function getTagsFromPosts(posts: Post[]) {
+function getTagsFromPosts(posts: PostWithoutContent[]) {
   const tags = new Set<string>();
   posts.forEach(post => post.tags.forEach(tag => tags.add(tag)));
   return Array.from(tags);
 }
 
-function getInitialTags(posts: Post[]) {
+function getInitialTags(posts: PostWithoutContent[]) {
   const tags = getTagsFromPosts(posts);
   const tagsFromUrl = getTagsFromUrl();
   return tags.map(tag => ({ tag, isSelected: tagsFromUrl.includes(tag) }));
 }
 
-function filterPostsByTags(posts: Post[], tags: string[]) {
+function filterPostsByTags(posts: PostWithoutContent[], tags: string[]) {
   return posts.filter(post => tags.every(tag => post.tags.includes(tag)));
 }
 
@@ -150,9 +150,9 @@ type Tag = { tag: string; isSelected: boolean; };
 
 type State = {
   query: string;
-  posts: Post[];
+  posts: PostWithoutContent[];
   tags: Tag[];
-  filteredPosts: Post[];
+  filteredPosts: PostWithoutContent[];
   isQueryEmpty: boolean;
   noPostsFound: boolean;
   isTagsVisible: boolean;
