@@ -11,13 +11,13 @@ export function PostPreview(props: Post) {
         <EstimatedReadingTime time={props.estimatedReadingTime} />
       </div>
       <a
-        className="flex flex-row items-center text-2xl font-bold text-text-primary mb-2 
-        hover:text-primary gap-2 transition-all duration-200 cursor-pointer"
+        className="flex flex-row items-center text-xl font-bold text-text-primary mb-2 
+        hover:text-primary gap-2 transition-all duration-200 cursor-pointer sm:text-2xl"
         href={`/blog/${props.slug}`}
       >
         {props.title}
       </a>
-      <p className="text-text-primary opacity-90">
+      <p className="text-text-primary opacity-90 text-base sm:text-lg">
         {props.snippet}
       </p>
       <div className="flex flex-row flex-wrap mt-2">
