@@ -1,7 +1,7 @@
-import { Post } from "../utils/posts.ts";
+import { PostWithoutContent } from "../utils/posts.ts";
 import { Tag } from "./Tag.tsx";
 
-export function PostPreview(props: Post) {
+export function PostPreview(props: PostWithoutContent) {
   return (
     <div
       className="bg-background-secondary p-4 flex flex-col rounded-xl 
