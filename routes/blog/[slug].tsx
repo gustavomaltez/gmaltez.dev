@@ -35,22 +35,26 @@ export default function PostPage(props: PageProps<Post>) {
         url: `https://gmaltez.dev/blog/${post.slug}`,
       }}
       head={
-        <style dangerouslySetInnerHTML={{ __html: CSS }}>
-          {`
+        <>
+          <style dangerouslySetInnerHTML={{ __html: CSS }} />
+          <style>
+            {`
               .markdown-body h1,h2,h3,h4,h5,h6 {
-                color: #c9d4dc;
+                color: #d0d4de;
               }
   
               .markdown-body p {
-                color: #a6b0c3;
+                color: #d0d4de;
+                opacity: 0.9;
               }
               
               .markdown-body .highlight pre {
-                background-color: #1e2028;
+                background-color: #262c39;
                 border-radius: 0.5rem;
               }
             `}
-        </style>
+          </style>
+        </>
       }
     >
       <Disclaimer
