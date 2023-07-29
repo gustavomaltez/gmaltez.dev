@@ -7,7 +7,7 @@ export function Tag(props: TagProps) {
     <a
       className={`rounded-md px-2 py-1 cursor-pointer text-[${getTagColor(props.tag)}] `}
       aria-label={`Tag: ${props.tag}`}
-      href={`/blog/tags/${props.tag}`}
+      href={`/posts?tags=${props.tag}`}
     >
       #{props.tag}
     </a>
