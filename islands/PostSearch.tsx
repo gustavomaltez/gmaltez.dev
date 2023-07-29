@@ -124,10 +124,14 @@ function setTagsToUrl(tags: string[]) {
   if (tags.length === 0) return url.searchParams.delete('tags');
 }
 
+function sortAlphabetically(entries: string[]) {
+  return entries.sort((a, b) => a.localeCompare(b));
+}
+
 function getTagsFromPosts(posts: PostWithoutContent[]) {
   const tags = new Set<string>();
   posts.forEach(post => post.tags.forEach(tag => tags.add(tag)));
-  return Array.from(tags);
+  return sortAlphabetically(Array.from(tags));
 }
 
 function getInitialTags(posts: PostWithoutContent[]) {
