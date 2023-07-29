@@ -43,12 +43,9 @@ export function Wrapper(props: WrapperProps) {
         <link rel="icon" href="/favicon.svg" />
         <style>
           {`
-            body {
-              scroll-behavior: smooth;
-            }
-            
             * {
               scrollbar-width: auto;
+              scroll-behavior: smooth;
               scrollbar-color: #3d3c42 #1c212d;
             }
           
@@ -66,6 +63,10 @@ export function Wrapper(props: WrapperProps) {
               border: 3px solid #1c212d;
             }
 
+            *::-webkit-scrollbar-corner {
+              background-color: #1c212d;
+            }
+            
             input, button, input:focus, button:focus {
               outline: none;
             }
