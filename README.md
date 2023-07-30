@@ -37,12 +37,12 @@ so I decided to use it to build this blog.
 
 ## 🛠 Stack
 
-- [fresh](https://fresh.deno.dev/)
-- [preact](https://preactjs.com/)
-- [twind](https://twind.dev/)
-- [typescript](https://www.typescriptlang.org/)
-- [deno](https://deno.land/)
-- [firebase](https://firebase.google.com/)
+- [fresh](https://fresh.deno.dev/) - An awesome web framework that runs on top of deno
+- [preact](https://preactjs.com/) - A fast 3kB alternative to React with the same modern API
+- [twind](https://twind.dev/) - The smallest, fastest, most feature complete Tailwind-in-JS solution in existence
+- [typescript](https://www.typescriptlang.org/) - A typed superset of JavaScript that compiles to plain JavaScript
+- [deno](https://deno.land/) - An awesome runtime for javascript and typescript with a lot of cool features
+- [firebase](https://firebase.google.com/) - A collection of services provided by google to help you build and grow your app
 
 ## 🚀 Setup
 
