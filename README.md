@@ -17,9 +17,12 @@
 </p>
 
 ## Summary
+
 - [Summary](#summary)
 - [📝 About](#-about)
 - [🛠 Stack](#-stack)
+- [🔥Features](#features)
+- [📝 ToDo](#-todo)
 - [🚀 Setup](#-setup)
 - [🤝 Contributing](#-contributing)
 - [📄 License](#-license)
@@ -37,12 +40,28 @@ so I decided to use it to build this blog.
 
 ## 🛠 Stack
 
-- [fresh](https://fresh.deno.dev/) - An awesome web framework that runs on top of deno
-- [preact](https://preactjs.com/) - A fast 3kB alternative to React with the same modern API
-- [twind](https://twind.dev/) - The smallest, fastest, most feature complete Tailwind-in-JS solution in existence
-- [typescript](https://www.typescriptlang.org/) - A typed superset of JavaScript that compiles to plain JavaScript
-- [deno](https://deno.land/) - An awesome runtime for javascript and typescript with a lot of cool features
-- [firebase](https://firebase.google.com/) - A collection of services provided by google to help you build and grow your app
+- [fresh](https://fresh.deno.dev/) - An awesome web framework that runs on top of deno.
+- [preact](https://preactjs.com/) - A fast 3kB alternative to React with the same modern API.
+- [twind](https://twind.dev/) - The smallest, fastest, most feature complete Tailwind-in-JS solution in existence.
+- [typescript](https://www.typescriptlang.org/) - A typed superset of JavaScript that compiles to plain JavaScript.
+- [deno](https://deno.land/) - An awesome runtime for javascript and typescript with a lot of cool features.
+- [firebase](https://firebase.google.com/) - A collection of services provided by google to help you build and grow your app.
+
+## 🔥Features
+
+- Read posts from markdown files and build a static html page for each post during build time.
+- Changelog page to show the changes that I made to the blog.
+- Search posts by title, snippet or tags.
+- Fast and responsive.
+- Dark mode.
+
+## 📝 ToDo
+
+- [ ] Add comments section.
+- [ ] Add logic to show related posts.
+- [ ] Enable multi language support.
+- [ ] Enhance user experience.
+- [ ] Make it 100% accessible.
 
 ## 🚀 Setup
 
