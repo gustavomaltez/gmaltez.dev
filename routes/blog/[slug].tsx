@@ -65,7 +65,7 @@ export default function PostPage(props: PageProps<Post>) {
         this early stage :)"
       />
       <h1 className="text-2xl sm:text-4xl font-bold">{post.title}</h1>
-      <div className="-my-2 flex flex-row flex-wrap">
+      <div className="-my-3 flex flex-row flex-wrap">
         {post.tags.map(tag => <Tag tag={tag} />)}
       </div>
       <hr className="border-text-tertiary border-opacity-50" />

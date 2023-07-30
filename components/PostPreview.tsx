@@ -4,7 +4,7 @@ import { Tag } from "./Tag.tsx";
 export function PostPreview(props: PostWithoutContent) {
   return (
     <div
-      className="bg-background-secondary p-4 flex flex-col rounded-xl 
+      className="bg-background-secondary px-4 py-3 flex flex-col rounded-xl 
       ">
       <div className="flex flex-row justify-between mb-2">
         <PublishDate date={props.publishedAt} />
@@ -20,7 +20,7 @@ export function PostPreview(props: PostWithoutContent) {
       <p className="text-text-primary opacity-90 text-base sm:text-lg">
         {props.snippet}
       </p>
-      <div className="flex flex-row flex-wrap mt-2">
+      <div className="flex flex-row flex-wrap">
         {props.tags.map(tag => <Tag tag={tag} />)}
       </div>
     </div>
