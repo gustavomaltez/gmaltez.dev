@@ -79,6 +79,13 @@ type PostContent = {
   body: string;
 };
 
+export type PostComment = {
+  id: string;
+  date: string;
+  author: string;
+  content: string;
+};
+
 export type Post = {
   slug: string;
   title: string;
@@ -90,3 +97,7 @@ export type Post = {
 };
 
 export type PostWithoutContent = Omit<Post, "content">;
+
+export type PostWithComments = Post & {
+  comments: PostComment[];
+}
