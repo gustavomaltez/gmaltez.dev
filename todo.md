@@ -39,3 +39,5 @@ List of things I need to do:
 - [ ] Add tests (you should add it before coding -duuuh-)
 - [ ] Break css into isolated files and when importing it, minify by making everything in one line
 - [X] Update size of texts for mobile
+- [ ] Add suggestions / bug report form
+- [ ] Improve islands folder structure (setup islands to interactive components)
