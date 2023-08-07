@@ -1,4 +1,3 @@
-
 // External Helpers ------------------------------------------------------------
 
 /**
@@ -8,7 +7,10 @@
  * @throws An error if is not possible to encrypt the data.
  * @returns A string with the encrypted data encoded in Base64.
  */
-export async function encryptData(data: Record<string, unknown>, key: string) {
+export async function encryptData(
+  data: Record<string, unknown>,
+  key: string
+): Promise<string> {
   try {
     // Step 1: Create a random initialization vector that will be used to encrypt the data
     const iv = _generateInitializationVector();
@@ -30,11 +32,14 @@ export async function encryptData(data: Record<string, unknown>, key: string) {
 /**
  * Decrypts a string encrypted with the `encryptData` function.
  * @param encryptedData A string with the encrypted data encoded in Base64.
- * @param keyString The key used to encrypt the data.
+ * @param key The key used to encrypt the data.
  * @throws An error if is not possible to decrypt the data.
  * @returns A JSON object with the decrypted data.
  */
-export async function decryptData(encryptedData: string, keyString: string) {
+export async function decryptData<Data extends Record<string, unknown>>(
+  encryptedData: string,
+  key: string
+): Promise<Data> {
   try {
     // Step 1: Decode the encrypted data from Base64 to a UInt8Array
     const combinedArray = _base64ToUInt8Array(encryptedData);
@@ -45,15 +50,14 @@ export async function decryptData(encryptedData: string, keyString: string) {
     // Step 3: Decrypt the data using AES-GCM algorithm
     const decryptedDataBuffer = await crypto.subtle.decrypt(
       _getAesGcmIdentifier(iv),
-      await _generate256BitKeyFromStringKey(keyString),
+      await _generate256BitKeyFromStringKey(key),
       _getEncryptedDataFromCombinedArray(combinedArray)
     );
 
     // Step 4: Decode the decrypted data from an ArrayBuffer to a JSON object
-    return _decodeArrayBufferToJSONData(decryptedDataBuffer);
+    return _decodeArrayBufferToJSONData(decryptedDataBuffer) as Data;
   } catch (error) {
-    console.error('Decryption error:', error);
-    return null;
+    throw new UnableToDecryptDataError(error.message);
   }
 }
 
@@ -111,5 +115,11 @@ function _getEncryptedDataFromCombinedArray(combinedArray: Uint8Array): Uint8Arr
 class UnableToEncryptDataError extends Error {
   constructor(reason: string) {
     super(`Unable to encrypt data: ${reason}`);
+  }
+}
+
+class UnableToDecryptDataError extends Error {
+  constructor(reason: string) {
+    super(`Unable to decrypt data: ${reason}`);
   }
 }
