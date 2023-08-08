@@ -2,6 +2,7 @@ import { Handlers } from "$fresh/server.ts";
 import { createUserSession, isSessionExpired } from "../../infra/auth/session.ts";
 import { createSessionCookie, getSessionCookie } from "../../infra/auth/cookies.ts";
 import { getUserAccessTokenByAuthCode, getUserDataByAccessToken } from "../../infra/auth/github.ts";
+import { db } from "../../infra/database/index.ts";
 
 export const handler: Handlers = {
   async GET(req) {
@@ -38,15 +39,28 @@ async function _createUserSession(req: Request): Promise<Response> {
   try {
     const token = await getUserAccessTokenByAuthCode(code);
     const data = await getUserDataByAccessToken(token);
-    const session = await createUserSession({ id: data.id, token });
+
+    if (!await _isUserRegistered(data.id.toString()))
+      await _registerUser(data.id.toString());
+
     return _authenticationSuccessResponse({
-      session,
       previousLocation,
       domain: _getDomainFromRequest(req),
+      session: await createUserSession({ githubUserId: data.id, token })
     });
   } catch (_error) {
     return _authenticationFailedResponse({ previousLocation });
   }
+}
+
+// Authentication -----
+
+async function _isUserRegistered(githubUserId: string): Promise<boolean> {
+  return !!(await db.users.getByGithubId(githubUserId));
+}
+
+async function _registerUser(githubUserId: string): Promise<void> {
+  await db.users.createByGithubId(githubUserId);
 }
 
 // Request Data Extractors -----
