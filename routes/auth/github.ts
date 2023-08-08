@@ -40,8 +40,7 @@ async function _createUserSession(req: Request): Promise<Response> {
     const token = await getUserAccessTokenByAuthCode(code);
     const data = await getUserDataByAccessToken(token);
 
-    if (!await _isUserRegistered(data.id.toString()))
-      await _registerUser(data.id.toString());
+    await _registerUserIfNotRegistered(data.id.toString());
 
     return _authenticationSuccessResponse({
       previousLocation,
@@ -54,6 +53,11 @@ async function _createUserSession(req: Request): Promise<Response> {
 }
 
 // Authentication -----
+
+async function _registerUserIfNotRegistered(githubUserId: string): Promise<void> {
+  if (await _isUserRegistered(githubUserId)) return;
+  await _registerUser(githubUserId);
+}
 
 async function _isUserRegistered(githubUserId: string): Promise<boolean> {
   return !!(await db.users.getByGithubId(githubUserId));
