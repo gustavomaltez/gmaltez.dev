@@ -8,10 +8,14 @@
 - If you can't do it right now, you can't do it at all.
 
 ## 🚧 In progress (only one task at time)
-- Create models (user, post, comment, etc)
-
+- (AUTH EFFORT) Add comment section (blocked to unauthenticated users)
+  
 ## 🗃️ Backlog (max 10 items)
-1. Refactor database to use models
-2. (EPIC) Comment system
-   
+- (AUTH EFFORT) Add login with github to comment section
+- (EPIC) Comment system
+- (DB REFACTOR) Integrate post repository  
+  
 ## 📝 Done
+- Create models (user, post, comment, etc)
+- Create repositories abstraction
+- (DB REFACTOR) Integrate user repository
