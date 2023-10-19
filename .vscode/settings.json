@@ -1,10 +1,10 @@
 {
-  'deno.enable': true,
-  'deno.lint': true,
-  'editor.defaultFormatter': 'denoland.vscode-deno',
-  'cSpell.words': [
-    'Maltez',
-    'preact',
-    'SUPABASE'
+  "deno.enable": true,
+  "deno.lint": true,
+  "editor.defaultFormatter": "denoland.vscode-deno",
+  "cSpell.words": [
+    "Maltez",
+    "preact",
+    "SUPABASE"
   ]
 }
