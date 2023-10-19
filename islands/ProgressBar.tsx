@@ -1,5 +1,5 @@
-import { Fragment } from "preact";
-import { useEffect, useRef, useState } from "preact/hooks";
+import { Fragment } from 'preact';
+import { useEffect, useRef, useState } from 'preact/hooks';
 
 export default function ProgressBar() {
   const [_progress, _setProgress] = useState(retrieveLastProgress());
@@ -10,13 +10,13 @@ export default function ProgressBar() {
   }
 
   function retrieveLastProgress() {
-    return Number(globalThis.localStorage?.getItem("progress")) || 0;
+    return Number(globalThis.localStorage?.getItem('progress')) || 0;
   }
 
   function setProgress(value: number) {
     _setProgress(value);
     progressRef.current = value;
-    globalThis.localStorage?.setItem("progress", String(value));
+    globalThis.localStorage?.setItem('progress', String(value));
   }
 
   function onPageUnload() {
@@ -39,15 +39,15 @@ export default function ProgressBar() {
   useEffect(() => {
     if (isMobile()) return;
     onPageLoad();
-    globalThis.addEventListener("beforeunload", onPageUnload);
+    globalThis.addEventListener('beforeunload', onPageUnload);
   }, []);
 
   if (isMobile()) return <Fragment />;
 
   return (
-    <div className="fixed top-0 left-0 h-1 bg-background z-50 transition-all w-full">
+    <div className='fixed top-0 left-0 h-1 bg-background z-50 transition-all w-full'>
       <div
-        className="h-full bg-primary transition-all duration-[10ms]"
+        className='h-full bg-primary transition-all duration-[10ms]'
         style={{ width: `${_progress}%` }}
       />
     </div>

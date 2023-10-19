@@ -1,5 +1,5 @@
-import { SupabaseClient, createClient } from "https://esm.sh/@supabase/supabase-js@2";
-import { Database, User, Comment, Vote } from "../index.ts";
+import { SupabaseClient, createClient } from 'supabase';
+import { Database, User, Comment, Vote } from '@database';
 
 // This is just a draft to test the Supabase integration
 // ToDo: Better structure Entities and Repositories
@@ -10,15 +10,15 @@ export class SupabaseDatabase implements Database {
 
   public init() {
     this._supabase = createClient(
-      Deno.env.get("SUPABASE_URL") || "",
-      Deno.env.get("SUPABASE_KEY") || "",
+      Deno.env.get('SUPABASE_URL') || '',
+      Deno.env.get('SUPABASE_KEY') || '',
       { auth: { persistSession: false } }
     );
     return Promise.resolve();
   }
 
   private get supabase() {
-    if (!this._supabase) throw new Error("Database not initialized");
+    if (!this._supabase) throw new Error('Database not initialized');
     return this._supabase;
   }
 
@@ -27,13 +27,13 @@ export class SupabaseDatabase implements Database {
   public users = {
     createByGithubId: async (githubId: string): Promise<User> => {
       const { data, error } = await this.supabase
-        .from("users")
+        .from('users')
         .insert({ github_id: githubId })
-        .select("*")
+        .select('*')
         .single<User>();
 
       if (error) throw error;
-      if (!data) throw new Error("No data returned");
+      if (!data) throw new Error('No data returned');
 
       return {
         id: data.id,
@@ -42,9 +42,9 @@ export class SupabaseDatabase implements Database {
     },
     getByGithubId: async (githubId: string): Promise<User | null> => {
       const { data, error } = await this.supabase
-        .from("users")
-        .select("*")
-        .eq("github_id", githubId)
+        .from('users')
+        .select('*')
+        .eq('github_id', githubId)
         .maybeSingle<User>();
       if (error) throw error;
       if (!data) return null;
@@ -61,12 +61,12 @@ export class SupabaseDatabase implements Database {
   public comments = {
     update: async (comment: Comment): Promise<Comment> => {
       const { data, error } = await this.supabase
-        .from("comments")
+        .from('comments')
         .update(comment)
-        .eq("id", comment.id)
+        .eq('id', comment.id)
         .single<Comment>();
       if (error) throw error;
-      if (!data) throw new Error("No data returned");
+      if (!data) throw new Error('No data returned');
 
       return {
         id: data.id,
@@ -78,11 +78,11 @@ export class SupabaseDatabase implements Database {
     },
     getAllByPostSlug: async (slug: string): Promise<Comment[]> => {
       const { data, error } = await this.supabase
-        .from("comments")
-        .select("*")
-        .eq("post_slug", slug);
+        .from('comments')
+        .select('*')
+        .eq('post_slug', slug);
       if (error) throw error;
-      if (!data) throw new Error("No data returned");
+      if (!data) throw new Error('No data returned');
 
       return data.map((comment) => ({
         id: comment.id,
@@ -92,13 +92,13 @@ export class SupabaseDatabase implements Database {
         parent_comment_id: comment.parent_comment_id,
       }));
     },
-    add: async (comment: Exclude<Comment, "id">): Promise<Comment> => {
+    add: async (comment: Exclude<Comment, 'id'>): Promise<Comment> => {
       const { data, error } = await this.supabase
-        .from("comments")
+        .from('comments')
         .insert(comment)
         .single<Comment>();
       if (error) throw error;
-      if (!data) throw new Error("No data returned");
+      if (!data) throw new Error('No data returned');
 
       return {
         id: data.id,
@@ -110,11 +110,11 @@ export class SupabaseDatabase implements Database {
     },
     upvote: async (commentId: number, userId: number): Promise<Vote> => {
       const { data, error } = await this.supabase
-        .from("votes")
+        .from('votes')
         .insert({ comment_id: commentId, user_id: userId, vote_type: true })
         .single<Vote>();
       if (error) throw error;
-      if (!data) throw new Error("No data returned");
+      if (!data) throw new Error('No data returned');
 
       return {
         id: data.id,
@@ -125,11 +125,11 @@ export class SupabaseDatabase implements Database {
     },
     downvote: async (commentId: number, userId: number): Promise<Vote> => {
       const { data, error } = await this.supabase
-        .from("votes")
+        .from('votes')
         .insert({ comment_id: commentId, user_id: userId, vote_type: false })
         .single<Vote>();
       if (error) throw error;
-      if (!data) throw new Error("No data returned");
+      if (!data) throw new Error('No data returned');
 
       return {
         id: data.id,

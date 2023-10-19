@@ -1,8 +1,8 @@
-import { PostWithoutContent } from '@utils/posts.ts';
 import { useReducer } from 'preact/hooks';
 
-import { PostPreview, SearchBar } from '../components/index.ts';
-import { sortAlphabetically } from "@utils/strings.ts";
+import { PostPreview, SearchBar } from '@components';
+import { PostWithoutContent } from '@utils/posts.ts';
+import { sortAlphabetically } from '@utils/strings.ts';
 
 export default function PostSearch(props: { posts: PostWithoutContent[]; }) {
   const [state, dispatch] = useReducer(searchReducer, buildInitialReducerState(props.posts));
@@ -12,26 +12,26 @@ export default function PostSearch(props: { posts: PostWithoutContent[]; }) {
   }
 
   return (
-    <div className="flex flex-col w-full h-full">
-      <div className="flex flex-col mobile-high:flex-row w-full">
+    <div className='flex flex-col w-full h-full'>
+      <div className='flex flex-col mobile-high:flex-row w-full'>
         <SearchBar
           onClear={() => dispatch({ type: 'CLEAR_QUERY' })}
           onInput={e => dispatch({ type: 'UPDATE_QUERY', query: e.currentTarget.value.toLowerCase() })}
         />
         <button
-          className="basis-1/5 mt-2 mobile-high:mt-0 mobile-high:ml-2 bg-primary 
-          text-white px-4 py-2 rounded-lg outline-none min-w-[120px]"
+          className='basis-1/5 mt-2 mobile-high:mt-0 mobile-high:ml-2 bg-primary 
+          text-white px-4 py-2 rounded-lg outline-none min-w-[120px]'
           onClick={() => dispatch({ type: 'TOGGLE_TAGS', state: !state.isTagsVisible })}
         >
           {state.isTagsVisible ? 'Hide Tags' : 'Show Tags'}
         </button>
       </div>
       {state.isTagsVisible && (
-        <div className="flex flex-row flex-wrap mt-2 justify-center">
+        <div className='flex flex-row flex-wrap mt-2 justify-center'>
           {state.tags.map(tag => (<TagItem {...tag} onClick={() => onTagClick(tag)} />))}
         </div>
       )}
-      <div className="flex flex-col gap-5 mt-5">
+      <div className='flex flex-col gap-5 mt-5'>
         {state.filteredPosts.map(post => <PostPreview {...post} />)}
       </div>
     </div >

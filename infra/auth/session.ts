@@ -1,4 +1,4 @@
-import { decryptData, encryptData } from "@utils/crypto.ts";
+import { decryptData, encryptData } from '@utils/crypto.ts';
 
 // Constants -------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ const SESSION_DURATION = 3600; // 1 hour
 export async function createUserSession<Payload extends Record<string, unknown>>(
   payload: Payload
 ): Promise<string> {
-  const secret = Deno.env.get("SESSION_SECRET");
+  const secret = Deno.env.get('SESSION_SECRET');
   if (!secret) throw new MissingSessionSecretError();
   try {
     const data = await encryptData({ ...payload, expiresAt: _getExpirationDate() }, secret);
@@ -34,7 +34,7 @@ export async function createUserSession<Payload extends Record<string, unknown>>
 export async function getSessionData<Data extends DataWithExpirationDate>(
   session: string
 ): Promise<Data> {
-  const secret = Deno.env.get("SESSION_SECRET");
+  const secret = Deno.env.get('SESSION_SECRET');
   if (!secret) throw new MissingSessionSecretError();
   try {
     return await decryptData<Data>(session, secret);
@@ -66,19 +66,19 @@ function _getExpirationDate(): string {
 
 class MissingSessionSecretError extends Error {
   constructor() {
-    super("Unable to complete operation: SESSION_SECRET is not defined");
+    super('Unable to complete operation: SESSION_SECRET is not defined');
   }
 }
 
 class UnableToCreateSessionDueToEncryptionError extends Error {
   constructor() {
-    super("Unable to create session: unable to encrypt data");
+    super('Unable to create session: unable to encrypt data');
   }
 }
 
 class UnableToGetSessionDataDueToDecryptionError extends Error {
   constructor() {
-    super("Unable to get session data: unable to decrypt data");
+    super('Unable to get session data: unable to decrypt data');
   }
 }
 

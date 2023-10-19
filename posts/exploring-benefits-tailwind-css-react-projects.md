@@ -60,9 +60,9 @@ import 'tailwindcss/tailwind.css';
 1. Start using Tailwind CSS utility classes in your HTML or JSX:
 
 ```jsx
-<div className="bg-gray-100 text-gray-800 p-4">
-  <h1 className="text-2xl font-bold">Hello, World!</h1>
-  <p className="mt-2">This is a Tailwind CSS example.</p>
+<div className='bg-gray-100 text-gray-800 p-4'>
+  <h1 className='text-2xl font-bold'>Hello, World!</h1>
+  <p className='mt-2'>This is a Tailwind CSS example.</p>
 </div>
 ```
 

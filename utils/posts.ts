@@ -2,10 +2,10 @@
  * Returns all available posts, sorted by published date (newest first).
  */
 export async function getAllPosts(): Promise<Post[]> {
-  const files = Deno.readDir("./posts");
+  const files = Deno.readDir('./posts');
   const promises = [];
   for await (const file of files)
-    promises.push(getPostBySlug(file.name.replace(".md", "")));
+    promises.push(getPostBySlug(file.name.replace('.md', '')));
   const posts = (await Promise.all(promises)).filter(Boolean) as Post[];
   posts.sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
   return posts;
@@ -29,10 +29,10 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     const text = await Deno.readTextFile(`./posts/${slug}.md`);
     const { metadata, body } = getPostContentFromText(text);
     const { title, snippet } = metadata;
-    const tags = metadata.tags ? metadata.tags.split(",").map(tag => tag.trim()) : [];
+    const tags = metadata.tags ? metadata.tags.split(',').map(tag => tag.trim()) : [];
     const estimatedReadingTime = getTextReadingTime(body);
     const publishedAt = new Date(metadata.published_at);
-    if (!title || !snippet || publishedAt.toString() === "Invalid Date") return null;
+    if (!title || !snippet || publishedAt.toString() === 'Invalid Date') return null;
     return { slug, title, publishedAt, content: body, snippet, tags, estimatedReadingTime };
   } catch (_error) {
     return null;
@@ -45,18 +45,18 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
  * - The body is the rest of the file.
  */
 function getPostContentFromText(text: string): PostContent {
-  const lines = text.split("\n");
+  const lines = text.split('\n');
   const metadata: Record<string, string> = {};
-  let body = "";
+  let body = '';
   let inMetadata = false;
   for (const line of lines) {
-    if (line === "---") {
+    if (line === '---') {
       inMetadata = !inMetadata;
     } else if (inMetadata) {
-      const [key, value] = line.split(": ");
+      const [key, value] = line.split(': ');
       metadata[key] = value;
     } else {
-      body += line + "\n";
+      body += line + '\n';
     }
   }
   return { metadata, body };
@@ -68,7 +68,7 @@ const WORDS_PER_MINUTE = 200;
  * Returns the estimated reading time for a post, in minutes.
  */
 export function getTextReadingTime(text: string): number {
-  const words = text.split(" ").length;
+  const words = text.split(' ').length;
   return Math.ceil(words / WORDS_PER_MINUTE);
 }
 
@@ -96,7 +96,7 @@ export type Post = {
   estimatedReadingTime: number;
 };
 
-export type PostWithoutContent = Omit<Post, "content">;
+export type PostWithoutContent = Omit<Post, 'content'>;
 
 export type PostWithComments = Post & {
   comments: PostComment[];

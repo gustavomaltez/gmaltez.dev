@@ -1,8 +1,9 @@
-import { Handlers } from "$fresh/server.ts";
-import { createUserSession, isSessionExpired } from "../../infra/auth/session.ts";
-import { createSessionCookie, getSessionCookie } from "../../infra/auth/cookies.ts";
-import { getUserAccessTokenByAuthCode, getUserDataByAccessToken } from "../../infra/auth/github.ts";
-import { db } from "../../infra/database/index.ts";
+import { Handlers } from 'fresh/server.ts';
+
+import { createUserSession, isSessionExpired } from '../../infra/auth/session.ts';
+import { createSessionCookie, getSessionCookie } from '../../infra/auth/cookies.ts';
+import { getUserAccessTokenByAuthCode, getUserDataByAccessToken } from '../../infra/auth/github.ts';
+import { db } from '@database';
 
 export const handler: Handlers = {
   async GET(req) {
@@ -16,7 +17,7 @@ export const handler: Handlers = {
 // Session -----
 
 async function _verifyUserSession(req: Request): Promise<Response> {
-  const previousLocation = req.headers.get("Referer") ?? "/";
+  const previousLocation = req.headers.get('Referer') ?? '/';
   const session = _getSessionCookie(req.headers);
   if (session && !await isSessionExpired(session)) {
     return _authenticationSuccessResponse({
@@ -31,8 +32,8 @@ async function _verifyUserSession(req: Request): Promise<Response> {
 
 async function _createUserSession(req: Request): Promise<Response> {
   const url = new URL(req.url);
-  const code = url.searchParams.get("code");
-  const previousLocation = url.searchParams.get("redirect") ?? "/";
+  const code = url.searchParams.get('code');
+  const previousLocation = url.searchParams.get('redirect') ?? '/';
 
   if (!code) return _missingCodeResponse({ previousLocation });
 
@@ -71,12 +72,12 @@ async function _registerUser(githubUserId: string): Promise<void> {
 
 function _isVerifyingSession(req: Request): boolean {
   const url = new URL(req.url);
-  return url.searchParams.get("mode") === "verify";
+  return url.searchParams.get('mode') === 'verify';
 }
 
 function _getDomainFromRequest(req: Request): string {
-  const host = req.headers.get("Host");
-  return host?.split(":")[0] ?? "";
+  const host = req.headers.get('Host');
+  return host?.split(':')[0] ?? '';
 }
 
 // Error Responses -----
@@ -85,7 +86,7 @@ function _missingCodeResponse({ previousLocation }: PreviousLocationParams): Res
   return _buildErrorResponse({
     status: 400,
     previousLocation,
-    error: "Missing GitHub auth code",
+    error: 'Missing GitHub auth code',
   });
 }
 
@@ -93,7 +94,7 @@ function _authenticationFailedResponse({ previousLocation }: PreviousLocationPar
   return _buildErrorResponse({
     status: 500,
     previousLocation,
-    error: "Authentication failed",
+    error: 'Authentication failed',
   });
 }
 
@@ -116,8 +117,8 @@ function _authenticationSuccessResponse(params: AuthenticationSuccessParams): Re
 }
 
 function _redirectToGitHubResponse({ previousLocation }: { previousLocation: string; }): Response {
-  const GITHUB_CLIENT_ID = Deno.env.get("GITHUB_CLIENT_ID") ?? "";
-  const redirectTo = `${Deno.env.get("GITHUB_CALLBACK_URL") ?? ""}?redirect=${previousLocation}`;
+  const GITHUB_CLIENT_ID = Deno.env.get('GITHUB_CLIENT_ID') ?? '';
+  const redirectTo = `${Deno.env.get('GITHUB_CALLBACK_URL') ?? ''}?redirect=${previousLocation}`;
   return new Response(null, {
     status: 302,
     headers: {

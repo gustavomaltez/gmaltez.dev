@@ -80,7 +80,7 @@ const ThemeContext = React.createContext('light');
 
 const ThemeProvider = ({ children }) => {
   return (
-    <ThemeContext.Provider value="dark">
+    <ThemeContext.Provider value='dark'>
       {children}
     </ThemeContext.Provider>
   );

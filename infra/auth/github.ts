@@ -16,8 +16,8 @@ export async function getUserAccessTokenByAuthCode(code: string): Promise<string
     },
     body: JSON.stringify({
       code,
-      client_id: Deno.env.get("GITHUB_CLIENT_ID"),
-      client_secret: Deno.env.get("GITHUB_CLIENT_SECRET"),
+      client_id: Deno.env.get('GITHUB_CLIENT_ID'),
+      client_secret: Deno.env.get('GITHUB_CLIENT_SECRET'),
     }),
   });
   if (!response.ok) throw new UnableToGetAccessTokenError();
@@ -60,12 +60,12 @@ export type GitHubUser = {
 
 class UnableToGetAccessTokenError extends Error {
   constructor() {
-    super("Unable to get the user access token from the code.");
+    super('Unable to get the user access token from the code.');
   }
 }
 
 class UnableToGetUserDataError extends Error {
   constructor() {
-    super("Unable to get the user data from the access token.");
+    super('Unable to get the user data from the access token.');
   }
 }

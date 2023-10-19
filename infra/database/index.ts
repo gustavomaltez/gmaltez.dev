@@ -1,4 +1,4 @@
-import { SupabaseDatabase } from "./strategies/supabase.ts";
+import { SupabaseDatabase } from './strategies/supabase.ts';
 
 // Contract --------------------------------------------------------------------
 

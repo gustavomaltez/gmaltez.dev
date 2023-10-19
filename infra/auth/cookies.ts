@@ -1,7 +1,7 @@
 // ToDo: Add https to development or add a check to see if the request is coming 
 // from localhost in order to add the secure flag to the cookie.
-// const SESSION_COOKIE_NAME = "__Host-session";
-const SESSION_COOKIE_NAME = "session";
+// const SESSION_COOKIE_NAME = '__Host-session';
+const SESSION_COOKIE_NAME = 'session';
 
 // External Helpers ------------------------------------------------------------
 
@@ -24,12 +24,12 @@ export function createSessionCookie(params: CreateSessionCookieParams) {
  */
 export function getSessionCookie(headers: Headers) {
   const cookie = headers
-    .get("Cookie")
-    ?.split(";")
+    .get('Cookie')
+    ?.split(';')
     .find(c => c.trim().startsWith(`${SESSION_COOKIE_NAME}=`));
   if (!cookie) throw new MissingSessionCookieError();
 
-  const session = cookie.split("=")[1];
+  const session = cookie.split('=')[1];
   if (!session) throw new MissingSessionCookieError();
   return session;
 }
@@ -38,7 +38,7 @@ export function getSessionCookie(headers: Headers) {
 
 class MissingSessionCookieError extends Error {
   constructor() {
-    super("Unable to get session cookie from request headers: session cookie not found");
+    super('Unable to get session cookie from request headers: session cookie not found');
   }
 }
 

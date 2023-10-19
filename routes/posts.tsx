@@ -1,7 +1,8 @@
-import { Wrapper } from '../components/index.ts';
-import { Handlers, PageProps } from '$fresh/server.ts';
+import { Handlers, PageProps } from 'fresh/server.ts';
+
+import { Wrapper } from '@components';
+import PostSearch from '@islands/PostSearch.tsx';
 import { getAllPostsWithoutContent, PostWithoutContent } from '@utils/posts.ts';
-import PostSearch from '../islands/PostSearch.tsx';
 
 export const handler: Handlers<PostWithoutContent[]> = {
   async GET(_req, ctx) {
@@ -15,12 +16,12 @@ export default function Posts(props: PageProps<PostWithoutContent[]>) {
     <Wrapper
       title='Posts'
       meta={{
-        description: "Check out all the available posts on gmaltez.dev! Search by title, tag or content.",
-        keywords: ["Gustavo Maltez", "GMaltez", "GMaltez.dev", "GMaltez.dev blog", "GMaltez.dev posts"],
+        description: 'Check out all the available posts on gmaltez.dev! Search by title, tag or content.',
+        keywords: ['Gustavo Maltez', 'GMaltez', 'GMaltez.dev', 'GMaltez.dev blog', 'GMaltez.dev posts'],
       }}
     >
-      <section className="lg:w-screen max-w-screen-lg flex flex-col flex-1 gap-2">
-        <h1 className="text-xl mobile-high:text-2xl sm:text-3xl font-bold my-2">
+      <section className='lg:w-screen max-w-screen-lg flex flex-col flex-1 gap-2'>
+        <h1 className='text-xl mobile-high:text-2xl sm:text-3xl font-bold my-2'>
           Search by title, tag or content
         </h1>
         <PostSearch posts={props.data} />

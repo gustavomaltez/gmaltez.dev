@@ -1,4 +1,4 @@
-import { nanoid } from "https://deno.land/x/nanoid/mod.ts";
+import { nanoid } from 'nanoid';
 
 /**
  * Generates a random unique id (with low probability of collision).

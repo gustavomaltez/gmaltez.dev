@@ -51,7 +51,7 @@ const App: React.FC = () => {
   return (
     <div>
       <h1>Type-Safe React Components with TypeScript</h1>
-      <Button text="Click me!" onClick={handleClick} />
+      <Button text='Click me!' onClick={handleClick} />
     </div>
   );
 };
@@ -95,7 +95,7 @@ type CardProps = {
 
 const Card: React.FC<CardProps> = ({ children }) => {
   return (
-    <div className="card">{children}</div>
+    <div className='card'>{children}</div>
   );
 };
 ```
