@@ -1,4 +1,4 @@
-import { useState } from "https://esm.sh/preact@10.13.1/hooks";
+import { useState } from "preact/hooks";
 import { ComponentProps } from "preact";
 
 type SearchBarProps = ComponentProps<"input"> & {

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "https://esm.sh/preact@10.13.1/hooks";
+import { useEffect, useRef, useState } from "preact/hooks";
 
 type Release = {
   date: string;

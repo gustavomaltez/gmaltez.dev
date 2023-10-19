@@ -20,5 +20,6 @@ export default {
         'mobile-high': '480px',
       }
     },
-  }
+  },
 } as Options;
+

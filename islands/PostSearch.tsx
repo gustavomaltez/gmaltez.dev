@@ -1,5 +1,5 @@
 import { PostWithoutContent } from '@utils/posts.ts';
-import { useReducer } from 'https://esm.sh/preact@10.13.1/hooks';
+import { useReducer } from 'preact/hooks';
 
 import { PostPreview, SearchBar } from '../components/index.ts';
 import { sortAlphabetically } from "@utils/strings.ts";
