@@ -24,6 +24,7 @@
     "@models": "./infra/models/index.ts",
     "@components": "./components/index.ts",
     "@database": "./infra/database/index.ts",
+    "@repositories": "./infra/repositories/index.ts",
     "twind": "https://esm.sh/twind@0.16.19",
     "twind/": "https://esm.sh/twind@0.16.19/",
     "preact": "https://esm.sh/preact@10.18.1",
