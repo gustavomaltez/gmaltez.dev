@@ -1,142 +1,80 @@
 import { SupabaseClient, createClient } from 'supabase';
-import { Database, User, Comment, Vote } from '@database';
+import { BaseDatabase } from "@database";
+import { PostRepository } from "../../repositories/PostRepository.ts";
+import { UserRepository } from "@repositories";
+import { User } from "../../models/User.ts";
 
-// This is just a draft to test the Supabase integration
-// ToDo: Better structure Entities and Repositories
-// ToDo: Refactor this to be easier to read and maintain
+// Core ------------------------------------------------------------------------
 
-export class SupabaseDatabase implements Database {
-  private _supabase: SupabaseClient | null = null;
+export class SupabaseDatabase implements BaseDatabase {
+  public posts: PostRepository;
+  public users: UserRepository;
+
+  constructor() {
+    const { url, key } = this.getCredentials();
+    const client = createClient(url, key, { auth: { persistSession: false } });
+    this.posts = new _PostRepository(client);
+    this.users = new _UserRepository(client);
+  }
 
   public init() {
-    this._supabase = createClient(
-      Deno.env.get('SUPABASE_URL') || '',
-      Deno.env.get('SUPABASE_KEY') || '',
-      { auth: { persistSession: false } }
-    );
     return Promise.resolve();
   }
 
-  private get supabase() {
-    if (!this._supabase) throw new Error('Database not initialized');
+  private getCredentials() {
+    const url = Deno.env.get('SUPABASE_URL');
+    const key = Deno.env.get('SUPABASE_KEY');
+    if (!url || !key) throw new Error('Supabase credentials not found');
+    return { url, key };
+  }
+}
+
+// Repositories ----------------------------------------------------------------
+
+class BaseRepository {
+  constructor(private _supabase: SupabaseClient) { }
+
+  protected get supabase(): SupabaseClient {
+    if (!this._supabase) throw new Error('Supabase not initialized');
     return this._supabase;
   }
+}
 
-  // User ----------------------------------------------------------------------
+class _PostRepository extends BaseRepository implements PostRepository {
+  public getBySlug(_slug: string) {
+    return Promise.resolve(null);
+  }
+}
 
-  public users = {
-    createByGithubId: async (githubId: string): Promise<User> => {
-      const { data, error } = await this.supabase
-        .from('users')
-        .insert({ github_id: githubId })
-        .select('*')
-        .single<User>();
+class _UserRepository extends BaseRepository implements UserRepository {
+  public async getByGithubId(githubId: string) {
+    const { data, error } = await this.supabase
+      .from('users')
+      .select('*')
+      .eq('github_id', githubId);
 
-      if (error) throw error;
-      if (!data) throw new Error('No data returned');
+    if (error) throw error;
+    if (!data) return null;
 
-      return {
-        id: data.id,
-        github_id: data.github_id,
-      };
-    },
-    getByGithubId: async (githubId: string): Promise<User | null> => {
-      const { data, error } = await this.supabase
-        .from('users')
-        .select('*')
-        .eq('github_id', githubId)
-        .maybeSingle<User>();
-      if (error) throw error;
-      if (!data) return null;
+    const user = new User();
+    user.id = data.id;
+    user.githubId = data.github_id;
+    user.name = data.name;
+    return user;
+  }
 
-      return {
-        id: data.id,
-        github_id: data.github_id,
-      };
-    },
-  };
+  public async createByGithubId(githubId: string): Promise<User> {
+    const { data, error } = await this.supabase
+      .from('users')
+      .insert({ github_id: githubId });
 
-  // Comments ------------------------------------------------------------------
-
-  public comments = {
-    update: async (comment: Comment): Promise<Comment> => {
-      const { data, error } = await this.supabase
-        .from('comments')
-        .update(comment)
-        .eq('id', comment.id)
-        .single<Comment>();
-      if (error) throw error;
-      if (!data) throw new Error('No data returned');
-
-      return {
-        id: data.id,
-        user_id: data.user_id,
-        content: data.content,
-        post_slug: data.post_slug,
-        parent_comment_id: data.parent_comment_id,
-      };
-    },
-    getAllByPostSlug: async (slug: string): Promise<Comment[]> => {
-      const { data, error } = await this.supabase
-        .from('comments')
-        .select('*')
-        .eq('post_slug', slug);
-      if (error) throw error;
-      if (!data) throw new Error('No data returned');
-
-      return data.map((comment) => ({
-        id: comment.id,
-        user_id: comment.user_id,
-        content: comment.content,
-        post_slug: comment.post_slug,
-        parent_comment_id: comment.parent_comment_id,
-      }));
-    },
-    add: async (comment: Exclude<Comment, 'id'>): Promise<Comment> => {
-      const { data, error } = await this.supabase
-        .from('comments')
-        .insert(comment)
-        .single<Comment>();
-      if (error) throw error;
-      if (!data) throw new Error('No data returned');
-
-      return {
-        id: data.id,
-        user_id: data.user_id,
-        content: data.content,
-        post_slug: data.post_slug,
-        parent_comment_id: data.parent_comment_id,
-      };
-    },
-    upvote: async (commentId: number, userId: number): Promise<Vote> => {
-      const { data, error } = await this.supabase
-        .from('votes')
-        .insert({ comment_id: commentId, user_id: userId, vote_type: true })
-        .single<Vote>();
-      if (error) throw error;
-      if (!data) throw new Error('No data returned');
-
-      return {
-        id: data.id,
-        user_id: data.user_id,
-        vote_type: data.vote_type,
-        comment_id: data.comment_id,
-      };
-    },
-    downvote: async (commentId: number, userId: number): Promise<Vote> => {
-      const { data, error } = await this.supabase
-        .from('votes')
-        .insert({ comment_id: commentId, user_id: userId, vote_type: false })
-        .single<Vote>();
-      if (error) throw error;
-      if (!data) throw new Error('No data returned');
-
-      return {
-        id: data.id,
-        user_id: data.user_id,
-        vote_type: data.vote_type,
-        comment_id: data.comment_id,
-      };
-    }
-  };
+    if (error) throw error;
+    if (!data) throw new Error('User not created');
+    
+    const user = new User();
+    user.id = data.id;
+    user.githubId = data.github_id;
+    user.name = data.name;
+    return user;
+  }
 }
