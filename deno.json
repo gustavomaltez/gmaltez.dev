@@ -20,8 +20,8 @@
   ],
   "imports": {
     "@utils/": "./utils/",
-    "@models": "./models/",
     "@islands/": "./islands/",
+    "@models": "./infra/models/index.ts",
     "@components": "./components/index.ts",
     "@database": "./infra/database/index.ts",
     "twind": "https://esm.sh/twind@0.16.19",
