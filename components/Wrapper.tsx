@@ -4,7 +4,7 @@ import { Head } from 'fresh/src/runtime/head.ts';
 import { Header, Footer } from '@components';
 import ProgressBar from '@islands/ProgressBar.tsx';
 
-type WrapperProps = {
+type Props = {
   title?: string;
   children: ComponentChildren;
   head?: ComponentChildren;
@@ -16,14 +16,7 @@ type WrapperProps = {
   };
 };
 
-const meta = {
-  image: 'https://gmaltez.dev/og.svg',
-  url: 'https://gmaltez.dev',
-  description: 'Gustavo Maltez\'s personal website',
-  keywords: ['Gustavo Maltez', 'GMaltez', 'GMaltez.dev', 'GMaltez.dev blog', 'GMaltez.dev posts'],
-};
-
-export function Wrapper(props: WrapperProps) {
+export function Wrapper(props: Props) {
   const title = props.title ? `${props.title} | GMaltez.dev` : 'GMaltez.dev';
 
   return (
@@ -86,3 +79,10 @@ export function Wrapper(props: WrapperProps) {
     </>
   );
 }
+
+const meta = {
+  image: 'https://gmaltez.dev/og.svg',
+  url: 'https://gmaltez.dev',
+  description: 'Gustavo Maltez\'s personal website',
+  keywords: ['Gustavo Maltez', 'GMaltez', 'GMaltez.dev', 'GMaltez.dev blog', 'GMaltez.dev posts'],
+};

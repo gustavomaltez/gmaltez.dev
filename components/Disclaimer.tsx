@@ -1,12 +1,11 @@
-
-type DisclaimerProps = {
+type Props = {
   title: string;
   content: string;
   className?: string;
   variation?: 'red' | 'green';
 };
 
-export function Disclaimer(props: DisclaimerProps) {
+export function Disclaimer(props: Props) {
   const { primary, secondary, tertiary } = getColors(props.variation);
   const className = props.className ?? '';
   return (

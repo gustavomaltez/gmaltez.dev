@@ -1,8 +1,8 @@
-type TagProps = {
+type Props = {
   tag: string;
 };
 
-export function Tag(props: TagProps) {
+export function Tag(props: Props) {
   return (
     <a
       aria-label={`Tag: ${props.tag}`}

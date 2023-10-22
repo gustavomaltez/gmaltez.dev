@@ -1,11 +1,11 @@
 import { useState } from 'preact/hooks';
 import { ComponentProps } from 'preact';
 
-type SearchBarProps = ComponentProps<'input'> & {
+type Props = ComponentProps<'input'> & {
   onClear?: () => void;
 };
 
-export function SearchBar(props: SearchBarProps) {
+export function SearchBar(props: Props) {
   const [value, setValue] = useState('');
 
   function onInput(e: Parameters<NonNullable<ComponentProps<'input'>['onInput']>>[0]) {
@@ -43,8 +43,6 @@ export function SearchBar(props: SearchBarProps) {
     </div>
   );
 }
-
-// Internal sub-components -----------------------------------------------------
 
 function SearchIcon() {
   return (
