@@ -1,5 +1,10 @@
 import { Post } from "@models";
 
+export type PostQuery = {
+  includeComments?: boolean;
+};
+
 export abstract class PostRepository {
-  abstract getBySlug(slug: string): Promise<Post | null>;
+  abstract getAll(query?: PostQuery): Promise<Post[]>;
+  abstract getBySlug(slug: string, query?: PostQuery): Promise<Post | null>;
 }
