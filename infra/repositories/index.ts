@@ -1,2 +1,2 @@
-export { PostRepository } from './PostRepository.ts';
-export { UserRepository } from './UserRepository.ts';
+export * from './UserRepository.ts';
+export * from './PostRepository.ts';
