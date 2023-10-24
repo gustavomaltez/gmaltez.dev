@@ -10,12 +10,13 @@ import 'prismjs/components/prism-javascript?no-check';
 import 'prismjs/components/prism-typescript?no-check';
 import { Handlers, PageProps } from 'fresh/server.ts';
 
-import { getPostBySlug, Post } from '@utils/posts.ts';
-import { Wrapper, Disclaimer, Tag} from '@components';
+import { Post } from '@models';
+import { db } from '@database';
+import { Wrapper, Disclaimer, Tag } from '@components';
 
 export const handler: Handlers<Post> = {
   async GET(_req, ctx) {
-    const post = await getPostBySlug(ctx.params.slug);
+    const post = await db.posts.getBySlug(ctx.params.slug);
     if (post === null) return ctx.renderNotFound();
     return ctx.render(post);
   },
@@ -78,11 +79,7 @@ export default function PostPage(props: PageProps<Post>) {
         <div className='flex flex-col'>
           <p className='text-1xl'>Gustavo Maltez</p>
           <span className='flex flex-row items-center justify-center gap-2 text-text-secondary'>
-            {Intl.DateTimeFormat('en-US', {
-              year: 'numeric',
-              month: 'short',
-              day: 'numeric',
-            }).format(post.publishedAt)}
+            {post.formattedPublishDate}
             <div className='rounded-full h-1 w-1 bg-text-secondary' />
             {post.estimatedReadingTime} min read
           </span>
@@ -93,9 +90,7 @@ export default function PostPage(props: PageProps<Post>) {
         data-dark-theme='dark'
         class='markdown-body bg-background'
         dangerouslySetInnerHTML={{ __html: render(post.content) }}
-        style={{
-          backgroundColor: 'transparent',
-        }}
+        style={{ backgroundColor: 'transparent' }}
       />
     </Wrapper>
   );

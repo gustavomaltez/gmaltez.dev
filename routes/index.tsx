@@ -1,15 +1,16 @@
 import { Handlers, PageProps } from 'fresh/server.ts';
 
-import { getAllPosts, Post } from '@utils/posts.ts';
+import { db } from '@database';
+import { Post } from '@models';
 import { Wrapper, PostPreview, Disclaimer } from '@components';
 
 export const handler: Handlers<Post[]> = {
   async GET(_req, ctx) {
-    const posts = await getAllPosts();
-    return ctx.render(posts);
+    const posts = await db.posts.getAll();
+    return ctx.render(Post.sortByPublishDate(posts));
   },
 };
-
+ 
 export default function BlogIndexPage(props: PageProps<Post[]>) {
   const posts = props.data;
   return (
@@ -27,7 +28,7 @@ export default function BlogIndexPage(props: PageProps<Post[]>) {
       </h1>
       <hr className='border-text-tertiary border-opacity-50' />
       <div className='flex flex-col gap-5'>
-        {posts.map((post) => <PostPreview {...post} />)}
+        {posts.map(post => <PostPreview post={post} />)}
       </div>
     </Wrapper>
   );

@@ -1,17 +1,18 @@
 import { Handlers, PageProps } from 'fresh/server.ts';
 
+import { Post } from '@models';
+import { db } from '@database';
 import { Wrapper } from '@components';
 import PostSearch from '@islands/PostSearch.tsx';
-import { getAllPostsWithoutContent, PostWithoutContent } from '@utils/posts.ts';
 
-export const handler: Handlers<PostWithoutContent[]> = {
+export const handler: Handlers<Post[]> = {
   async GET(_req, ctx) {
-    const posts = await getAllPostsWithoutContent();
-    return ctx.render(posts);
+    const posts = await db.posts.getAll();
+    return ctx.render(Post.sortByPublishDate(posts));
   },
 };
 
-export default function Posts(props: PageProps<PostWithoutContent[]>) {
+export default function Posts(props: PageProps<Post[]>) {
   return (
     <Wrapper
       title='Posts'

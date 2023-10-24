@@ -1,27 +1,27 @@
+import { Post } from '@models';
 import { Tag } from '@components';
-import { PostWithoutContent } from '@utils/posts.ts';
 
-export function PostPreview(props: PostWithoutContent) {
+export function PostPreview({ post }: { post: Post; }) {
   return (
     <div
       className='bg-background-secondary px-4 py-3 flex flex-col rounded-xl'
     >
       <div className='flex flex-row justify-between mb-2'>
-        <PublishDate date={props.publishedAt} />
-        <EstimatedReadingTime time={props.estimatedReadingTime} />
+        <PublishDate date={post.publishedAt} />
+        <EstimatedReadingTime time={post.estimatedReadingTime} />
       </div>
       <a
         className='flex flex-row items-center text-xl font-bold text-text-primary mb-2 
         hover:text-primary gap-2 transition-all duration-200 cursor-pointer sm:text-2xl'
-        href={`/blog/${props.slug}`}
+        href={`/blog/${post.slug}`}
       >
-        {props.title}
+        {post.title}
       </a>
       <p className='text-text-primary opacity-90 text-base sm:text-lg'>
-        {props.snippet}
+        {post.snippet}
       </p>
       <div className='flex flex-row flex-wrap'>
-        {props.tags.map(tag => <Tag tag={tag} />)}
+        {post.tags.map(tag => <Tag tag={tag} />)}
       </div>
     </div>
   );

@@ -1,10 +1,10 @@
 import { useReducer } from 'preact/hooks';
 
+import { Post } from '@models';
 import { PostPreview, SearchBar } from '@components';
-import { PostWithoutContent } from '@utils/posts.ts';
 import { sortAlphabetically } from '@utils/strings.ts';
 
-export default function PostSearch(props: { posts: PostWithoutContent[]; }) {
+export default function PostSearch(props: { posts: Post[]; }) {
   const [state, dispatch] = useReducer(searchReducer, buildInitialReducerState(props.posts));
 
   function onTagClick({ tag }: Tag) {
@@ -32,7 +32,7 @@ export default function PostSearch(props: { posts: PostWithoutContent[]; }) {
         </div>
       )}
       <div className='flex flex-col gap-5 mt-5'>
-        {state.filteredPosts.map(post => <PostPreview {...post} />)}
+        {state.filteredPosts.map(post => <PostPreview post={post} />)}
       </div>
     </div >
   );
@@ -56,7 +56,7 @@ function TagItem(props: Tag & { onClick: () => void; }) {
 
 // Reducer ---------------------------------------------------------------------
 
-function buildInitialReducerState(posts: PostWithoutContent[]) {
+function buildInitialReducerState(posts: Post[]) {
   const tags = getInitialTags(posts);
   const selectedTags = getSelectedTags(tags);
   return {
@@ -118,13 +118,13 @@ function getTagsFromUrl() {
   return tags.split(',');
 }
 
-function getInitialTags(posts: PostWithoutContent[]) {
+function getInitialTags(posts: Post[]) {
   const tags = getTagsFromPosts(posts);
   const tagsFromUrl = getTagsFromUrl();
   return tags.map(tag => ({ tag, isSelected: tagsFromUrl.includes(tag) }));
 }
 
-function getTagsFromPosts(posts: PostWithoutContent[]) {
+function getTagsFromPosts(posts: Post[]) {
   const tags = new Set<string>();
   posts.forEach(post => post.tags.forEach(tag => tags.add(tag)));
   return sortAlphabetically(Array.from(tags));
@@ -132,7 +132,7 @@ function getTagsFromPosts(posts: PostWithoutContent[]) {
 
 // Posts -----
 
-function getFilteredPosts(posts: PostWithoutContent[], query: string, tags?: Tag[]) {
+function getFilteredPosts(posts: Post[], query: string, tags?: Tag[]) {
   const selectedTags = tags ? getSelectedTags(tags) : undefined;
   const hasTags = selectedTags?.length;
   if (!query && !hasTags) return [];
@@ -145,12 +145,12 @@ function getFilteredPosts(posts: PostWithoutContent[], query: string, tags?: Tag
   return hasTags ? filterPostsByTags(result, selectedTags) : result;
 }
 
-function updatePosts(posts: PostWithoutContent[], query: string, tags?: Tag[]) {
+function updatePosts(posts: Post[], query: string, tags?: Tag[]) {
   const filteredPosts = getFilteredPosts(posts, query, tags);
   return { filteredPosts, noPostsFound: filteredPosts.length === 0 };
 }
 
-function filterPostsByTags(posts: PostWithoutContent[], tags: string[]) {
+function filterPostsByTags(posts: Post[], tags: string[]) {
   return posts.filter(post => tags.every(tag => post.tags.includes(tag)));
 }
 
@@ -170,8 +170,8 @@ type State = {
   isQueryEmpty: boolean;
   noPostsFound: boolean;
   isTagsVisible: boolean;
-  posts: PostWithoutContent[];
-  filteredPosts: PostWithoutContent[];
+  posts: Post[];
+  filteredPosts: Post[];
 };
 
 type Action =
