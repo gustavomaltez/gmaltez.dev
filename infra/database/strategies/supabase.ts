@@ -4,7 +4,7 @@ import { BaseDatabase } from '@database';
 import { Post, User, Comment } from '@models';
 import { isDate, isStringArray } from '@utils/validators.ts';
 import { extractTextMetadataAndContent } from '@utils/files.ts';
-import { UserRepository, PostRepository, PostQuery } from '@repositories';
+import { UserRepository, PostRepository, PostQuery, CreateUserDTO } from '@repositories';
 
 // Core ------------------------------------------------------------------------
 
@@ -48,11 +48,10 @@ class _PostRepository extends BaseRepository implements PostRepository {
     try {
       const { metadata, content } = await this._getPostDataBySlug(slug);
       const { title, snippet, tags, publishedAt } = this._extractPostMetadata(metadata);
-      const post = new Post({ slug, title, content, snippet, publishedAt });
-      post.tags = tags;
-      if (query?.includeComments)
-        post.comments = await this._getCommentsBySlug(slug);
-      return post;
+      return new Post({
+        slug, title, snippet, tags, publishedAt, content,
+        comments: query?.includeComments ? await this._getCommentsBySlug(slug) : [],
+      });
     } catch (_error) {
       return null;
     }
@@ -115,27 +114,20 @@ class _UserRepository extends BaseRepository implements UserRepository {
       .eq('github_id', githubId);
 
     if (error) throw error;
-    if (!data) return null;
-
-    const user = new User();
-    user.id = data.id;
-    user.githubId = data.github_id;
-    user.name = data.name;
-    return user;
+    const { id, name, github_id } = data;
+    if (!data || !isStringArray([id, github_id, name])) return null;
+    return new User({ id, githubId: github_id, name });
   }
 
-  public async createByGithubId(githubId: string): Promise<User> {
+  public async create(params: CreateUserDTO): Promise<User> {
     const { data, error } = await this.supabase
       .from('users')
-      .insert({ github_id: githubId });
+      .insert({ github_id: params.githubId, name: params.name });
 
     if (error) throw error;
-    if (!data) throw new Error('User not created');
-
-    const user = new User();
-    user.id = data.id;
-    user.githubId = data.github_id;
-    user.name = data.name;
-    return user;
+    const { id, name, github_id } = data;
+    if (!data || !isStringArray([id, github_id, name]))
+      throw new Error('User not created');
+    return new User({ id, githubId: github_id, name });
   }
 }
