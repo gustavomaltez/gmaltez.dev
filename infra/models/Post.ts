@@ -1,30 +1,34 @@
 import { Comment } from '@models';
 
-type MandatoryFields = {
+interface IPost {
   slug: string;
   title: string;
-  publishedAt: Date;
+  tags?: string[];
   content: string;
   snippet: string;
+  publishedAt: Date;
+  comments?: Comment[];
 };
 
 const AVG_READING_WORDS_PER_MINUTE = 200;
 
-export class Post {
-  public slug: string;
-  public title: string;
-  public content: string;
-  public snippet: string;
-  public publishedAt: Date;
-  public tags: string[] = [];
-  public comments: Comment[] = [];
+export class Post implements IPost {
+  public readonly slug: string;
+  public readonly title: string;
+  public readonly tags: string[];
+  public readonly content: string;
+  public readonly snippet: string;
+  public readonly publishedAt: Date;
+  public readonly comments: Comment[];
 
-  constructor(data: MandatoryFields) {
+  constructor(data: IPost) {
     this.slug = data.slug;
     this.title = data.title;
+    this.tags = data.tags ?? [];
     this.content = data.content;
     this.snippet = data.snippet;
     this.publishedAt = data.publishedAt;
+    this.comments = data.comments ?? [];
   }
 
   public get estimatedReadingTime(): number {
