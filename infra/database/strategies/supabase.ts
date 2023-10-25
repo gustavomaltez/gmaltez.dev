@@ -73,18 +73,22 @@ class _PostRepository extends BaseRepository implements PostRepository {
   private async _getCommentsBySlug(slug: string) {
     const { data, error } = await this.supabase
       .from('comments')
-      .select('*')
+      .select('*, author: user_id (id, github_id, name)')
       .eq('post_slug', slug);
+
 
     if (error) throw error;
     if (!data) return [];
 
     const comments: Comment[] = [];
+    // ToDo: Improve this
     for (const entry of data) {
-      const { id, content, author } = entry;
+      const { id, content } = entry;
       const createdAt = new Date(entry.created_at);
-      if (isStringArray([id, content, author]) && isDate(createdAt))
-        comments.push(new Comment({ id, content, author, createdAt }));
+      const { id: authorId, name: authorName, github_id: authorGitHubId } = entry.author;
+      if (!isStringArray([id, content, authorId, authorName]) || !isDate(createdAt)) continue;
+      const author = new User({ id: authorId, name: authorName, githubId: authorGitHubId });
+      comments.push(new Comment({ id, author, content, createdAt }));
     }
     return comments;
   }
