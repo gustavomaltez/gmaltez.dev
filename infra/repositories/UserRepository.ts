@@ -1,6 +1,11 @@
 import { User } from "@models";
 
+export type CreateUserDTO = {
+  name: string;
+  githubId: string;
+};
+
 export abstract class UserRepository {
-  abstract createByGithubId(githubId: string): Promise<User>;
+  abstract create(data: CreateUserDTO): Promise<User>;
   abstract getByGithubId(githubId: string): Promise<User | null>;
 }
