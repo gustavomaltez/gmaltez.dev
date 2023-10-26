@@ -7,7 +7,7 @@ type Release = {
   description: string;
 };
 
-export default function Changelog(props: { items: Release[]; }) {
+export default function Changelog(props: { items: Release[] }) {
   return (
     <ul className='flex flex-col my-4'>
       {props.items.map((item, index) => (
@@ -24,13 +24,16 @@ export default function Changelog(props: { items: Release[]; }) {
 
 // Internal Sub-Components -----------------------------------------------------
 
-function Release(data: Release & { index: number; isLast: boolean; }) {
+function Release(data: Release & { index: number; isLast: boolean }) {
   const { size, ref } = useResponsiveListSize();
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <li className='relative flex flex-col items-start'>
-      <DotTimeline isLast={data.isLast} index={data.index} />
+      <DotTimeline
+        isLast={data.isLast}
+        index={data.index}
+      />
       <div
         className='ml-5 -mt-[1.31rem] py-3 flex flex-col items-start transition-all 
         duration-500'
@@ -38,18 +41,20 @@ function Release(data: Release & { index: number; isLast: boolean; }) {
         <h2 className='text-xl font-bold flex items-center'>
           {data.version}
           <span className='text-text-secondary ml-2 font-normal text-sm mt-0.5'>
-            ({Intl.DateTimeFormat('en-US', { dateStyle: 'medium' }).format(new Date(data.date))})
+            (
+            {Intl.DateTimeFormat('en-US', { dateStyle: 'medium' }).format(new Date(data.date))}
+            )
           </span>
         </h2>
         <p>{data.description}</p>
         <ul
           ref={ref}
           className='flex flex-col transition-all'
-          onAnimationEnd={e => e.currentTarget.style.transitionDuration = '0ms'}
+          onAnimationEnd={e => (e.currentTarget.style.transitionDuration = '0ms')}
           style={{
             opacity: isExpanded ? 1 : 0,
             height: `${isExpanded ? size : 0}px`,
-            transitionDuration: `${(data.changes.length * 200)}ms`,
+            transitionDuration: `${data.changes.length * 200}ms`,
           }}
         >
           {data.changes.map((change, index) => (
@@ -76,7 +81,7 @@ function Release(data: Release & { index: number; isLast: boolean; }) {
   );
 }
 
-function DotTimeline(props: { isLast: boolean; index: number; }) {
+function DotTimeline(props: { isLast: boolean; index: number }) {
   const dotRef = useRef<HTMLDivElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
 
@@ -90,7 +95,7 @@ function DotTimeline(props: { isLast: boolean; index: number; }) {
       if (!dotRef.current) return;
       dotRef.current.classList.add('pulse');
       dotRef.current.classList.replace('bg-gray-500', 'bg-primary');
-    }, ((props.index - 1) * 250) + 600);
+    }, (props.index - 1) * 250 + 600);
   }
 
   function setupTimelineAnimation() {
@@ -126,18 +131,18 @@ function DotTimeline(props: { isLast: boolean; index: number; }) {
 
 function useResponsiveListSize() {
   const [size, setSize] = useState(0);
-  const ref = useRef<HTMLUListElement>(null);
+  const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const resizeObserver = new ResizeObserver(() => updateSize());
     if (ref.current) resizeObserver.observe(ref.current);
   }, []);
 
-  function canUpdateSize(list: HTMLUListElement): boolean {
+  function canUpdateSize(list: HTMLElement): boolean {
     return list.getAttribute('prev-width') !== list.scrollWidth.toString();
   }
 
-  function setPreviousWidth(list: HTMLUListElement) {
+  function setPreviousWidth(list: HTMLElement) {
     list.setAttribute('prev-width', list.scrollWidth.toString());
   }
 
