@@ -4,19 +4,27 @@ import { BaseDatabase } from '@database';
 import { Post, User, Comment } from '@models';
 import { isDate, isStringArray } from '@utils/validators.ts';
 import { extractTextMetadataAndContent } from '@utils/files.ts';
-import { UserRepository, PostRepository, PostQuery, CreateUserDTO } from '@repositories';
+import {
+  PostQuery,
+  CreateUserDTO,
+  UserRepository,
+  PostRepository,
+  FeatureFlagRepository,
+} from '@repositories';
 
 // Core ------------------------------------------------------------------------
 
 export class SupabaseDatabase implements BaseDatabase {
-  public posts: PostRepository;
-  public users: UserRepository;
+  public readonly posts: PostRepository;
+  public readonly users: UserRepository;
+  public readonly featureFlags: FeatureFlagRepository;
 
   constructor() {
     const { url, key } = this.getCredentials();
     const client = createClient(url, key, { auth: { persistSession: false } });
     this.posts = new _PostRepository(client);
     this.users = new _UserRepository(client);
+    this.featureFlags = new _FeatureFlagRepository(client);
   }
 
   public init() {
@@ -34,7 +42,7 @@ export class SupabaseDatabase implements BaseDatabase {
 // Repositories ----------------------------------------------------------------
 
 class BaseRepository {
-  constructor(private _supabase: SupabaseClient) { }
+  constructor(private _supabase: SupabaseClient) {}
 
   protected get supabase(): SupabaseClient {
     if (!this._supabase) throw new Error('Supabase not initialized');
@@ -43,15 +51,12 @@ class BaseRepository {
 }
 
 class _PostRepository extends BaseRepository implements PostRepository {
-
   public async getBySlug(slug: string, query?: PostQuery) {
     try {
       const { metadata, content } = await this._getPostDataBySlug(slug);
       const { title, snippet, tags, publishedAt } = this._extractPostMetadata(metadata);
-      return new Post({
-        slug, title, snippet, tags, publishedAt, content,
-        comments: query?.includeComments ? await this._getCommentsBySlug(slug) : [],
-      });
+      const comments = query?.includeComments ? await this._getCommentsBySlug(slug) : [];
+      return new Post({ slug, title, snippet, tags, publishedAt, content, comments });
     } catch (_error) {
       return null;
     }
@@ -61,9 +66,7 @@ class _PostRepository extends BaseRepository implements PostRepository {
     const files = Deno.readDir('./posts');
     const promises: Promise<Post | null>[] = [];
     for await (const file of files)
-      promises.push(
-        this.getBySlug(file.name.replace('.md', ''), query)
-      );
+      promises.push(this.getBySlug(file.name.replace('.md', ''), query));
     return (await Promise.all(promises)).filter(Boolean) as Post[];
   }
 
@@ -75,19 +78,22 @@ class _PostRepository extends BaseRepository implements PostRepository {
       .select('*, author: user_id (id, github_id, name)')
       .eq('post_slug', slug);
 
-
     if (error) throw error;
     if (!data) return [];
 
     const comments: Comment[] = [];
     // ToDo: Improve this
     for (const entry of data) {
-      const { id, content } = entry;
+      const { id, content, parent_id } = entry;
       const createdAt = new Date(entry.created_at);
       const { id: authorId, name: authorName, github_id: authorGitHubId } = entry.author;
       if (!isStringArray([id, content, authorId, authorName]) || !isDate(createdAt)) continue;
-      const author = new User({ id: authorId, name: authorName, githubId: authorGitHubId });
-      comments.push(new Comment({ id, author, content, createdAt }));
+      const author = new User({
+        id: authorId,
+        name: authorName,
+        githubId: authorGitHubId,
+      });
+      comments.push(new Comment({ id, author, content, createdAt, parentId: parent_id }));
     }
     return comments;
   }
@@ -126,8 +132,20 @@ class _UserRepository extends BaseRepository implements UserRepository {
 
     if (error) throw error;
     const { id, name, github_id } = data;
-    if (!data || !isStringArray([id, github_id, name]))
-      throw new Error('User not created');
+    if (!data || !isStringArray([id, github_id, name])) throw new Error('User not created');
     return new User({ id, githubId: github_id, name });
+  }
+}
+
+class _FeatureFlagRepository extends BaseRepository implements FeatureFlagRepository {
+  public async isEnabled(name: string) {
+    const { data, error } = await this.supabase
+      .from('features')
+      .select('enabled')
+      .eq('name', name)
+      .single();
+    if (error) throw error;
+    if (!data) return false;
+    return !!data.enabled;
   }
 }
