@@ -1,34 +1,20 @@
-type Props = {
-  content: string;
-  author: {
-    name: string;
-    image: string;
-  };
-};
+import { Comment as CommentModel } from '@models';
 
-export function Comment(props: Props) {
+export function Comment({ comment }: { comment: CommentModel }) {
   return (
     <div className='flex flex-col gap-2'>
       <div className='flex flex-row gap-2'>
         <img
-          className='rounded-md h-10 w-10'
-          src={props.author.image}
           alt='Profile picture'
+          className='rounded-lg h-10 w-10'
+          src={comment.author.githubImageURL}
         />
-        <div className='flex flex-col'>
-          <p className='text-text-primary font-bold text-sm'>
-            {props.author.name}
-          </p>
-          <p
-            className='text-text-secondary text-xs flex flex-row items-center 
-            justify-start gap-2'
-          >
-            <div className='w-1.5 h-1.5 rounded-full bg-text-tertiary' />
-            7 days ago
-          </p>
+        <div className='flex flex-col gap-0.5'>
+          <p className='text-text-primary font-bold text-sm'>{comment.author.name}</p>
+          <span className='text-text-secondary text-xs'>{comment.formattedElapsedTime}</span>
         </div>
       </div>
-      <p className='text-text-primary'>{props.content}</p>
+      <p className='text-text-primary'>{comment.content}</p>
     </div>
   );
 }
