@@ -26,7 +26,7 @@ export const handler: Handlers<Props> = {
     const post = await db.posts.getBySlug(ctx.params.slug, {
       includeComments: true,
     });
-    const showComments = await db.featureFlags.isEnabled(Feature.COMMENTS);
+    const showComments = await db.featureFlags.isEnabled(Feature.COMMENTS_SECTION);
     if (post === null) return ctx.renderNotFound();
     return ctx.render({ post, showComments });
   },
