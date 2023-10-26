@@ -10,8 +10,9 @@ import * as $4 from "./routes/changelog.tsx";
 import * as $5 from "./routes/index.tsx";
 import * as $6 from "./routes/posts.tsx";
 import * as $$0 from "./islands/Changelog.tsx";
-import * as $$1 from "./islands/PostSearch.tsx";
-import * as $$2 from "./islands/ProgressBar.tsx";
+import * as $$1 from "./islands/CommentIsland.tsx";
+import * as $$2 from "./islands/PostSearch.tsx";
+import * as $$3 from "./islands/ProgressBar.tsx";
 
 const manifest = {
   routes: {
@@ -25,8 +26,9 @@ const manifest = {
   },
   islands: {
     "./islands/Changelog.tsx": $$0,
-    "./islands/PostSearch.tsx": $$1,
-    "./islands/ProgressBar.tsx": $$2,
+    "./islands/CommentIsland.tsx": $$1,
+    "./islands/PostSearch.tsx": $$2,
+    "./islands/ProgressBar.tsx": $$3,
   },
   baseUrl: import.meta.url,
 };
