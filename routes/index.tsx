@@ -10,7 +10,7 @@ export const handler: Handlers<Post[]> = {
     return ctx.render(Post.sortByPublishDate(posts));
   },
 };
- 
+
 export default function BlogIndexPage(props: PageProps<Post[]>) {
   const posts = props.data;
   return (
@@ -23,12 +23,12 @@ export default function BlogIndexPage(props: PageProps<Post[]>) {
         text for testing purposes. Stay tuned for more updates!'
       />
       <WelcomeMessage />
-      <h1 className='text-2xl sm:text-3xl font-bold my-1 text-text-primary'>
-        Latest Posts
-      </h1>
+      <h1 className='text-2xl sm:text-3xl font-bold my-1 text-text-primary'>Latest Posts</h1>
       <hr className='border-text-tertiary border-opacity-50' />
       <div className='flex flex-col gap-5'>
-        {posts.map(post => <PostPreview post={post} />)}
+        {posts.map(post => (
+          <PostPreview post={post} />
+        ))}
       </div>
     </Wrapper>
   );
@@ -39,10 +39,10 @@ function WelcomeMessage() {
     <div className='flex flex-col my-4'>
       <h1 className='text-2xl sm:text-3xl font-bold my-2 text-text-primary'>Hello there!</h1>
       <p class='text-lg sm:text-xl text-text-primary opacity-90'>
-        I'm Gustavo Maltez, a 22-year-old software developer
-        from Brazil who is truly passionate about programming and modern
-        web technologies. This is my personal website where I share my thoughts
-        and experiences about coding, software development and english.
+        I'm Gustavo Maltez, a 22-year-old software developer from Brazil who is truly
+        passionate about programming and modern web technologies. This is my personal website
+        where I share my thoughts and experiences about coding, software development and
+        english.
       </p>
     </div>
   );
