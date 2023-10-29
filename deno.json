@@ -22,6 +22,7 @@
     "@utils/": "./utils/",
     "@islands/": "./islands/",
     "@flags": "./infra/flags.ts",
+    "@logger": "./infra/logger/index.ts",
     "@models": "./infra/models/index.ts",
     "@components": "./components/index.ts",
     "@database": "./infra/database/index.ts",
