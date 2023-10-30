@@ -1,11 +1,14 @@
+import { JSX } from 'preact/jsx-runtime';
+import { useRef, useState } from 'preact/hooks';
+
 import { Comment } from '@models';
 import { Comment as CommentEntry } from '@components';
-import { useState } from 'preact/hooks';
 
 // Types -----------------------------------------------------------------------
 
 type Props = {
   comments: Comment[];
+  isAuthenticated: boolean;
   onCommentSubmit: (content: string) => void;
   onReplySubmit: (content: string, commentId: string) => void;
 };
@@ -27,8 +30,9 @@ function CommentIsland(props: Props) {
   const [comments] = useState<Comment[][]>(getSortedComments(props.comments));
 
   return (
-    <div className='flex flex-col gap-4'>
+    <div className='flex flex-col gap-4 max-w-xl'>
       <h2 className='font-bold text-xl'>Comments</h2>
+      <CommentForm isAuthenticated />
       <div className='flex flex-col gap-4'>
         {comments.map(comments => (
           <CommentGroup comments={comments} />
@@ -58,7 +62,7 @@ function CommentGroup(props: { comments: Comment[] }) {
         />
         <button className='hover:text-primary'>Reply</button>
       </div>
-      <CommentReplies
+      <Replies
         comments={replies}
         isVisible={showReplies}
       />
@@ -78,7 +82,7 @@ function RepliesButton(props: { count: number; showReplies: boolean; onClick: ()
   );
 }
 
-function CommentReplies(props: { comments: Comment[]; isVisible: boolean }) {
+function Replies(props: { comments: Comment[]; isVisible: boolean }) {
   if (!props.isVisible) return <></>;
   return (
     <div className='flex flex-col gap-2 ml-4 mt-2'>
@@ -86,6 +90,53 @@ function CommentReplies(props: { comments: Comment[]; isVisible: boolean }) {
         <CommentEntry comment={comment} />
       ))}
     </div>
+  );
+}
+
+function CommentForm(props: { isAuthenticated: boolean }) {
+  const avatarSeed = useRef(Math.random());
+  const [content, setContent] = useState('');
+
+  function onInput(event: JSX.TargetedEvent<HTMLDivElement, Event>) {
+    const text = event.currentTarget.textContent ?? '';
+    event.currentTarget.textContent = text;
+    if (text.length <= 500) return setContent(text);
+    event.currentTarget.textContent = content;
+    moveCursorToEnd(event);
+  }
+
+  function moveCursorToEnd(event: JSX.TargetedEvent<HTMLDivElement, Event>) {
+    const range = document.createRange();
+    range.selectNodeContents(event.currentTarget);
+    range.collapse(false);
+    const selection = window.getSelection();
+    if (!selection) return;
+    selection.removeAllRanges();
+    selection.addRange(range);
+  }
+
+  return (
+    <form className='flex flex-col gap-2 items-end'>
+      <div className='flex flex-row items-start w-full gap-3'>
+        <img
+          src={`https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${avatarSeed.current}`}
+          className='rounded-lg h-10 w-10'
+        />
+        <div
+          contentEditable
+          maxLength={500}
+          onInput={onInput}
+          className='bg-background-secondary rounded-md py-2 px-4 w-full 
+          overflow-hidden break-words'
+        />
+      </div>
+      <div className='flex flex-row gap-3 items-center justify-end w-full'>
+        <span className='text-base text-text-secondary'>{content.length}/500</span>
+        <button className='bg-primary text-white rounded-md p-2 max-w-[15rem] w-full'>
+          Comment
+        </button>
+      </div>
+    </form>
   );
 }
 
