@@ -134,7 +134,7 @@ function CommentForm(props: { isAuthenticated: boolean }) {
         <span className='text-base text-text-secondary'>{content.length}/500</span>
         <button
           className='bg-primary text-white rounded-md px-2 py-1 md:p-2 w-min 
-          md:max-w-[15rem] md:w-full text-base md:text-lg'
+          text-base md:text-lg'
         >
           Comment
         </button>
