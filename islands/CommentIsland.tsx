@@ -132,7 +132,10 @@ function CommentForm(props: { isAuthenticated: boolean }) {
       </div>
       <div className='flex flex-row gap-3 items-center justify-end w-full'>
         <span className='text-base text-text-secondary'>{content.length}/500</span>
-        <button className='bg-primary text-white rounded-md p-2 max-w-[15rem] w-full'>
+        <button
+          className='bg-primary text-white rounded-md px-2 py-1 md:p-2 w-min 
+          md:max-w-[15rem] md:w-full text-base md:text-lg'
+        >
           Comment
         </button>
       </div>
