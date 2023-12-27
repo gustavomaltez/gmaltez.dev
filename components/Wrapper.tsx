@@ -1,5 +1,5 @@
 import { ComponentChildren } from 'preact';
-import { Head } from 'fresh/src/runtime/head.ts';
+import { Head } from '$fresh/src/runtime/head.ts';
 
 import { Header, Footer } from '@components';
 import ProgressBar from '@islands/ProgressBar.tsx';

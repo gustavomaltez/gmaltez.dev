@@ -1,4 +1,4 @@
-import { Handlers, PageProps } from 'fresh/server.ts';
+import { Handlers, PageProps } from '$fresh/server.ts';
 
 import { Post } from '@models';
 import { db } from '@database';
@@ -17,8 +17,15 @@ export default function Posts(props: PageProps<Post[]>) {
     <Wrapper
       title='Posts'
       meta={{
-        description: 'Check out all the available posts on gmaltez.dev! Search by title, tag or content.',
-        keywords: ['Gustavo Maltez', 'GMaltez', 'GMaltez.dev', 'GMaltez.dev blog', 'GMaltez.dev posts'],
+        description:
+          'Check out all the available posts on gmaltez.dev! Search by title, tag or content.',
+        keywords: [
+          'Gustavo Maltez',
+          'GMaltez',
+          'GMaltez.dev',
+          'GMaltez.dev blog',
+          'GMaltez.dev posts',
+        ],
       }}
     >
       <section className='lg:w-screen max-w-screen-lg flex flex-col flex-1 gap-2'>

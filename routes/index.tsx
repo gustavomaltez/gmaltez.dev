@@ -1,4 +1,4 @@
-import { Handlers, PageProps } from 'fresh/server.ts';
+import { Handlers, PageProps } from '$fresh/server.ts';
 
 import { db } from '@database';
 import { Post } from '@models';

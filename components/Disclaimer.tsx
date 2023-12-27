@@ -7,13 +7,25 @@ type Props = {
 
 export function Disclaimer(props: Props) {
   const { primary, secondary, tertiary } = getColors(props.variation);
-  const className = props.className ?? '';
+
   return (
-    <div className={`border-[${primary}] bg-[${secondary}] border p-4 shadow flex flex-col rounded-xl ${className}`}>
-      <h2 className={`text-2xl font-bold text-[${primary}] mb-2 text-center`}>
+    <div
+      className={`border p-4 shadow flex flex-col rounded-xl ${props.className ?? ''}`}
+      style={{
+        borderColor: primary,
+        backgroundColor: secondary,
+      }}
+    >
+      <h2
+        className='text-2xl font-bold mb-2 text-center'
+        style={{ color: primary }}
+      >
         {props.title}
       </h2>
-      <p className={`text-[${tertiary}] text-center`}>
+      <p
+        className='text-center'
+        style={{ color: tertiary }}
+      >
         {props.content}
       </p>
     </div>

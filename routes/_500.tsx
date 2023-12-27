@@ -1,9 +1,9 @@
-import { ErrorPageProps } from 'fresh/server.ts';
+import { PageProps } from '$fresh/server.ts';
 
 import { logger } from '@logger';
 import { Wrapper } from '@components';
 
-export default function Error500Page({ error }: ErrorPageProps) {
+export default function Error500Page({ error }: PageProps) {
   const message = (error as Error)?.message ?? 'Unknown error';
   logger.error(`500 Internal Server Error: '${message}'`, error);
   return (
