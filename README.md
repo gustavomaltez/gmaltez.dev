@@ -16,53 +16,6 @@
   </p>
 </p>
 
-## Summary
-
-- [Summary](#summary)
-- [📝 About](#-about)
-- [🛠 Stack](#-stack)
-- [🔥Features](#features)
-- [📝 ToDo](#-todo)
-- [🚀 Setup](#-setup)
-- [🤝 Contributing](#-contributing)
-- [📄 License](#-license)
-
-## 📝 About
-
-This is my personal blog made with a couple of pretty awesome tools like 
-[fresh](https://fresh.deno.dev/), [preact](https://preactjs.com/), 
-[twind](https://twind.dev/), [typescript](https://www.typescriptlang.org/), 
-[deno](https://deno.land/) and [firebase](https://firebase.google.com/). 
-I created this project because I really wanted to have a place to share my thoughts 
-about things that I'm learning and also to share some of my projects. I hope you 
-enjoy it! I also wanted to build a project from zero to production using deno, 
-so I decided to use it to build this blog.
-
-## 🛠 Stack
-
-- [fresh](https://fresh.deno.dev/) - An awesome web framework that runs on top of deno.
-- [preact](https://preactjs.com/) - A fast 3kB alternative to React with the same modern API.
-- [twind](https://twind.dev/) - The smallest, fastest, most feature complete Tailwind-in-JS solution in existence.
-- [typescript](https://www.typescriptlang.org/) - A typed superset of JavaScript that compiles to plain JavaScript.
-- [deno](https://deno.land/) - An awesome runtime for javascript and typescript with a lot of cool features.
-- [firebase](https://firebase.google.com/) - A collection of services provided by google to help you build and grow your app.
-
-## 🔥Features
-
-- Read posts from markdown files and build a static html page for each post during build time.
-- Changelog page to show the changes that I made to the blog.
-- Search posts by title, snippet or tags.
-- Fast and responsive.
-- Dark mode.
-
-## 📝 ToDo
-
-- [ ] Add comments section.
-- [ ] Add logic to show related posts.
-- [ ] Enable multi language support.
-- [ ] Enhance user experience.
-- [ ] Make it 100% accessible.
-
 ## 🚀 Setup
 
 If you want to run this project locally, you need to have [deno](https://deno.land/) 
@@ -83,7 +36,7 @@ deno task start
 If you want to contribute to this project, you can just fork this repository,
 make your changes and then create a pull request. I'll be happy to review it
 and merge it if it's good. If you want to talk to me, you can send me a message
-on [twitter](https://twitter.com/gustavommaltez) or [linkedin](https://www.linkedin.com/in/gustavommaltez/).
+on [linkedin](https://www.linkedin.com/in/gustavommaltez/).
 
 ## 📄 License
 

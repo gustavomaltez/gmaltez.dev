@@ -144,4 +144,3 @@ Congratulations! You've successfully built a full-stack application using React,
 This is just the beginning of what you can achieve with React, TypeScript, and Node.js. Feel free to explore further and build more complex features for your full-stack applications.
 
 Happy coding!
-

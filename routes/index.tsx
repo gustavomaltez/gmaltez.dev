@@ -1,49 +1,38 @@
 import { Handlers, PageProps } from '$fresh/server.ts';
-
-import { db } from '@database';
+import { PostPreview } from '@components';
 import { Post } from '@models';
-import { Wrapper, PostPreview, Disclaimer } from '@components';
+import { Database } from '@database';
 
 export const handler: Handlers<Post[]> = {
   async GET(_req, ctx) {
-    const posts = await db.posts.getAll();
-    return ctx.render(Post.sortByPublishDate(posts));
+    return ctx.render(await Database.posts.getAll());
   },
 };
 
-export default function BlogIndexPage(props: PageProps<Post[]>) {
+export default function Home(props: PageProps<Post[]>) {
   const posts = props.data;
   return (
-    <Wrapper title='Home'>
-      <Disclaimer
-        title='🚧 This blog is under development! 🚧'
-        content='Thank you for accessing my blog in this early stage :) This project
-        is still under development, so you may find some bugs here and there. The
-        content is also still being written, so everything you see here is AI-generated
-        text for testing purposes. Stay tuned for more updates!'
-      />
-      <WelcomeMessage />
-      <h1 className='text-2xl sm:text-3xl font-bold my-1 text-text-primary'>Latest Posts</h1>
-      <hr className='border-text-tertiary border-opacity-50' />
-      <div className='flex flex-col gap-5'>
+    <>
+      <div class='flex flex-col'>
+        <h1 class='text-2xl sm:text-3xl font-bold my-2 text-text-primary'>
+          Hello there!
+        </h1>
+        <p class='text-lg sm:text-xl text-text-primary opacity-90'>
+          I'm Gustavo Maltez, a 22-year-old software developer from Brazil who
+          is truly passionate about programming and modern web technologies.
+          This is my personal website where I share my thoughts and experiences
+          about software development.
+        </p>
+      </div>
+      <h1 class='text-2xl sm:text-3xl font-bold text-text-primary'>
+        Latest Posts
+      </h1>
+      <hr class='border-text-tertiary border-opacity-50 my-1.5' />
+      <div class='flex flex-col gap-5'>
         {posts.map(post => (
-          <PostPreview post={post} />
+          <PostPreview {...post} />
         ))}
       </div>
-    </Wrapper>
-  );
-}
-
-function WelcomeMessage() {
-  return (
-    <div className='flex flex-col my-4'>
-      <h1 className='text-2xl sm:text-3xl font-bold my-2 text-text-primary'>Hello there!</h1>
-      <p class='text-lg sm:text-xl text-text-primary opacity-90'>
-        I'm Gustavo Maltez, a 22-year-old software developer from Brazil who is truly
-        passionate about programming and modern web technologies. This is my personal website
-        where I share my thoughts and experiences about coding, software development and
-        english.
-      </p>
-    </div>
+    </>
   );
 }

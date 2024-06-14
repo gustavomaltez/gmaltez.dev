@@ -3,38 +3,22 @@
 // This file is automatically updated during development when running `dev.ts`.
 
 import * as $_404 from "./routes/_404.tsx";
-import * as $_500 from "./routes/_500.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $about from "./routes/about.tsx";
-import * as $auth_github from "./routes/auth/github.ts";
 import * as $blog_slug_ from "./routes/blog/[slug].tsx";
-import * as $changelog from "./routes/changelog.tsx";
 import * as $index from "./routes/index.tsx";
-import * as $posts from "./routes/posts.tsx";
-import * as $Changelog from "./islands/Changelog.tsx";
-import * as $CommentIsland from "./islands/CommentIsland.tsx";
-import * as $PostSearch from "./islands/PostSearch.tsx";
-import * as $ProgressBar from "./islands/ProgressBar.tsx";
+
 import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
     "./routes/_404.tsx": $_404,
-    "./routes/_500.tsx": $_500,
     "./routes/_app.tsx": $_app,
     "./routes/about.tsx": $about,
-    "./routes/auth/github.ts": $auth_github,
     "./routes/blog/[slug].tsx": $blog_slug_,
-    "./routes/changelog.tsx": $changelog,
     "./routes/index.tsx": $index,
-    "./routes/posts.tsx": $posts,
   },
-  islands: {
-    "./islands/Changelog.tsx": $Changelog,
-    "./islands/CommentIsland.tsx": $CommentIsland,
-    "./islands/PostSearch.tsx": $PostSearch,
-    "./islands/ProgressBar.tsx": $ProgressBar,
-  },
+  islands: {},
   baseUrl: import.meta.url,
 } satisfies Manifest;
 

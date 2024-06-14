@@ -5,7 +5,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Saira', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       colors: {
         background: '#1c212d',
@@ -14,10 +14,6 @@ export default {
         'text-secondary': '#959aa6',
         'text-tertiary': '#5f6677',
         primary: '#0f9d58',
-      },
-      screens: {
-        'mobile-low': '320px',
-        'mobile-high': '480px',
       },
     },
   },

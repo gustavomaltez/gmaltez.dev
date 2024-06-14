@@ -1,14 +1,9 @@
-type Props = {
-  tag: string;
-};
-
-export function Tag(props: Props) {
+export function Tag(props: { tag: string }) {
   return (
     <a
       aria-label={`Tag: ${props.tag}`}
-      href={`/posts?tags=${props.tag}`}
-      className={`rounded-md p-1 cursor-pointer text-[${getTagColor(props.tag)}]
-      hover:opacity-90 transition-all duration-200`}
+      class='rounded-md p-1 cursor-pointer hover:opacity-90 transition-all duration-200'
+      style={{ color: getTagColor(props.tag) }}
     >
       #{props.tag}
     </a>
@@ -16,20 +11,20 @@ export function Tag(props: Props) {
 }
 
 const tags: Record<string, string> = {
-  'javascript': '#f7df1e',
-  'typescript': '#007acc',
-  'react': '#61dafb',
-  'tailwindcss': '#06b6d4',
-  'css': '#264de4',
-  'html': '#e34f26',
-  'nodejs': '#339933',
-  'express': '#000000',
-  'mongodb': '#47a248',
-  'postgresql': '#336791',
-  'mysql': '#4479a1',
-  'sqlite': '#003b57',
-  'git': '#f05032',
-  'github': '#181717',
+  javascript: '#f7df1e',
+  typescript: '#007acc',
+  react: '#61dafb',
+  tailwindcss: '#06b6d4',
+  css: '#264de4',
+  html: '#e34f26',
+  nodejs: '#339933',
+  express: '#000000',
+  mongodb: '#47a248',
+  postgresql: '#336791',
+  mysql: '#4479a1',
+  sqlite: '#003b57',
+  git: '#f05032',
+  github: '#181717',
 };
 
 function getTagColor(tag: string) {
