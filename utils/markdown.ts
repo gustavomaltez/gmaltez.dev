@@ -24,24 +24,25 @@ function render(content: string) {
   // Replace code blocks with placeholders
   const { output, blocks } = preProcessCodeBlocks(content);
   content = output;
-
-  // Convert headings
-  content = content.replace(/^# (.*$)/gim, (_, x) => parseHeader(x, 1));
-  content = content.replace(/^## (.*$)/gim, (_, x) => parseHeader(x, 2));
-  content = content.replace(/^### (.*$)/gim, (_, x) => parseHeader(x, 3));
-  content = content.replace(/^#### (.*$)/gim, (_, x) => parseHeader(x, 4));
-  content = content.replace(/^##### (.*$)/gim, (_, x) => parseHeader(x, 5));
-  content = content.replace(/^###### (.*$)/gim, (_, x) => parseHeader(x, 6));
-
-  // Remove empty lines
-  content = content.replace(/^\s*[\r\n]/gm, '');
-
-  // Convert paragraphs
-  content = content.replace(/^(?!<.*?>)((?:.|\n)*?)(?=\n|$)/gim, (_, x) =>
-    x.match(/\uFFFFCODE_BLOCK_(\d+)\uFFFF/g)
-      ? x
-      : `<p class="text-base sm:text-lg text-text-primary opacity-90">${x}</p>`
+  content = content.replace(/^(#+)\s*(.*?)$/gm, (_, hashes, text) =>
+    parseHeader(text, hashes.length)
   );
+
+  // Split content into paragraphs
+
+  content = content
+    .split(/\n\s*\n/g)
+    .filter(p => p.trim() !== '')
+    .map(paragraph => {
+      if (
+        paragraph.match(/\uFFFFCODE_BLOCK_(\d+)\uFFFF/g) ||
+        paragraph.match(/<h[1-6].*?<\/h[1-6]>/g) ||
+        paragraph.trim().length === 0
+      )
+        return paragraph;
+      return `<p class="text-base sm:text-lg text-text-primary opacity-90">${paragraph.trim()}</p>`;
+    })
+    .join('');
 
   // Convert unordered lists
   content = content.replace(/^\s*[-+*]\s+(.*)/gim, '<li>$1</li>');
@@ -55,6 +56,12 @@ function render(content: string) {
 
   // Convert inline code
   content = content.replace(/`(.*?)`/gim, '<code>$1</code>');
+
+  // Convert links
+  content = content.replace(
+    /\[([^\]]+)]\(([^)]+)\)/gim,
+    '<a href="$2" class="text-primary hover:underline">$1</a>'
+  );
 
   // Convert bold text
   content = content.replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>');

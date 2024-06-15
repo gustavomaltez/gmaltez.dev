@@ -25,17 +25,25 @@ export function extractTextMetadataAndContent(text: string) {
 
   let isReadingMetadata = false;
   const lines = text.split('\n');
+  let currentKey = '';
 
   for (const line of lines) {
     if (line === '---') {
       isReadingMetadata = !isReadingMetadata;
     } else if (isReadingMetadata) {
       const [key, value] = line.split(': ');
-      metadata[key] = value;
+
+      if (key && value) {
+        currentKey = key;
+        metadata[currentKey] = '';
+      }
+
+      metadata[currentKey] += value ? value : line;
     } else {
       content += line + '\n';
     }
   }
+
   return { metadata, content };
 }
 
