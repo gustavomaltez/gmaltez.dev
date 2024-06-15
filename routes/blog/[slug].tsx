@@ -4,6 +4,7 @@ import { Post } from '@models';
 import { Tag } from '@components';
 import { Database } from '@database';
 import { getEstimatedReadingTime } from '@utils';
+import { Markdown } from '../../utils/markdown.ts';
 
 type Props = {
   post: Post;
@@ -23,6 +24,10 @@ export default function PostPage(props: PageProps<Props>) {
     <>
       <Head>
         <title>GMALTEZ.DEV | {post.title}</title>
+        <link
+          rel='stylesheet'
+          href='/post.css'
+        />
       </Head>
       <h1 class='text-2xl sm:text-4xl font-bold'>{post.title}</h1>
       <div class='-my-3 flex flex-row flex-wrap'>
@@ -52,6 +57,10 @@ export default function PostPage(props: PageProps<Props>) {
           </span>
         </div>
       </div>
+      <div
+        class='post-content'
+        dangerouslySetInnerHTML={{ __html: Markdown.render(post.content) }}
+      />
     </>
   );
 }

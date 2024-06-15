@@ -61,7 +61,7 @@ export default function App({ Component }: PageProps) {
           href='/styles.css'
         />
       </head>
-      <body class='bg-background text-text-primary min-h-screen flex flex-col min-w-[350px]'>
+      <body class='bg-background text-text-primary min-h-screen flex flex-col min-w-[350px] max-w-[100vw]'>
         <header class='w-full p-4'>
           <nav class='flex items-center justify-between max-w-screen-lg mx-auto'>
             <a
@@ -87,7 +87,10 @@ export default function App({ Component }: PageProps) {
             </div>
           </nav>
         </header>
-        <main class='w-full m-4 max-w-screen-lg flex gap-6 flex-col h-full flex-1 lg:mx-auto'>
+        <main
+          class='w-full m-4 max-w-screen-lg flex gap-6 flex-col h-full flex-1 lg:mx-auto'
+          style={{ maxWidth: 'calc(1024px - 2rem)' }}
+        >
           <Component />
         </main>
         <footer class='mt-4 w-full'>

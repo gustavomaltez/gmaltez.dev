@@ -1,3 +1,5 @@
+export * from './markdown.ts';
+
 /**
  * Extracts a file's metadata and content from a string.
  * - The file's metadata is expected to be in YAML format.

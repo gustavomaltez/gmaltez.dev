@@ -1,0 +1,91 @@
+pre {
+  background-color: #282c34;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-size: 85%;
+  line-height: 1.45;
+  overflow: auto;
+  margin: 0.5rem 0;
+}
+
+pre .keyword,
+pre .attr-name {
+  color: #0f9d58;
+}
+
+pre .comment {
+  color: #6a737d;
+}
+
+pre .operator,
+pre .punctuation,
+pre .plain-text {
+  color: #dcdfe4;
+}
+
+pre .string,
+pre .attr-value {
+  color: #f0c674;
+}
+
+pre .function,
+pre .tag,
+pre .class-name {
+  color: #44abf4;
+}
+
+pre .line-number {
+  color: #485162;
+  margin-right: 1rem;
+}
+
+pre .line-number {
+  color: #485162;
+  margin-right: 1rem;
+}
+
+code {
+  background-color: #282c34;
+  color: #cdcdcd;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.3rem;
+}
+
+.post-content {
+  max-width: calc(95vw);
+}
+
+.post-content h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #dcdfe4;
+  font-weight: 700;
+  margin: 0.5rem 0;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+}
+
+h3 {
+  font-size: 1.125rem;
+}
+
+h4 {
+  font-size: 1rem;
+}
+
+h5 {
+  font-size: 0.875rem;
+}
+
+h6 {
+  font-size: 0.75rem;
+}
