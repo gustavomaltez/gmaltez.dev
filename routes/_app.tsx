@@ -28,7 +28,7 @@ export default function App({ Component }: PageProps) {
             >
               <img
                 src='/gmaltez-full-logo.svg'
-                alt='GMaltez.dev logo'
+                alt='gmaltez.dev logo'
                 height={23}
                 width={110}
               />
