@@ -87,7 +87,7 @@ export default function App({ Component }: PageProps) {
             </div>
           </nav>
         </header>
-        <main class='m-4 max-w-screen-lg flex gap-6 flex-col h-full flex-1 lg:mx-auto'>
+        <main class='m-4 max-w-screen-lg flex gap-6 flex-col h-full flex-1 lg:mx-auto px-2 lg:px-0'>
           <Component />
         </main>
         <footer class='mt-4 w-full'>
