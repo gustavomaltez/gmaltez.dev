@@ -10,40 +10,42 @@ export function Tag(props: { tag: string }) {
   );
 }
 
-const tags: Record<string, string> = {
-  javascript: '#f7df1e',
-  typescript: '#007acc',
-  react: '#61dafb',
-  tailwindcss: '#06b6d4',
-  css: '#264de4',
-  html: '#e34f26',
-  nodejs: '#339933',
-  express: '#000000',
-  mongodb: '#47a248',
-  postgresql: '#336791',
-  mysql: '#4479a1',
-  sqlite: '#003b57',
-  git: '#f05032',
-  github: '#181717',
-};
+const COLORS = [
+  '#f7df1e',
+  '#007acc',
+  '#61dafb',
+  '#06b6d4',
+  '#264de4',
+  '#e34f26',
+  '#339933',
+  '#ffffff',
+  '#ff5722',
+  '#ff9800',
+  '#8bc34a',
+  '#ffeb3b',
+  '#4caf50',
+  '#9c27b0',
+  '#03a9f4',
+  '#673ab7',
+  '#e91e63',
+  '#cddc39',
+  '#00bcd4',
+  '#ff4081',
+  '#3f51b5',
+  '#ffb300',
+  '#00e676',
+  '#d500f9',
+  '#ff6d00',
+  '#795548',
+  '#ffc107',
+  '#1de9b6',
+  '#8e24aa',
+  '#aa00ff',
+] as const;
 
 function getTagColor(tag: string) {
-  const color = tags[tag.toLowerCase()];
-  return color ?? getRandomHexColor(tag);
-}
-
-function getRandomHexColor(input: string) {
-  const asciiInput = getAsciiArrayFromText(input);
-  const generatedSeed = getNumericConstantFromAsciiArray(asciiInput);
-  return `#${generatedSeed.toString(16).slice(0, 6)}`;
-}
-
-function getAsciiArrayFromText(text: string) {
-  return text.split('').map(value => value.charCodeAt(0));
-}
-
-function getNumericConstantFromAsciiArray(array: number[]) {
-  // In order to generate more distinct values, we need to use a higher power
-  // of the ascii value. The higher the power, the more distinct the values.
-  return array.reduce((acc, value) => acc + Math.pow(value, 10), 0);
+  let hash = 0;
+  for (let i = 0; i < tag.length; i++)
+    hash = tag.charCodeAt(i) + ((hash << 5) - hash);
+  return COLORS[Math.abs(hash) % COLORS.length];
 }
