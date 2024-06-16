@@ -1,8 +1,7 @@
-import { Head } from '$fresh/runtime.ts';
 import { Handlers, PageProps } from '$fresh/server.ts';
 import { Post } from '@models';
-import { Tag } from '@components';
 import { Database } from '@database';
+import { Tag, Head } from '@components';
 import { getEstimatedReadingTime } from '@utils';
 import { Markdown } from '../../utils/markdown.ts';
 
@@ -22,8 +21,14 @@ export default function PostPage(props: PageProps<Props>) {
   const { post } = props.data;
   return (
     <>
-      <Head>
-        <title>GMALTEZ.DEV | {post.title}</title>
+      <Head
+        title={post.title}
+        meta={{
+          keywords: post.tags,
+          description: post.snippet,
+          url: `https://gmaltez.dev/blog/${post.slug}`,
+        }}
+      >
         <link
           rel='stylesheet'
           href='/post.css'

@@ -9,49 +9,6 @@ export default function App({ Component }: PageProps) {
           name='viewport'
           content='width=device-width, initial-scale=1.0'
         />
-        <title>GMALTEZ.DEV | HOME</title>
-        <meta
-          name='author'
-          content='Gustavo Maltez'
-        />
-        <meta
-          name='description'
-          content="Gustavo Maltez's personal website"
-        />
-        <meta
-          name='keywords'
-          content={
-            'Gustavo Maltez, GMaltez, GMaltez.dev, GMaltez.dev blog, GMaltez.dev posts'
-          }
-        />
-        <meta
-          property='og:title'
-          content='GMALTEZ.DEV | HOME'
-        />
-        <meta
-          property='og:type'
-          content='website'
-        />
-        <meta
-          property='og:locale'
-          content='en_US'
-        />
-        <meta
-          property='og:url'
-          content='https://gmaltez.dev'
-        />
-        <meta
-          property='og:image'
-          content='https://gmaltez.dev/og.svg'
-        />
-        <meta
-          property='og:description'
-          content="Gustavo Maltez's personal website"
-        />
-        <meta
-          name='viewport'
-          content='width=device-width, initial-scale=1.0'
-        />
         <link
           rel='icon'
           href='/favicon.svg'
