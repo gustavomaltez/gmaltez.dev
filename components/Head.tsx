@@ -11,7 +11,7 @@ export function Head(props: {
     keywords?: string[];
   };
 }) {
-  const title = props.title ? `${props.title} | GMaltez.dev` : 'GMaltez.dev';
+  const title = props.title ? `${props.title} | GMALTEZ.DEV` : 'GMALTEZ.DEV';
 
   return (
     <FreshHead>
@@ -66,8 +66,8 @@ const DEFAULT_META = {
   keywords: [
     'Gustavo Maltez',
     'GMaltez',
-    'GMaltez.dev',
-    'GMaltez.dev blog',
-    'GMaltez.dev posts',
+    'GMALTEZ.DEV',
+    'GMALTEZ.DEV blog',
+    'GMALTEZ.DEV posts',
   ],
 };

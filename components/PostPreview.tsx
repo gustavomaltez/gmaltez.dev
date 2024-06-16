@@ -52,9 +52,7 @@ export function PostPreview(props: Post) {
       >
         {props.title}
       </a>
-      <p class='text-text-primary opacity-90 text-base sm:text-lg'>
-        {props.snippet}
-      </p>
+      <p class='text-text-secondary text-base sm:text-lg'>{props.snippet}</p>
       <div class='flex flex-row flex-wrap'>
         {props.tags.map(tag => (
           <Tag tag={tag} />

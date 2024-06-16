@@ -18,7 +18,7 @@ export default function Home(props: PageProps<Post[]>) {
         <h1 class='text-2xl sm:text-3xl font-bold my-2 text-text-primary'>
           Hello there!
         </h1>
-        <p class='text-lg sm:text-xl text-text-primary opacity-90'>
+        <p class='text-lg sm:text-xl text-text-secondary'>
           I'm Gustavo Maltez, a 22-year-old software developer from Brazil who
           is truly passionate about programming and modern web technologies.
           This is my personal website where I share my thoughts and experiences
