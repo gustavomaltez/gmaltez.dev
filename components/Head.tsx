@@ -4,7 +4,6 @@ import { ComponentChildren } from 'preact';
 export function Head(props: {
   title?: string;
   children?: ComponentChildren;
-  head?: ComponentChildren;
   meta?: {
     url?: string;
     image?: string;
@@ -55,7 +54,7 @@ export function Head(props: {
         property='og:description'
         content={props.meta?.description ?? DEFAULT_META.description}
       />
-      {props.head ?? null}
+      {props.children ?? null}
     </FreshHead>
   );
 }
