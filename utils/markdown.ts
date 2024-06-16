@@ -40,7 +40,7 @@ function render(content: string) {
         paragraph.trim().length === 0
       )
         return paragraph;
-      return `<p class="text-base sm:text-lg text-text-primary opacity-90">${paragraph.trim()}</p>`;
+      return `<p class="text-base sm:text-lg text-text-secondary">${paragraph.trim()}</p>`;
     })
     .join('');
 
@@ -98,7 +98,7 @@ function sanitize(text: string) {
 
 function parseHeader(text: string, level: 1 | 2 | 3 | 4 | 5 | 6) {
   const slug = generateSlug(text);
-  return `<h${level} id="${slug}"><a href="#${slug}">${text}</a></h${level}>`;
+  return `<h${level} id="${slug}" class="text-text-primary"><a href="#${slug}">${text}</a></h${level}>`;
 }
 
 function generateSlug(text: string) {

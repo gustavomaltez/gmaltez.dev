@@ -23,7 +23,7 @@ export default function Error404() {
               letter-spacing: -1rem;
               font-family: montserrat,sans-serif;
               color: #d0ccc6;
-              text-shadow: #1c212d -8px 0px 0px;
+              text-shadow: #15171c -8px 0px 0px;
             }
           `}
         </style>
