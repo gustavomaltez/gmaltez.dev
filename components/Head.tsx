@@ -60,7 +60,7 @@ export function Head(props: {
 }
 
 const DEFAULT_META = {
-  image: 'https://gmaltez.dev/og.svg',
+  image: 'https://gmaltez.dev/logo.svg',
   url: 'https://gmaltez.dev',
   description: "Gustavo Maltez's personal website",
   keywords: [
