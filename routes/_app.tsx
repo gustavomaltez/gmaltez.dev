@@ -87,10 +87,7 @@ export default function App({ Component }: PageProps) {
             </div>
           </nav>
         </header>
-        <main
-          class='w-full m-4 max-w-screen-lg flex gap-6 flex-col h-full flex-1 lg:mx-auto'
-          style={{ maxWidth: 'calc(1024px - 2rem)' }}
-        >
+        <main class='m-4 max-w-screen-lg flex gap-6 flex-col h-full flex-1 lg:mx-auto'>
           <Component />
         </main>
         <footer class='mt-4 w-full'>
