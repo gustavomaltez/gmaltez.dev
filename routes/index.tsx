@@ -1,5 +1,5 @@
 import { Handlers, PageProps } from '$fresh/server.ts';
-import { PostPreview } from '@components';
+import { Head, PostPreview } from '@components';
 import { Post } from '@models';
 import { Database } from '@database';
 
@@ -13,6 +13,7 @@ export default function Home(props: PageProps<Post[]>) {
   const posts = props.data;
   return (
     <>
+      <Head />
       <div class='flex flex-col'>
         <h1 class='text-2xl sm:text-3xl font-bold my-2 text-text-primary'>
           Hello there!

@@ -1,11 +1,9 @@
-import { Head } from '$fresh/runtime.ts';
+import { Head } from '@components';
 
 export default function About() {
   return (
     <>
-      <Head>
-        <title>GMALTEZ.DEV | About</title>
-      </Head>
+      <Head title='About' />
       <section className='flex flex-col justify-items-center gap-3'>
         <div className='flex flex-col items-center justify-center gap-5 sm:flex-row sm:justify-start mb-3 mt-2'>
           <img

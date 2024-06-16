@@ -1,53 +1,11 @@
 import { type PageProps } from '$fresh/server.ts';
+import ProgressBar from '@islands/ProgressBar.tsx';
 
 export default function App({ Component }: PageProps) {
   return (
     <html>
       <head>
         <meta charset='utf-8' />
-        <meta
-          name='viewport'
-          content='width=device-width, initial-scale=1.0'
-        />
-        <title>GMALTEZ.DEV | HOME</title>
-        <meta
-          name='author'
-          content='Gustavo Maltez'
-        />
-        <meta
-          name='description'
-          content="Gustavo Maltez's personal website"
-        />
-        <meta
-          name='keywords'
-          content={
-            'Gustavo Maltez, GMaltez, GMaltez.dev, GMaltez.dev blog, GMaltez.dev posts'
-          }
-        />
-        <meta
-          property='og:title'
-          content='GMALTEZ.DEV | HOME'
-        />
-        <meta
-          property='og:type'
-          content='website'
-        />
-        <meta
-          property='og:locale'
-          content='en_US'
-        />
-        <meta
-          property='og:url'
-          content='https://gmaltez.dev'
-        />
-        <meta
-          property='og:image'
-          content='https://gmaltez.dev/og.svg'
-        />
-        <meta
-          property='og:description'
-          content="Gustavo Maltez's personal website"
-        />
         <meta
           name='viewport'
           content='width=device-width, initial-scale=1.0'
@@ -87,10 +45,8 @@ export default function App({ Component }: PageProps) {
             </div>
           </nav>
         </header>
-        <main
-          class='w-full m-4 max-w-screen-lg flex gap-6 flex-col h-full flex-1 lg:mx-auto'
-          style={{ maxWidth: 'calc(1024px - 2rem)' }}
-        >
+        <ProgressBar />
+        <main class='m-4 max-w-screen-lg flex gap-6 flex-col h-full flex-1 lg:mx-auto px-2 lg:px-0'>
           <Component />
         </main>
         <footer class='mt-4 w-full'>

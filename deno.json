@@ -23,6 +23,7 @@
   "imports": {
     "@utils": "./utils/index.ts",
     "@models": "./models/index.ts",
+    "@islands/": "./islands/",
     "@database": "./database/index.ts",
     "@components": "./components/index.ts",
     "prism": "https://esm.sh/prismjs@1.29.0",

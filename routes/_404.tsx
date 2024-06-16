@@ -1,10 +1,9 @@
-import { Head } from '$fresh/runtime.ts';
+import { Head } from '@components';
 
 export default function Error404() {
   return (
     <>
-      <Head>
-        <title>404 - Page not found</title>
+      <Head title='Page not found'>
         <link
           href='https://fonts.googleapis.com/css2?family=Cabin:wght@700&family=Montserrat:wght@900&display=swap'
           rel='stylesheet'

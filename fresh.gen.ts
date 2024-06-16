@@ -7,7 +7,7 @@ import * as $_app from "./routes/_app.tsx";
 import * as $about from "./routes/about.tsx";
 import * as $blog_slug_ from "./routes/blog/[slug].tsx";
 import * as $index from "./routes/index.tsx";
-
+import * as $ProgressBar from "./islands/ProgressBar.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -18,7 +18,9 @@ const manifest = {
     "./routes/blog/[slug].tsx": $blog_slug_,
     "./routes/index.tsx": $index,
   },
-  islands: {},
+  islands: {
+    "./islands/ProgressBar.tsx": $ProgressBar,
+  },
   baseUrl: import.meta.url,
 } satisfies Manifest;
 
