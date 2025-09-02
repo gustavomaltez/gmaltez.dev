@@ -25,7 +25,7 @@ async function getBySlug(slug: string): Promise<Post | null> {
       slug,
       content,
       ...metadata,
-      publishedAt: Date.now(),
+      publishedAt: new Date(metadata.published_at).getTime(),
       tags: metadata.tags.split(',').map(x => x.trim()),
     };
     return PostSchema.parse(data);
