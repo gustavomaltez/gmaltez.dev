@@ -22,7 +22,7 @@ export default function About() {
         <p className='text-base sm:text-lg text-text-secondary'>
           Welcome to my personal website, here I share my thoughts and
           experiences about coding, software development, English, and a few
-          other topics. I'm a 23-year-old software developer from Brazil who is
+          other topics. I'm a 24-year-old software developer from Brazil who is
           truly passionate about programming and technology.
         </p>
         <p className='text-base sm:text-lg text-text-secondary'>
