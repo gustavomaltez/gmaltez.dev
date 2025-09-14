@@ -1,24 +1,24 @@
-import { Fragment } from 'preact';
-import { useEffect, useRef, useState } from 'preact/hooks';
+import { useEffect, useRef, useState } from "preact/hooks";
 
 export default function ProgressBar() {
   const [progress, setProgress] = useState(retrieveLastProgress());
   const progressRef = useRef(progress);
 
   function isMobile() {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator.userAgent
-    );
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
+      .test(
+        navigator.userAgent,
+      );
   }
 
   function retrieveLastProgress() {
-    return Number(globalThis.localStorage?.getItem('progress')) || 0;
+    return Number(globalThis.localStorage?.getItem("progress")) || 0;
   }
 
   function updateProgress(value: number) {
     setProgress(value);
     progressRef.current = value;
-    globalThis.localStorage?.setItem('progress', String(value));
+    globalThis.localStorage?.setItem("progress", String(value));
   }
 
   function onPageUnload() {
@@ -41,15 +41,15 @@ export default function ProgressBar() {
   useEffect(() => {
     if (isMobile()) return;
     onPageLoad();
-    globalThis.addEventListener('beforeunload', onPageUnload);
+    globalThis.addEventListener("beforeunload", onPageUnload);
   }, []);
 
-  if (isMobile()) return <Fragment />;
+  if (isMobile()) return <></>;
 
   return (
-    <div className='fixed top-0 left-0 h-1 bg-background z-50 transition-all w-full'>
+    <div className="fixed top-0 left-0 h-1 bg-background z-50 transition-all w-full">
       <div
-        className='h-full bg-primary transition-all duration-[10ms]'
+        className="h-full bg-primary transition-all duration-10"
         style={{ width: `${progress}%` }}
       />
     </div>

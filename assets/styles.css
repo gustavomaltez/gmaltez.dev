@@ -1,6 +1,17 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/utilities" layer(utilities);
+
+@import "tailwindcss" layer(utilities);
+
+@theme {
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: #15171c;
+  --color-background-secondary: #1a1b20;
+  --color-text-primary: #fafafa;
+  --color-text-secondary: #ece9e6;
+  --color-text-tertiary: #a4a7a9;
+  --color-primary: #0f9d58;
+}
 
 *::-webkit-scrollbar {
   width: 16px;

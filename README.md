@@ -18,7 +18,7 @@
 
 ## 🚀 Setup
 
-If you want to run this project locally, you need to have [deno](https://deno.land/) 
+If you want to run this project locally, you need to have [deno](https://deno.land/)
 installed on your machine. The first step is to clone this repository:
 
 ```bash
@@ -40,8 +40,8 @@ on [linkedin](https://www.linkedin.com/in/gustavommaltez/).
 
 ## 📄 License
 
-This project is under the MIT license. See the [LICENSE](LICENSE) file for more details. 
+This project is under the MIT license. See the [LICENSE](LICENSE) file for more details.
 You're free to use this project in any way you want, just make sure to give me the credits
 and please don't copy the posts from my blog, I worked hard to write them and I'm sure you
 can do the same. If you want to use any of my posts as a reference, please make sure to
-give me the credits and link to the original post. 
+give me the credits and link to the original post.

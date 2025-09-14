@@ -1,11 +1,11 @@
-import Prism from 'prism';
-import 'prism/components/prism-jsx.js?no-check';
-import 'prism/components/prism-typescript.js?no-check';
-import 'prism/components/prism-tsx.js?no-check';
-import 'prism/components/prism-diff.js?no-check';
-import 'prism/components/prism-json.js?no-check';
-import 'prism/components/prism-bash.js?no-check';
-import 'prism/components/prism-yaml.js?no-check';
+import Prism from "prism";
+import "prism/components/prism-jsx.js?no-check";
+import "prism/components/prism-typescript.js?no-check";
+import "prism/components/prism-tsx.js?no-check";
+import "prism/components/prism-diff.js?no-check";
+import "prism/components/prism-json.js?no-check";
+import "prism/components/prism-bash.js?no-check";
+import "prism/components/prism-yaml.js?no-check";
 
 // Module ----------------------------------------------------------------------
 
@@ -24,50 +24,51 @@ function render(content: string) {
   // Replace code blocks with placeholders
   const { output, blocks } = preProcessCodeBlocks(content);
   content = output;
-  content = content.replace(/^(#+)\s*(.*?)$/gm, (_, hashes, text) =>
-    parseHeader(text, hashes.length)
+  content = content.replace(
+    /^(#+)\s*(.*?)$/gm,
+    (_, hashes, text) => parseHeader(text, hashes.length),
   );
 
   // Split content into paragraphs
-
   content = content
     .split(/\n\s*\n/g)
-    .filter(p => p.trim() !== '')
-    .map(paragraph => {
+    .filter((p) => p.trim() !== "")
+    .map((paragraph) => {
       if (
         paragraph.match(/\uFFFFCODE_BLOCK_(\d+)\uFFFF/g) ||
         paragraph.match(/<h[1-6].*?<\/h[1-6]>/g) ||
         paragraph.trim().length === 0
-      )
+      ) {
         return paragraph;
+      }
       return `<p class="text-base sm:text-lg text-text-secondary">${paragraph.trim()}</p>`;
     })
-    .join('');
+    .join("");
 
   // Convert unordered lists
-  content = content.replace(/^\s*[-+*]\s+(.*)/gim, '<li>$1</li>');
-  content = content.replace(/<\/li>\n<li>/gim, '</li><li>');
-  content = content.replace(/(<li>.*<\/li>)/gim, '<ul>$1</ul>');
+  content = content.replace(/^\s*[-+*]\s+(.*)/gim, "<li>$1</li>");
+  content = content.replace(/<\/li>\n<li>/gim, "</li><li>");
+  content = content.replace(/(<li>.*<\/li>)/gim, "<ul>$1</ul>");
 
   // Convert ordered lists
-  content = content.replace(/^\s*\d+\.\s+(.*)/gim, '<li>$1</li>');
-  content = content.replace(/<\/li>\n<li>/gim, '</li><li>');
-  content = content.replace(/(<li>.*<\/li>)/gim, '<ol>$1</ol>');
+  content = content.replace(/^\s*\d+\.\s+(.*)/gim, "<li>$1</li>");
+  content = content.replace(/<\/li>\n<li>/gim, "</li><li>");
+  content = content.replace(/(<li>.*<\/li>)/gim, "<ol>$1</ol>");
 
   // Convert inline code
-  content = content.replace(/`(.*?)`/gim, '<code>$1</code>');
+  content = content.replace(/`(.*?)`/gim, "<code>$1</code>");
 
   // Convert links
   content = content.replace(
     /\[([^\]]+)]\(([^)]+)\)/gim,
-    '<a href="$2" class="text-primary hover:underline">$1</a>'
+    '<a href="$2" class="text-primary hover:underline">$1</a>',
   );
 
   // Convert bold text
-  content = content.replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>');
+  content = content.replace(/\*\*(.*?)\*\*/gim, "<strong>$1</strong>");
 
   // Convert italic text
-  content = content.replace(/\*(.*?)\*/gim, '<em>$1</em>');
+  content = content.replace(/\*(.*?)\*/gim, "<em>$1</em>");
 
   // Replace code block placeholders with actual code blocks
   content = content.replace(/\uFFFFCODE_BLOCK_(\d+)\uFFFF/g, (_, index) => {
@@ -82,16 +83,16 @@ function render(content: string) {
 
 function sanitize(text: string) {
   return text
-    .replace(/<script[^>]*>([\S\s]*?)<\/script>/gi, '')
-    .replace(/<style[^>]*>([\S\s]*?)<\/style>/gi, '')
-    .replace(/<iframe[^>]*>([\S\s]*?)<\/iframe>/gi, '')
-    .replace(/<object[^>]*>([\S\s]*?)<\/object>/gi, '')
-    .replace(/<embed[^>]*>([\S\s]*?)<\/embed>/gi, '')
-    .replace(/<applet[^>]*>([\S\s]*?)<\/applet>/gi, '')
-    .replace(/<meta[^>]*>([\S\s]*?)<\/meta>/gi, '')
-    .replace(/<link[^>]*>([\S\s]*?)<\/link>/gi, '')
-    .replace(/<base[^>]*>([\S\s]*?)<\/base>/gi, '')
-    .replace(/<form[^>]*>([\S\s]*?)<\/form>/gi, '');
+    .replace(/<script[^>]*>([\S\s]*?)<\/script>/gi, "")
+    .replace(/<style[^>]*>([\S\s]*?)<\/style>/gi, "")
+    .replace(/<iframe[^>]*>([\S\s]*?)<\/iframe>/gi, "")
+    .replace(/<object[^>]*>([\S\s]*?)<\/object>/gi, "")
+    .replace(/<embed[^>]*>([\S\s]*?)<\/embed>/gi, "")
+    .replace(/<applet[^>]*>([\S\s]*?)<\/applet>/gi, "")
+    .replace(/<meta[^>]*>([\S\s]*?)<\/meta>/gi, "")
+    .replace(/<link[^>]*>([\S\s]*?)<\/link>/gi, "")
+    .replace(/<base[^>]*>([\S\s]*?)<\/base>/gi, "")
+    .replace(/<form[^>]*>([\S\s]*?)<\/form>/gi, "");
 }
 
 // Header Parsing --------------------------------------------------------------
@@ -104,10 +105,10 @@ function parseHeader(text: string, level: 1 | 2 | 3 | 4 | 5 | 6) {
 function generateSlug(text: string) {
   return text
     .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/[^a-z0-9\s-]/g, "")
     .trim()
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-');
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-");
 }
 
 // Code Parsing ----------------------------------------------------------------
@@ -122,21 +123,22 @@ function preProcessCodeBlocks(text: string) {
 }
 
 function syntaxHighlight(code: string) {
-  const language = code.split('\n')[0].replace('```', '').trim();
-  code = code.replace(language, '');
+  const language = code.split("\n")[0].replace("```", "").trim();
+  code = code.replace(language, "");
 
-  if (!Prism.languages[language])
+  if (!Prism.languages[language]) {
     return `NO SYNTAX HIGHLIGHTING CONFIGURED FOR ${language}`;
+  }
 
   return Prism.highlight(code, Prism.languages[language], language);
 }
 
 function insertLineNumbers(code: string) {
   return code
-    .split('\n')
-    .filter((_, index) => index !== 0 || _.trim() !== '')
+    .split("\n")
+    .filter((_, index) => index !== 0 || _.trim() !== "")
     .map(
-      (line, index) => `<span class="line-number" >${index + 1}</span>${line}`
+      (line, index) => `<span class="line-number" >${index + 1}</span>${line}`,
     )
-    .join('\n');
+    .join("\n");
 }

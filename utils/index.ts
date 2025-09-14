@@ -1,4 +1,4 @@
-export * from './markdown.ts';
+export * from "./markdown.ts";
 
 /**
  * Extracts a file's metadata and content from a string.
@@ -20,27 +20,27 @@ export * from './markdown.ts';
  * @returns An object containing the file's metadata and content.
  */
 export function extractTextMetadataAndContent(text: string) {
-  let content = '';
+  let content = "";
   const metadata: Record<string, string> = {};
 
   let isReadingMetadata = false;
-  const lines = text.split('\n');
-  let currentKey = '';
+  const lines = text.split("\n");
+  let currentKey = "";
 
   for (const line of lines) {
-    if (line === '---') {
+    if (line === "---") {
       isReadingMetadata = !isReadingMetadata;
     } else if (isReadingMetadata) {
-      const [key, value] = line.split(': ');
+      const [key, value] = line.split(": ");
 
       if (key && value) {
         currentKey = key;
-        metadata[currentKey] = '';
+        metadata[currentKey] = "";
       }
 
       metadata[currentKey] += value ? value : line;
     } else {
-      content += line + '\n';
+      content += line + "\n";
     }
   }
 

@@ -1,11 +1,11 @@
 ---
 title: Start simple and improve over time
 published_at: 2024-06-15T15:22:05.256Z
-snippet: This is my first post on the blog. After a long time procrastinating, I 
-finally focused on the essential features and spent a few hours getting it done. 
-In this post, I'll give a brief overview of the blog and dive into the software 
+snippet: This is my first post on the blog. After a long time procrastinating, I
+finally focused on the essential features and spent a few hours getting it done.
+In this post, I'll give a brief overview of the blog and dive into the software
 development process and how to get things done without overcomplicating them.
-tags: software-development, deno, fresh, development-process, minimum-viable-product, 
+tags: software-development, deno, fresh, development-process, minimum-viable-product,
 perfectionism, procrastination, coding-journey
 ---
 

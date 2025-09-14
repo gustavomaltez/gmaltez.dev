@@ -1,5 +1,5 @@
-import { Post, PostSchema } from '@models';
-import { extractTextMetadataAndContent } from '@utils';
+import { Post, PostSchema } from "@models";
+import { extractTextMetadataAndContent } from "@utils";
 
 export const posts = {
   getAll,
@@ -7,17 +7,19 @@ export const posts = {
 };
 
 async function getAll(): Promise<Post[]> {
-  const files = Deno.readDir('./posts');
+  const files = Deno.readDir("./posts");
   const promises: Promise<Post | null>[] = [];
-  for await (const file of files)
-    promises.push(getBySlug(file.name.replace('.md', '')));
+
+  for await (const file of files) {
+    promises.push(getBySlug(file.name.replace(".md", "")));
+  }
 
   return (await Promise.all(promises)).filter(Boolean) as Post[];
 }
 
 async function getBySlug(slug: string): Promise<Post | null> {
   const { metadata, content } = extractTextMetadataAndContent(
-    await Deno.readTextFile(`./posts/${slug}.md`)
+    await Deno.readTextFile(`./posts/${slug}.md`),
   );
 
   try {
@@ -26,7 +28,7 @@ async function getBySlug(slug: string): Promise<Post | null> {
       content,
       ...metadata,
       publishedAt: new Date(metadata.published_at).getTime(),
-      tags: metadata.tags.split(',').map(x => x.trim()),
+      tags: metadata.tags.split(",").map((x) => x.trim()),
     };
     return PostSchema.parse(data);
   } catch (error) {

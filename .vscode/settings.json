@@ -1,34 +1,31 @@
 {
   "deno.enable": true,
+  "deno.lint": true,
   "editor.formatOnSave": true,
-  "prettier.singleQuote": true,
-  "prettier.jsxSingleQuote": true,
-  "prettier.arrowParens": "avoid",
-  "prettier.bracketSameLine": false,
-  "prettier.useEditorConfig": false,
-  "prettier.singleAttributePerLine": true,
-  "typescript.preferences.quoteStyle": "single",
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.defaultFormatter": "denoland.vscode-deno",
+  "[typescript]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
   },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  },
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.suggest.autoImports": true,
   "cSpell.words": [
     "Maltez",
     "preact",
     "prismjs",
     "SUPABASE"
   ],
-  "prettier.printWidth": 80,
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "deno.lint": true,
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "denoland.vscode-deno"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "denoland.vscode-deno"
-  },
   "css.customData": [
     ".vscode/tailwind.json"
   ]

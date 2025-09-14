@@ -1,21 +1,58 @@
 {
-  "lock": false,
+  "nodeModulesDir": "auto",
   "tasks": {
-    "check": "deno fmt --check && deno lint && deno check **/*.ts && deno check **/*.tsx",
-    "cli": "echo \"import '\\$fresh/src/dev/cli.ts'\" | deno run --unstable -A -",
-    "manifest": "deno task cli manifest $(pwd)",
-    "start": "deno run -A --watch=static/,routes/ dev.ts",
-    "build": "deno run -A dev.ts build",
-    "preview": "deno run -A main.ts",
-    "update": "deno run -A -r https://fresh.deno.dev/update ."
+    "pre-commit": "echo '🔍 Running pre-commit checks...' && deno fmt --check && echo '✅ Format check passed' && deno lint && echo '✅ Lint check passed' && deno check **/*.ts **/*.tsx && echo '✅ Type check passed' && deno task build && echo '🎉 All pre-commit checks passed!'",
+    "fix-all": "echo '🔧 Fixing all issues...' && deno fmt && echo '✅ Code formatted' && deno lint --fix && echo '✅ Lint issues auto-fixed' && echo '💡 Run \"deno task check\" to verify all fixes'",
+    "check": "deno fmt --check . && deno lint . && deno check",
+    "dev": "vite",
+    "build": "vite build",
+    "start": "deno serve -A _fresh/server.js",
+    "update": "deno run -A -r jsr:@fresh/update ."
   },
   "lint": {
     "rules": {
       "tags": [
         "fresh",
         "recommended"
+      ],
+      "include": [
+        "ban-untagged-todo",
+        "default-param-last",
+        "eqeqeq",
+        "guard-for-in",
+        "no-await-in-loop",
+        "no-eval",
+        "no-self-compare",
+        "no-sparse-arrays",
+        "no-sync-fn-in-async-fn",
+        "no-throw-literal",
+        "no-useless-rename",
+        "no-import-prefix",
+        "no-non-null-asserted-optional-chain",
+        "prefer-as-const",
+        "prefer-const",
+        "single-var-declarator",
+        "triple-slash-reference",
+        "no-inferrable-types"
+      ],
+      "exclude": [
+        "no-explicit-any",
+        "no-console",
+        "jsx-boolean-value",
+        "jsx-curly-braces",
+        "jsx-no-unescaped-entities",
+        "jsx-no-useless-fragment"
       ]
     }
+  },
+  "fmt": {
+    "useTabs": false,
+    "lineWidth": 80,
+    "indentWidth": 2,
+    "semiColons": true,
+    "singleQuote": false,
+    "proseWrap": "preserve",
+    "jsx.bracketPosition": "nextLine"
   },
   "exclude": [
     "**/_fresh/*"
@@ -30,19 +67,41 @@
     "prism/": "https://esm.sh/prismjs@1.29.0/",
     "zod": "https://deno.land/x/zod@v3.23.8/mod.ts",
     "marked": "https://esm.sh/marked@7.0.2",
-    "$fresh/": "https://deno.land/x/fresh@1.7.3/",
-    "preact": "https://esm.sh/preact@10.22.0",
-    "preact/": "https://esm.sh/preact@10.22.0/",
-    "@preact/signals": "https://esm.sh/*@preact/signals@1.2.2",
-    "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.5.1",
-    "tailwindcss": "npm:tailwindcss@3.4.1",
-    "tailwindcss/": "npm:/tailwindcss@3.4.1/",
-    "tailwindcss/plugin": "npm:/tailwindcss@3.4.1/plugin.js",
-    "$std/": "https://deno.land/std@0.216.0/"
+    "fresh": "jsr:@fresh/core@^2.0.2",
+    "preact": "npm:preact@^10.27.1",
+    "@preact/signals": "npm:@preact/signals@^2.3.1",
+    "@fresh/plugin-vite": "jsr:@fresh/plugin-vite@^1.0.2",
+    "vite": "npm:vite@^7.1.3",
+    "tailwindcss": "npm:tailwindcss@^4.1.10",
+    "@tailwindcss/vite": "npm:@tailwindcss/vite@^4.1.12"
   },
   "compilerOptions": {
-    "jsx": "react-jsx",
-    "jsxImportSource": "preact"
-  },
-  "nodeModulesDir": "auto"
+    "lib": [
+      "dom",
+      "dom.asynciterable",
+      "dom.iterable",
+      "deno.ns"
+    ],
+    "jsx": "precompile",
+    "jsxImportSource": "preact",
+    "jsxPrecompileSkipElements": [
+      "a",
+      "img",
+      "source",
+      "body",
+      "html",
+      "head",
+      "title",
+      "meta",
+      "script",
+      "link",
+      "style",
+      "base",
+      "noscript",
+      "template"
+    ],
+    "types": [
+      "vite/client"
+    ]
+  }
 }

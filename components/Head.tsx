@@ -1,5 +1,5 @@
-import { Head as FreshHead } from '$fresh/runtime.ts';
-import { ComponentChildren } from 'preact';
+import { Head as FreshHead } from "fresh/runtime";
+import { ComponentChildren } from "preact";
 
 export function Head(props: {
   title?: string;
@@ -11,47 +11,46 @@ export function Head(props: {
     keywords?: string[];
   };
 }) {
-  const title = props.title ? `${props.title} | GMALTEZ.DEV` : 'GMALTEZ.DEV';
+  const title = props.title ? `${props.title} | GMALTEZ.DEV` : "GMALTEZ.DEV";
 
   return (
     <FreshHead>
       <title>{title}</title>
       <meta
-        name='author'
-        content='Gustavo Maltez'
+        name="author"
+        content="Gustavo Maltez"
       />
       <meta
-        name='description'
+        name="description"
         content={props.meta?.description ?? DEFAULT_META.description}
       />
       <meta
-        name='keywords'
-        content={
-          props.meta?.keywords?.join(', ') ?? DEFAULT_META.keywords.join(', ')
-        }
+        name="keywords"
+        content={props.meta?.keywords?.join(", ") ??
+          DEFAULT_META.keywords.join(", ")}
       />
       <meta
-        property='og:title'
+        property="og:title"
         content={title}
       />
       <meta
-        property='og:type'
-        content='website'
+        property="og:type"
+        content="website"
       />
       <meta
-        property='og:locale'
-        content='en_US'
+        property="og:locale"
+        content="en_US"
       />
       <meta
-        property='og:url'
+        property="og:url"
         content={props.meta?.url ?? DEFAULT_META.url}
       />
       <meta
-        property='og:image'
+        property="og:image"
         content={props.meta?.image ?? DEFAULT_META.image}
       />
       <meta
-        property='og:description'
+        property="og:description"
         content={props.meta?.description ?? DEFAULT_META.description}
       />
       {props.children ?? null}
@@ -60,14 +59,14 @@ export function Head(props: {
 }
 
 const DEFAULT_META = {
-  image: 'https://gmaltez.dev/logo.svg',
-  url: 'https://gmaltez.dev',
+  image: "https://gmaltez.dev/logo.svg",
+  url: "https://gmaltez.dev",
   description: "Gustavo Maltez's personal website",
   keywords: [
-    'Gustavo Maltez',
-    'GMaltez',
-    'GMALTEZ.DEV',
-    'GMALTEZ.DEV blog',
-    'GMALTEZ.DEV posts',
+    "Gustavo Maltez",
+    "GMaltez",
+    "GMALTEZ.DEV",
+    "GMALTEZ.DEV blog",
+    "GMALTEZ.DEV posts",
   ],
 };
