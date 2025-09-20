@@ -1,7 +1,6 @@
 import { Head } from "@components";
 
 // TODO(@gustavomaltez): Display custom errors for different status codes
-// I'm skipping this for now, as I'm just migrating to fresh 2.0
 
 export default function ErrorPage() {
   <>
