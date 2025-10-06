@@ -42,6 +42,10 @@ export default define.page(function App({ Component }) {
                 href="/experience"
                 label="Experience"
               />
+              <Link
+                href="/gustavo_maltez_resume.pdf"
+                label="Resume"
+              />
             </div>
           </nav>
         </header>

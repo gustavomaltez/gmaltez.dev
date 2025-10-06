@@ -18,7 +18,7 @@ const experiences: Experience[] = [
   },
   {
     company: "SOAP Health",
-    role: "Full Stack Software Engineer",
+    role: "Senior Software Engineer",
     countryCode: "US",
     startDate: new Date("2023-06-01"),
     endDate: new Date("2025-09-01"),

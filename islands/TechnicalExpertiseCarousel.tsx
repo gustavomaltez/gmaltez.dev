@@ -4,44 +4,86 @@ import { useEffect, useState } from "preact/hooks";
 
 const categories: Category[] = [
   {
-    name: "Frontend",
+    name: "Languages & Styling",
+    technologies: [
+      "JavaScript (ES6+)",
+      "TypeScript",
+      "HTML5",
+      "CSS3",
+      "TailwindCSS",
+    ],
+  },
+  {
+    name: "Frontend Frameworks",
     technologies: [
       "React",
-      "JavaScript",
-      "TypeScript",
-      "TailwindCSS",
-      "React Router DOM",
+      "Remix",
+      "Next.js",
+      "FreshJS",
+      "React Context API",
     ],
   },
   {
     name: "Backend & Runtime",
-    technologies: ["Node.js", "Deno", "PrismaORM"],
+    technologies: [
+      "Node.js",
+      "Deno",
+      "PrismaORM",
+      "WebSockets",
+      "Socket.IO",
+    ],
   },
   {
-    name: "Frameworks",
-    technologies: ["Remix", "Fresh.js"],
-  },
-  {
-    name: "Build Tools",
-    technologies: ["ESBuild", "Webpack", "Vite"],
+    name: "Build Tools & Dev Tools",
+    technologies: [
+      "ESBuild",
+      "Webpack",
+      "Babel",
+      "Vite",
+      "TypeScript Compiler API",
+      "Storybook",
+      "Zod",
+    ],
   },
   {
     name: "Testing & Monitoring",
     technologies: [
-      "Jest",
       "Vitest",
       "Playwright",
+      "Jest",
       "React Testing Library",
       "Sentry",
     ],
   },
   {
-    name: "Cloud & APIs",
+    name: "Cloud & DevOps",
     technologies: [
-      "GCP",
+      "Google Cloud Platform (GCP)",
       "Firebase",
-      "Google Speech-To-Text",
+      "Cloud Functions",
+      "Google Cloud Storage",
+      "Docker",
+      "Git",
+      "GitHub",
+      "GitHub Actions",
+    ],
+  },
+  {
+    name: "AI & 3D Technologies",
+    technologies: [
+      "OpenAI APIs",
+      "Google Dialogflow",
+      "Google Speech-to-Text",
       "Google Text-to-Speech",
+      "ThreeJS",
+      "BabylonJS",
+    ],
+  },
+  {
+    name: "Databases",
+    technologies: [
+      "MongoDB",
+      "PostgreSQL",
     ],
   },
 ];
