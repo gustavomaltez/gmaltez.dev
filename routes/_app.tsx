@@ -14,6 +14,16 @@ export default define.page(function App({ Component }) {
           rel="icon"
           href="/favicon.svg"
         />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body class="bg-background text-text-primary min-h-screen flex flex-col min-w-[350px] max-w-screen">
         <header class="w-full p-4">
