@@ -11,10 +11,7 @@
   },
   "lint": {
     "rules": {
-      "tags": [
-        "fresh",
-        "recommended"
-      ],
+      "tags": ["fresh", "recommended"],
       "include": [
         "ban-untagged-todo",
         "default-param-last",
@@ -54,9 +51,7 @@
     "proseWrap": "preserve",
     "jsx.bracketPosition": "nextLine"
   },
-  "exclude": [
-    "**/_fresh/*"
-  ],
+  "exclude": ["**/_fresh/*"],
   "imports": {
     "@utils": "./utils/index.ts",
     "@models": "./models/index.ts",
@@ -67,21 +62,17 @@
     "prism/": "https://esm.sh/prismjs@1.29.0/",
     "zod": "https://deno.land/x/zod@v3.23.8/mod.ts",
     "marked": "https://esm.sh/marked@7.0.2",
-    "fresh": "jsr:@fresh/core@^2.1.1",
+    "fresh": "jsr:@fresh/core@^2.2.0",
     "preact": "npm:preact@^10.27.2",
-    "@preact/signals": "npm:@preact/signals@^2.3.1",
+    "preact-render-to-string": "npm:preact-render-to-string@^6.6.3",
+    "@preact/signals": "npm:@preact/signals@^2.5.0",
     "@fresh/plugin-vite": "jsr:@fresh/plugin-vite@^1.0.4",
     "vite": "npm:vite@^7.1.7",
     "tailwindcss": "npm:tailwindcss@^4.1.13",
     "@tailwindcss/vite": "npm:@tailwindcss/vite@^4.1.13"
   },
   "compilerOptions": {
-    "lib": [
-      "dom",
-      "dom.asynciterable",
-      "dom.iterable",
-      "deno.ns"
-    ],
+    "lib": ["dom", "dom.asynciterable", "dom.iterable", "deno.ns"],
     "jsx": "precompile",
     "jsxImportSource": "preact",
     "jsxPrecompileSkipElements": [
@@ -100,8 +91,6 @@
       "noscript",
       "template"
     ],
-    "types": [
-      "vite/client"
-    ]
+    "types": ["vite/client"]
   }
 }
