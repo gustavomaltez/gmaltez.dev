@@ -2,11 +2,24 @@
 
 const experiences: Experience[] = [
   {
+    company: "Makai Digital",
+    role: "Senior Software Engineer",
+    countryCode: "US",
+    startDate: new Date("2025-10-01"),
+    endDate: null,
+    description:
+      "Contributing to the Royal Caribbean project by developing scalable, modern front-end solutions with React and Next.js.",
+    achievements: [
+      "Contributing to the Royal Caribbean project by developing scalable, modern front-end solutions",
+      "Building performant user interfaces with React and Next.js",
+    ],
+  },
+  {
     company: "SOAP Health",
     role: "Technical Lead",
     countryCode: "US",
     startDate: new Date("2025-08-01"),
-    endDate: null,
+    endDate: new Date("2025-09-01"),
     description:
       "Led the technical direction of the team, mentoring developers to enhance code quality and maintainability while coordinating cross-team collaboration on the core SOAP Health project.",
     achievements: [
