@@ -20,59 +20,48 @@ export default function About() {
         </div>
         <hr className="border-text-tertiary/50" />
         <p className="text-base sm:text-lg text-text-secondary">
-          Welcome to my personal website, here I share my thoughts and
-          experiences about coding, software development, English, and a few
-          other topics. I'm a 24-year-old software developer from Brazil who is
-          truly passionate about programming and technology.
+          Welcome to my personal website. I write about coding, software
+          development, English, and whatever else is on my mind. I'm a
+          24-year-old software developer from Brazil who's really passionate
+          about programming and technology.
         </p>
         <p className="text-base sm:text-lg text-text-secondary">
-          I embarked on my programming journey at the age of 14, driven by my
-          curiosity to understand how to create Minecraft servers and plugins.
-          My first programming experience was with Java, though I haven't used
-          it much since then. However, it was when I turned 16 that I really
-          started honing my coding skills, thanks to my first encounters with
-          Arduino and C++. Back then, I developed several projects using
-          Arduino, and this sparked a new interest in me to create a mobile app
-          for controlling my Arduino projects. This desire led me to learn React
-          Native, and ever since, I've delved into React and found my true
-          passion for web development.
+          I started programming at 14 because I wanted to figure out how to
+          create Minecraft servers and plugins. Java was my first language,
+          though I haven't used it much since then. At 16, I really got serious
+          about coding when I discovered Arduino and C++. I built a bunch of
+          Arduino projects, which made me want to create a mobile app to control
+          them. That's how I learned React Native, and from there I dove into
+          React and found my passion for web development.
         </p>
         <p className="text-base sm:text-lg text-text-secondary">
-          In 2019, I began my bachelor's degree in Software Engineering at the
-          Federal University of Ceará (UFC). A few months into my college
-          journey, I seized an exciting opportunity and landed my first job as a
-          software developer at IncludeJr, a college-run software house. I
-          dedicated around 9 months to this role, gaining valuable experience
-          and skills. Later, I transitioned to a position at a US-based company,
-          where I currently work as a full-stack software developer.
+          In 2019, I started studying Software Engineering at the Federal
+          University of Ceará (UFC). A few months in, I got my first job as a
+          software developer at IncludeJr, a student-run software house. I
+          worked there for about 11 months, learning a ton. After that, I joined
+          a US-based startup where I spent over four years working as a
+          full-stack software developer. Currently, I'm a senior software
+          engineer at Makai Digital.
         </p>
         <p className="text-base sm:text-lg text-text-secondary">
-          After three years of college, I made the decision to take a break and
-          concentrate on my career as a software developer. Programming is not
-          just a job for me; it's my true passion and what motivates me to wake
-          up every day, eager to work and explore new horizons in technology. I
-          thrive on embracing fresh challenges that push my boundaries and allow
-          me to grow both professionally and personally.
+          After three years of college, I decided to drop out and focus on my
+          career as a software developer. Programming isn't just a job for me,
+          it's what I love doing. It's what gets me excited to wake up every day
+          and tackle new challenges. I like pushing my limits and growing both
+          as an engineer and as a person.
         </p>
         <p className="text-base sm:text-lg text-text-secondary">
-          At this stage in my life, my ultimate goal is to develop software that
-          positively impacts people's lives, making the world a better place
-          through innovative solutions. I believe in the transformative power of
-          technology and its potential to bring about positive change, and I am
-          committed to using my skills and knowledge to contribute to this
-          vision.
+          My goal is to build software that actually helps people. I believe
+          technology can make a real difference in people's lives, and I want to
+          use what I know to contribute to that. It's what drives me.
         </p>
         <p className="text-base sm:text-lg text-text-secondary">
-          Besides my passion for software development, I also have a deep love
-          for teaching and sharing knowledge with others. This strong desire to
-          impart what I've learned led me to create this blog. Through it, my
-          primary goal is to share my experiences and expertise with fellow
-          developers, empowering them to grow and excel in their journeys.
-          Additionally, I see writing as an excellent means to improve my
-          English skills, and this blog serves as a platform for honing my
-          language proficiency. I sincerely hope you find value in the content I
-          provide, and I welcome you to reach out to me with any questions or
-          suggestions you may have.
+          I also love teaching and sharing what I've learned with other
+          developers. That's why I created this blog. I want to share my
+          experiences and help other developers grow in their own journeys.
+          Plus, writing helps me improve my English, which I learned mostly on
+          the job. I hope you find something useful here, and feel free to reach
+          out if you have questions or suggestions.
         </p>
       </section>
     </>
