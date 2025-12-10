@@ -14,7 +14,8 @@ async function getAll(): Promise<Post[]> {
     promises.push(getBySlug(file.name.replace(".md", "")));
   }
 
-  return (await Promise.all(promises)).filter(Boolean) as Post[];
+  const posts = (await Promise.all(promises)).filter(Boolean) as Post[];
+  return posts.sort((a, b) => b.publishedAt - a.publishedAt);
 }
 
 async function getBySlug(slug: string): Promise<Post | null> {
