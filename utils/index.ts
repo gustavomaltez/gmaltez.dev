@@ -31,14 +31,14 @@ export function extractTextMetadataAndContent(text: string) {
     if (line === "---") {
       isReadingMetadata = !isReadingMetadata;
     } else if (isReadingMetadata) {
-      const [key, value] = line.split(": ");
-
-      if (key && value) {
+      const colonIndex = line.indexOf(": ");
+      if (colonIndex !== -1) {
+        const key = line.slice(0, colonIndex);
         currentKey = key;
-        metadata[currentKey] = "";
+        metadata[currentKey] = line.slice(colonIndex + 2);
+      } else if (currentKey) {
+        metadata[currentKey] += "\n" + line;
       }
-
-      metadata[currentKey] += value ? value : line;
     } else {
       content += line + "\n";
     }
