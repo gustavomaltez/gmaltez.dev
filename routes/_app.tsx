@@ -60,7 +60,7 @@ export default define.page(function App({ Component }) {
               sm:justify-between gap-4 sm:mx-5 sm:my-3">
               <p class="text-text-tertiary text-xs sm:text-sm text-center">
                 Made with ❤️ and ☕ by Gustavo Maltez. <br />
-                © 2024 Gustavo Maltez. All rights reserved. <br />
+                © {new Date().getFullYear()} Gustavo Maltez. All rights reserved. <br />
               </p>
               <a
                 href="https://fresh.deno.dev"
