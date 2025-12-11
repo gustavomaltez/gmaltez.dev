@@ -11,7 +11,7 @@ export default function About() {
             width="95"
             class="rounded-full"
             alt="Picture of the author (Gustavo Maltez)"
-            src="https://github.com/gustavomaltez.png"
+            src="https://github.com/gustavomaltez.png?size=190"
           />
           <h1 class="text-2xl sm:text-3xl font-bold">
             Hello! <br class="hidden sm:block" />

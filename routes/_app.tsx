@@ -14,16 +14,21 @@ export default define.page(function App({ Component }) {
           rel="icon"
           href="/favicon.svg"
         />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.googleapis.com"
+        />
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
+        <noscript>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+          />
+        </noscript>
       </head>
       <body class="bg-background text-text-primary min-h-screen flex flex-col min-w-[350px] max-w-screen">
         <header class="w-full p-4">
@@ -73,7 +78,8 @@ export default define.page(function App({ Component }) {
               sm:justify-between gap-4 sm:mx-5 sm:my-3">
               <p class="text-text-tertiary text-xs sm:text-sm text-center">
                 Made with ❤️ and ☕ by Gustavo Maltez. <br />
-                © {new Date().getFullYear()} Gustavo Maltez. All rights reserved. <br />
+                © {new Date().getFullYear()}{" "}
+                Gustavo Maltez. All rights reserved. <br />
               </p>
               <a
                 href="https://fresh.deno.dev"
@@ -89,15 +95,28 @@ export default define.page(function App({ Component }) {
             </div>
           </div>
         </footer>
+        <script
+          // deno-lint-ignore react-no-danger
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                var link = document.createElement("link");
+                link.rel = "stylesheet";
+                link.href = "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap";
+                document.head.appendChild(link);
+              })();
+            `,
+          }}
+        />
       </body>
     </html>
   );
 });
 
 type LinkProps = Readonly<{
-  href: string
-  label: string
-}>
+  href: string;
+  label: string;
+}>;
 
 function Link({ href, label }: LinkProps) {
   return (

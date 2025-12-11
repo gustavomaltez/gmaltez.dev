@@ -50,7 +50,8 @@ export default define.page<typeof handler>(
                 width="50"
                 class="rounded-full"
                 alt="Picture of the author (Gustavo Maltez)"
-                src="https://github.com/gustavomaltez.png"
+                src="https://github.com/gustavomaltez.png?size=100"
+                loading="lazy"
               />
               <div class="flex flex-col">
                 <p class="text-base font-medium">Gustavo Maltez</p>
