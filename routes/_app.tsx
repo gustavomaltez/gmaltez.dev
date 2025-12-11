@@ -91,14 +91,19 @@ export default define.page(function App({ Component }) {
   );
 });
 
-function Link(props: { href: string; label: string }) {
+type LinkProps = Readonly<{
+  href: string
+  label: string
+}>
+
+function Link({ href, label }: LinkProps) {
   return (
     <a
-      href={props.href}
-      aria-label={props.label}
-      class="text-xs sm:text-base text-text-white hover:text-primary"
+      href={href}
+      aria-label={label}
+      class="text-xs sm:text-base text-text-primary hover:text-primary"
     >
-      {props.label}
+      {label}
     </a>
   );
 }

@@ -1,12 +1,17 @@
-export function Tag(props: { tag: string }) {
+type Props = Readonly<{
+  tag: string
+}>
+
+export function Tag({ tag }: Props) {
+  // Inline style required for dynamic color based on tag hash
   return (
-    <a
-      aria-label={`Tag: ${props.tag}`}
+    <span
+      aria-label={`Tag: ${tag}`}
       class="rounded-md p-1 cursor-pointer hover:opacity-90 transition-all duration-200"
-      style={{ color: getTagColor(props.tag) }}
+      style={`color: ${getTagColor(tag)}`}
     >
-      #{props.tag}
-    </a>
+      #{tag}
+    </span>
   );
 }
 

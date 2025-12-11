@@ -33,7 +33,7 @@ export default define.page<typeof handler>(
         </h1>
         <hr class="border-text-tertiary/50 my-1.5" />
         <div class="flex flex-col gap-5">
-          {data.posts.map((post) => <PostPreview key={post.slug} {...post} />)}
+          {data.posts.map((post) => <PostPreview key={post.slug} post={post} />)}
         </div>
       </>
     );

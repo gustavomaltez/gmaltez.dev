@@ -2,7 +2,11 @@ import { Tag } from "@components";
 import { Post } from "@models";
 import { getEstimatedReadingTime } from "@utils";
 
-export function PostPreview(props: Post) {
+type Props = Readonly<{
+  post: Post
+}>
+
+export function PostPreview({ post }: Props) {
   return (
     <div class="bg-background-secondary px-4 py-3 flex flex-col rounded-xl">
       <div class="flex flex-row justify-between mb-2">
@@ -25,7 +29,7 @@ export function PostPreview(props: Post) {
             year: "numeric",
             month: "short",
             day: "numeric",
-          }).format(new Date(props.publishedAt))}
+          }).format(new Date(post.publishedAt))}
         </span>
         <span class="text-text-tertiary flex flex-row items-center gap-1">
           <svg
@@ -42,19 +46,19 @@ export function PostPreview(props: Post) {
               d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          {getEstimatedReadingTime(props.content)} min read
+          {getEstimatedReadingTime(post.content)} min read
         </span>
       </div>
       <a
         class="flex flex-row items-center text-xl font-bold text-text-primary mb-2 
         hover:text-primary gap-2 transition-all duration-200 cursor-pointer sm:text-2xl"
-        href={`/blog/${props.slug}`}
+        href={`/blog/${post.slug}`}
       >
-        {props.title}
+        {post.title}
       </a>
-      <p class="text-text-secondary text-base sm:text-lg">{props.snippet}</p>
+      <p class="text-text-secondary text-base sm:text-lg">{post.snippet}</p>
       <div class="flex flex-row flex-wrap">
-        {props.tags.map((tag) => <Tag key={tag} tag={tag} />)}
+        {post.tags.map((tag) => <Tag key={tag} tag={tag} />)}
       </div>
     </div>
   );

@@ -3,8 +3,9 @@ import { Head } from "@components";
 // TODO(@gustavomaltez): Display custom errors for different status codes
 
 export default function ErrorPage() {
-  <>
-    <Head title="Page not found">
+  return (
+    <>
+      <Head title="Page not found">
       <link
         href="https://fonts.googleapis.com/css2?family=Cabin:wght@700&family=Montserrat:wght@900&display=swap"
         rel="stylesheet"
@@ -44,5 +45,6 @@ export default function ErrorPage() {
         </h2>
       </div>
     </div>
-  </>;
+    </>
+  );
 }

@@ -1,17 +1,19 @@
 import { Head as FreshHead } from "fresh/runtime";
 import { ComponentChildren } from "preact";
 
-export function Head(props: {
-  title?: string;
-  children?: ComponentChildren;
+type Props = Readonly<{
+  title?: string
+  children?: ComponentChildren
   meta?: {
-    url?: string;
-    image?: string;
-    description?: string;
-    keywords?: string[];
-  };
-}) {
-  const title = props.title ? `${props.title} | GMALTEZ.DEV` : "GMALTEZ.DEV";
+    url?: string
+    image?: string
+    description?: string
+    keywords?: string[]
+  }
+}>
+
+export function Head({ title: titleProp, children, meta }: Props) {
+  const title = titleProp ? `${titleProp} | GMALTEZ.DEV` : "GMALTEZ.DEV";
 
   return (
     <FreshHead>
@@ -22,12 +24,11 @@ export function Head(props: {
       />
       <meta
         name="description"
-        content={props.meta?.description ?? DEFAULT_META.description}
+        content={meta?.description ?? DEFAULT_META.description}
       />
       <meta
         name="keywords"
-        content={props.meta?.keywords?.join(", ") ??
-          DEFAULT_META.keywords.join(", ")}
+        content={meta?.keywords?.join(", ") ?? DEFAULT_META.keywords.join(", ")}
       />
       <meta
         property="og:title"
@@ -43,17 +44,17 @@ export function Head(props: {
       />
       <meta
         property="og:url"
-        content={props.meta?.url ?? DEFAULT_META.url}
+        content={meta?.url ?? DEFAULT_META.url}
       />
       <meta
         property="og:image"
-        content={props.meta?.image ?? DEFAULT_META.image}
+        content={meta?.image ?? DEFAULT_META.image}
       />
       <meta
         property="og:description"
-        content={props.meta?.description ?? DEFAULT_META.description}
+        content={meta?.description ?? DEFAULT_META.description}
       />
-      {props.children ?? null}
+      {children ?? null}
     </FreshHead>
   );
 }

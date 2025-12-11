@@ -46,11 +46,12 @@ export default function ProgressBar() {
 
   if (isMobile()) return <></>;
 
+  // Inline style required for dynamic width - Tailwind can't interpolate runtime values
   return (
-    <div className="fixed top-0 left-0 h-1 bg-background z-50 transition-all w-full">
+    <div class="fixed top-0 left-0 h-1 bg-background z-50 transition-all w-full">
       <div
-        className="h-full bg-primary transition-all duration-10"
-        style={{ width: `${progress}%` }}
+        class="h-full bg-primary transition-all duration-10"
+        style={`width: ${progress}%`}
       />
     </div>
   );

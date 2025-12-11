@@ -6,12 +6,12 @@ export default function Experience() {
   return (
     <>
       <Head title="Experience" />
-      <section className="flex flex-col gap-6">
-        <div className="flex flex-col gap-3">
-          <h1 className="text-2xl sm:text-3xl font-bold text-text-primary">
+      <section class="flex flex-col gap-6">
+        <div class="flex flex-col gap-3">
+          <h1 class="text-2xl sm:text-3xl font-bold text-text-primary">
             Which Professional Am I?
           </h1>
-          <p className="text-base sm:text-lg text-text-secondary">
+          <p class="text-base sm:text-lg text-text-secondary">
             I deliver client solutions through high-quality, maintainable code.
             With 5+ years of experience as a full-stack engineer working with
             TypeScript, JavaScript, React, and Node.js, I thrive on solving
@@ -20,21 +20,21 @@ export default function Experience() {
             code that stands the test of time.
           </p>
         </div>
-        <hr className="border-text-tertiary/50" />
+        <hr class="border-text-tertiary/50" />
 
         <TechnicalExpertiseCarousel />
 
-        <div className="flex flex-col gap-3">
-          <h1 className="text-2xl sm:text-3xl font-bold text-text-primary">
+        <div class="flex flex-col gap-3">
+          <h1 class="text-2xl sm:text-3xl font-bold text-text-primary">
             Professional Experience
           </h1>
-          <p className="text-base sm:text-lg text-text-secondary">
+          <p class="text-base sm:text-lg text-text-secondary">
             My journey as a software developer, from trainee to technical lead,
             working on challenging projects and growing my expertise in modern
             web technologies.
           </p>
         </div>
-        <hr className="border-text-tertiary/50" />
+        <hr class="border-text-tertiary/50" />
         <ExperienceTimeline />
       </section>
     </>

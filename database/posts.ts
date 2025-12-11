@@ -14,6 +14,7 @@ async function getAll(): Promise<Post[]> {
     promises.push(getBySlug(file.name.replace(".md", "")));
   }
 
+  // Type assertion needed because filter(Boolean) doesn't narrow (Post | null)[] to Post[]
   const posts = (await Promise.all(promises)).filter(Boolean) as Post[];
   return posts.sort((a, b) => b.publishedAt - a.publishedAt);
 }
