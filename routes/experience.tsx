@@ -25,9 +25,9 @@ export default function Experience() {
         <TechnicalExpertiseCarousel />
 
         <div class="flex flex-col gap-3">
-          <h1 class="text-2xl sm:text-3xl font-bold text-text-primary">
+          <h2 class="text-2xl sm:text-3xl font-bold text-text-primary">
             Professional Experience
-          </h1>
+          </h2>
           <p class="text-base sm:text-lg text-text-secondary">
             My journey as a software developer, from trainee to technical lead,
             working on challenging projects and growing my expertise in modern

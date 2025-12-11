@@ -6,12 +6,12 @@ export default function ErrorPage() {
   return (
     <>
       <Head title="Page not found">
-      <link
-        href="https://fonts.googleapis.com/css2?family=Cabin:wght@700&family=Montserrat:wght@900&display=swap"
-        rel="stylesheet"
-      />
-      <style>
-        {`
+        <link
+          href="https://fonts.googleapis.com/css2?family=Cabin:wght@700&family=Montserrat:wght@900&display=swap"
+          rel="stylesheet"
+        />
+        <style>
+          {`
             .not-found-text {
               font-family: cabin,sans-serif;
               color: #d0ccc6;
@@ -28,8 +28,8 @@ export default function ErrorPage() {
               text-shadow: #15171c -8px 0px 0px;
             }
           `}
-      </style>
-    </Head>
+        </style>
+      </Head>
     <div class="flex flex-1 lg:w-screen max-w-(--breakpoint-lg) h-full items-center justify-center">
       <div class="flex flex-col items-center justify-center max-w-md">
         <h3 class="not-found-text text-lg sm:text-xl">

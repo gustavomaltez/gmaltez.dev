@@ -28,9 +28,9 @@ export default define.page<typeof handler>(
             experiences about software development.
           </p>
         </div>
-        <h1 class="text-2xl sm:text-3xl font-bold text-text-primary">
+        <h2 class="text-2xl sm:text-3xl font-bold text-text-primary">
           Latest Posts
-        </h1>
+        </h2>
         <hr class="border-text-tertiary/50 my-1.5" />
         <div class="flex flex-col gap-5">
           {data.posts.map((post) => <PostPreview key={post.slug} post={post} />)}

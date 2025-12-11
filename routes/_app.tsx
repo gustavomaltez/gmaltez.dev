@@ -3,7 +3,7 @@ import { define } from "../utils.ts";
 
 export default define.page(function App({ Component }) {
   return (
-    <html>
+    <html lang="en">
       <head>
         <meta charset="utf-8" />
         <meta
@@ -27,7 +27,10 @@ export default define.page(function App({ Component }) {
       </head>
       <body class="bg-background text-text-primary min-h-screen flex flex-col min-w-[350px] max-w-screen">
         <header class="w-full p-4">
-          <nav class="flex items-center justify-between max-w-(--breakpoint-lg) mx-auto">
+          <nav
+            aria-label="Main navigation"
+            class="flex items-center justify-between max-w-(--breakpoint-lg) mx-auto"
+          >
             <a
               href="/"
               aria-label="Home"
@@ -100,8 +103,7 @@ function Link({ href, label }: LinkProps) {
   return (
     <a
       href={href}
-      aria-label={label}
-      class="text-xs sm:text-base text-text-primary hover:text-primary"
+      class="text-xs sm:text-base text-text-primary hover:text-primary py-2 px-1"
     >
       {label}
     </a>
