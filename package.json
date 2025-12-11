@@ -1,0 +1,24 @@
+{
+  "name": "gmaltez.dev",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Personal blog and portfolio site",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gustavomaltez/gmaltez.dev.git"
+  },
+  "license": "ISC",
+  "scripts": {
+    "prepare": "deno run -A npm:husky"
+  },
+  "devDependencies": {},
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "deno fmt",
+      "deno lint"
+    ],
+    "*.{json,md,css}": [
+      "deno fmt"
+    ]
+  }
+}

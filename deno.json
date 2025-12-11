@@ -8,7 +8,9 @@
     "dev": "vite",
     "build": "vite build",
     "start": "deno serve -A _fresh/server.js",
-    "update": "deno run -A -r jsr:@fresh/update ."
+    "update": "deno run -A -r jsr:@fresh/update .",
+    "prepare": "deno run -A npm:husky",
+    "lint-staged": "deno run -A npm:lint-staged"
   },
   "lint": {
     "rules": {
@@ -69,7 +71,9 @@
     "@fresh/plugin-vite": "jsr:@fresh/plugin-vite@^1.0.8",
     "vite": "npm:vite@^7.2.7",
     "tailwindcss": "npm:tailwindcss@^4.1.17",
-    "@tailwindcss/vite": "npm:@tailwindcss/vite@^4.1.17"
+    "@tailwindcss/vite": "npm:@tailwindcss/vite@^4.1.17",
+    "husky": "npm:husky@^9.1.7",
+    "lint-staged": "npm:lint-staged@^15.5.1"
   },
   "compilerOptions": {
     "skipLibCheck": true,
