@@ -5,8 +5,6 @@ tags: career, tech-lead, burnout, work-life-balance, software-development, caree
 snippet: Six years as a developer: junior, tech lead, senior engineer, tech lead again, back to senior. I chose to step back both times because I prefer coding over managing. Now I work 8 hours a day on what I actually enjoy. Here's what I learned about building a career on your own terms.
 ---
 
-# I Became a Tech Lead Twice and Quit Both Times. Here's What I Learned
-
 It's 5am. I'm already at my desk, coding before the meetings start at 9. I haven't been to the gym in weeks. I've lost 10kg. Teams notifications pop up every 5 minutes, each one triggering that instant stress response. Messages I need to answer. Questions I need to answer. Problems I need to solve. I have three meetings today that will decide nothing. I'm the tech lead, I'm supposed to know everything, fix everything, help everyone. And I'm doing all of it. But I'm doing all of it badly.
 
 That's when I realized I fucked up.

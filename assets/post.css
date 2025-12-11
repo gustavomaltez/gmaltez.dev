@@ -83,11 +83,14 @@ code {
 .post-content h2 {
   font-size: 1.5rem;
   margin: 2rem 0 0.75rem;
+  padding-left: 0.75rem;
+  border-left: 3px solid var(--color-primary);
 }
 
 .post-content h3 {
   font-size: 1.25rem;
   margin: 1.5rem 0 0.5rem;
+  color: var(--color-text-secondary);
 }
 
 .post-content h4 {

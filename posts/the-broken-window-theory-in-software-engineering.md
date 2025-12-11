@@ -5,8 +5,6 @@ snippet: One small shortcut leads to another, then another, until your codebase 
 tags: software-engineering, code-quality, technical-debt, best-practices, testing, ci-cd, team-culture, pragmatic-programmer, refactoring
 ---
 
-# The Broken Window Theory in Software Engineering
-
 There's a criminology theory from the 1980s called the broken window theory. The idea is simple: if a building has a broken window and nobody fixes it, people assume nobody cares about the building. Soon, more windows get broken. Then graffiti appears. Then more serious vandalism. The building deteriorates not because of one broken window, but because that one broken window signaled that disorder was acceptable.
 
 I first read about this in "The Pragmatic Programmer" by Andrew Hunt and David Thomas, and I remember thinking: shit, this makes a lot of sense. This is exactly what happens at work.

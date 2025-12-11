@@ -5,8 +5,6 @@ snippet: I spent 100 hours building the perfect blog with every feature I could 
 tags: software-development, deno, fresh, development-process, minimum-viable-product, perfectionism, procrastination, coding-journey
 ---
 
-# Start Simple and Improve Over Time
-
 This is my first blog post ever. I've wanted to do this for years, but perfectionism kept getting in the way. Let me tell you about the time I spent 100 hours building a blog I never launched.
 
 ## How It Started (Badly)
