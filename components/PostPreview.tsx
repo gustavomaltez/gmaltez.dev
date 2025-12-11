@@ -8,16 +8,21 @@ type Props = Readonly<{
 
 export function PostPreview({ post }: Props) {
   return (
-    <div class="bg-background-secondary px-4 py-3 flex flex-col rounded-xl">
-      <div class="flex flex-row justify-between mb-2">
-        <span class="text-text-tertiary flex flex-row items-center gap-1">
+    <a
+      href={`/blog/${post.slug}`}
+      class="group bg-background-secondary px-5 py-4 flex flex-col rounded-xl
+        border border-[#2a2a2a] hover:border-primary/50
+        transition-all duration-300 cursor-pointer"
+    >
+      <div class="flex flex-row justify-between mb-3 text-sm">
+        <span class="text-text-tertiary flex flex-row items-center gap-1.5">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            class="w-5 h-5"
+            class="w-4 h-4"
           >
             <path
               stroke-linecap="round"
@@ -31,14 +36,14 @@ export function PostPreview({ post }: Props) {
             day: "numeric",
           }).format(new Date(post.publishedAt))}
         </span>
-        <span class="text-text-tertiary flex flex-row items-center gap-1">
+        <span class="text-text-tertiary flex flex-row items-center gap-1.5">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            class="w-5 h-5"
+            class="w-4 h-4"
           >
             <path
               stroke-linecap="round"
@@ -49,17 +54,16 @@ export function PostPreview({ post }: Props) {
           {getEstimatedReadingTime(post.content)} min read
         </span>
       </div>
-      <a
-        class="flex flex-row items-center text-xl font-bold text-text-primary mb-2 
-        hover:text-primary gap-2 transition-all duration-200 cursor-pointer sm:text-2xl"
-        href={`/blog/${post.slug}`}
-      >
+      <h2 class="text-xl sm:text-2xl font-bold text-text-primary mb-2
+        group-hover:text-primary transition-colors duration-300">
         {post.title}
-      </a>
-      <p class="text-text-secondary text-base sm:text-lg">{post.snippet}</p>
-      <div class="flex flex-row flex-wrap">
+      </h2>
+      <p class="text-text-secondary text-base sm:text-lg mb-3 line-clamp-3">
+        {post.snippet}
+      </p>
+      <div class="flex flex-row flex-wrap gap-1 mt-auto">
         {post.tags.map((tag) => <Tag key={tag} tag={tag} />)}
       </div>
-    </div>
+    </a>
   );
 }
