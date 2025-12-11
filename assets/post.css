@@ -149,8 +149,8 @@ code {
 
 /* Strong/Bold text */
 .post-content strong {
-  font-weight: 700;
-  color: var(--color-text-primary);
+  font-weight: 600;
+  color: #ffffff;
 }
 
 /* Links within content */
