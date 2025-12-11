@@ -3,13 +3,14 @@ import { Post } from "@models";
 import { getEstimatedReadingTime } from "@utils";
 
 type Props = Readonly<{
-  post: Post
-}>
+  post: Post;
+}>;
 
 export function PostPreview({ post }: Props) {
   return (
     <a
       href={`/blog/${post.slug}`}
+      data-testid={`post-preview-${post.slug}`}
       class="group bg-background-secondary px-5 py-4 flex flex-col rounded-xl
         border border-[#2a2a2a] hover:border-primary/50
         transition-all duration-300 cursor-pointer"
@@ -54,11 +55,17 @@ export function PostPreview({ post }: Props) {
           {getEstimatedReadingTime(post.content)} min read
         </span>
       </div>
-      <h2 class="text-xl sm:text-2xl font-bold text-text-primary mb-2
-        group-hover:text-primary transition-colors duration-300">
+      <h2
+        data-testid="post-title"
+        class="text-xl sm:text-2xl font-bold text-text-primary mb-2
+        group-hover:text-primary transition-colors duration-300"
+      >
         {post.title}
       </h2>
-      <p class="text-text-secondary text-base sm:text-lg mb-3 line-clamp-3">
+      <p
+        data-testid="post-snippet"
+        class="text-text-secondary text-base sm:text-lg mb-3 line-clamp-3"
+      >
         {post.snippet}
       </p>
       <div class="flex flex-row flex-wrap gap-1 mt-auto">

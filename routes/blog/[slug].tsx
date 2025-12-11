@@ -35,16 +35,31 @@ export default define.page<typeof handler>(
           }}
         >
         </Head>
-        <article class="post-article">
-          <header class="flex flex-col gap-4 mb-8">
-            <h1 class="text-2xl sm:text-4xl font-bold leading-tight">
+        <article
+          data-testid="blog-article"
+          class="post-article"
+        >
+          <header
+            data-testid="blog-header"
+            class="flex flex-col gap-4 mb-8"
+          >
+            <h1
+              data-testid="blog-title"
+              class="text-2xl sm:text-4xl font-bold leading-tight"
+            >
               {post.title}
             </h1>
-            <div class="flex flex-row flex-wrap gap-2">
+            <div
+              data-testid="blog-tags"
+              class="flex flex-row flex-wrap gap-2"
+            >
               {post.tags.map((tag) => <Tag key={tag} tag={tag} />)}
             </div>
             <hr class="border-text-tertiary/50" />
-            <div class="flex flex-row items-center justify-start gap-3">
+            <div
+              data-testid="blog-author"
+              class="flex flex-row items-center justify-start gap-3"
+            >
               <img
                 height="50"
                 width="50"
@@ -55,7 +70,10 @@ export default define.page<typeof handler>(
               />
               <div class="flex flex-col">
                 <p class="text-base font-medium">Gustavo Maltez</p>
-                <span class="flex flex-row items-center gap-2 text-sm text-text-tertiary">
+                <span
+                  data-testid="blog-meta"
+                  class="flex flex-row items-center gap-2 text-sm text-text-tertiary"
+                >
                   {new Date(post.publishedAt).toLocaleDateString("en-US", {
                     month: "long",
                     day: "numeric",
@@ -68,6 +86,7 @@ export default define.page<typeof handler>(
             </div>
           </header>
           <div
+            data-testid="blog-content"
             class="post-content"
             // deno-lint-ignore react-no-danger
             dangerouslySetInnerHTML={{ __html: Markdown.render(post.content) }}

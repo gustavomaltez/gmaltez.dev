@@ -140,7 +140,7 @@ export default function ExperienceTimeline() {
                         endDate: experience.endDate,
                       })}
                     </span>
-                    <span className="text-xs text-text-tertiary opacity-75">
+                    <span className="text-xs text-text-tertiary">
                       {calculateExperienceDuration({
                         startDate: experience.startDate,
                         endDate: experience.endDate,

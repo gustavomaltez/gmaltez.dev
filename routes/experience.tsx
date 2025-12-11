@@ -6,9 +6,15 @@ export default function Experience() {
   return (
     <>
       <Head title="Experience" />
-      <section class="flex flex-col gap-6">
+      <section
+        data-testid="experience-section"
+        class="flex flex-col gap-6"
+      >
         <div class="flex flex-col gap-3">
-          <h1 class="text-2xl sm:text-3xl font-bold text-text-primary">
+          <h1
+            data-testid="experience-title"
+            class="text-2xl sm:text-3xl font-bold text-text-primary"
+          >
             Which Professional Am I?
           </h1>
           <p class="text-base sm:text-lg text-text-secondary">
@@ -25,7 +31,10 @@ export default function Experience() {
         <TechnicalExpertiseCarousel />
 
         <div class="flex flex-col gap-3">
-          <h2 class="text-2xl sm:text-3xl font-bold text-text-primary">
+          <h2
+            data-testid="professional-experience-title"
+            class="text-2xl sm:text-3xl font-bold text-text-primary"
+          >
             Professional Experience
           </h2>
           <p class="text-base sm:text-lg text-text-secondary">

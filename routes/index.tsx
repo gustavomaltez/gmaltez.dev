@@ -17,24 +17,41 @@ export default define.page<typeof handler>(
     return (
       <>
         <Head />
-        <div class="flex flex-col">
-          <h1 class="text-2xl sm:text-3xl font-bold my-2 text-text-primary">
+        <section data-testid="hero-section" class="flex flex-col">
+          <h1
+            data-testid="hero-title"
+            class="text-2xl sm:text-3xl font-bold my-2 text-text-primary"
+          >
             Hello there!
           </h1>
-          <p class="text-lg sm:text-xl text-text-secondary">
+          <p
+            data-testid="hero-description"
+            class="text-lg sm:text-xl text-text-secondary"
+          >
             I'm Gustavo Maltez, a 24-year-old software developer from Brazil who
             is truly passionate about programming and modern web technologies.
             This is my personal website where I share my thoughts and
             experiences about software development.
           </p>
-        </div>
-        <h2 class="text-2xl sm:text-3xl font-bold text-text-primary">
+        </section>
+        <h2
+          data-testid="posts-heading"
+          class="text-2xl sm:text-3xl font-bold text-text-primary"
+        >
           Latest Posts
         </h2>
         <hr class="border-text-tertiary/50 my-1.5" />
-        <div class="flex flex-col gap-5">
-          {data.posts.map((post) => <PostPreview key={post.slug} post={post} />)}
-        </div>
+        <section
+          data-testid="posts-list"
+          class="flex flex-col gap-5"
+        >
+          {data.posts.map((post) => (
+            <PostPreview
+              key={post.slug}
+              post={post}
+            />
+          ))}
+        </section>
       </>
     );
   },

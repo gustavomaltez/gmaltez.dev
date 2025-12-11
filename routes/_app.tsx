@@ -31,14 +31,19 @@ export default define.page(function App({ Component }) {
         </noscript>
       </head>
       <body class="bg-background text-text-primary min-h-screen flex flex-col min-w-[350px] max-w-screen">
-        <header class="w-full p-4">
+        <header
+          data-testid="header"
+          class="w-full p-4"
+        >
           <nav
             aria-label="Main navigation"
+            data-testid="main-nav"
             class="flex items-center justify-between max-w-(--breakpoint-lg) mx-auto"
           >
             <a
               href="/"
               aria-label="Home"
+              data-testid="logo-link"
             >
               <img
                 src="/gmaltez-full-logo.svg"
@@ -51,27 +56,37 @@ export default define.page(function App({ Component }) {
               <Link
                 href="/"
                 label="Posts"
+                testId="nav-posts"
               />
               <Link
                 href="/about"
                 label="About"
+                testId="nav-about"
               />
               <Link
                 href="/experience"
                 label="Experience"
+                testId="nav-experience"
               />
               <Link
                 href="/gustavo_maltez_resume.pdf"
                 label="Resume"
+                testId="nav-resume"
               />
             </div>
           </nav>
         </header>
         <ProgressBar />
-        <main class="m-4 max-w-(--breakpoint-lg) flex gap-6 flex-col h-full flex-1 lg:mx-auto px-2 lg:px-0">
+        <main
+          data-testid="main-content"
+          class="m-4 max-w-(--breakpoint-lg) flex gap-6 flex-col h-full flex-1 lg:mx-auto px-2 lg:px-0"
+        >
           <Component />
         </main>
-        <footer class="mt-4 w-full">
+        <footer
+          data-testid="footer"
+          class="mt-4 w-full"
+        >
           <div class="flex flex-col gap-2 max-w-(--breakpoint-lg) mx-auto">
             <hr class="border-text-tertiary/50" />
             <div class="flex flex-col sm:flex-row m-2 items-center justify-center 
@@ -116,12 +131,14 @@ export default define.page(function App({ Component }) {
 type LinkProps = Readonly<{
   href: string;
   label: string;
+  testId?: string;
 }>;
 
-function Link({ href, label }: LinkProps) {
+function Link({ href, label, testId }: LinkProps) {
   return (
     <a
       href={href}
+      data-testid={testId}
       class="text-xs sm:text-base text-text-primary hover:text-primary py-2 px-1"
     >
       {label}

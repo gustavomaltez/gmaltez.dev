@@ -9,9 +9,16 @@
   },
   "license": "ISC",
   "scripts": {
-    "prepare": "deno run -A npm:husky"
+    "prepare": "deno run -A npm:husky",
+    "e2e": "playwright test",
+    "e2e:ui": "playwright test --ui",
+    "e2e:headed": "playwright test --headed",
+    "e2e:debug": "playwright test --debug"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.1",
+    "@playwright/test": "^1.49.1"
+  },
   "lint-staged": {
     "*.{ts,tsx}": [
       "deno fmt",

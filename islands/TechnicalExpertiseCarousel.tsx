@@ -213,16 +213,19 @@ function Arrow(
     onClick: () => void;
   },
 ) {
+  const label = direction === "left" ? "Previous category" : "Next category";
   return (
     <button
       type="button"
       onClick={onClick}
+      aria-label={label}
       className={`absolute ${
         direction === "left" ? "left-0" : "right-0"
       } cursor-pointer top-1/2 transform -translate-y-1/2 z-10 p-2 rounded-full
       bg-background hover:bg-text-tertiary/20 shadow-lg hover:shadow-xl`}
     >
       <svg
+        aria-hidden="true"
         className="w-5 h-5 text-text-primary"
         fill="none"
         stroke="currentColor"

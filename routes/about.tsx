@@ -4,8 +4,14 @@ export default function About() {
   return (
     <>
       <Head title="About" />
-      <section class="flex flex-col justify-items-center gap-3">
-        <div class="flex flex-col items-center justify-center gap-5 sm:flex-row sm:justify-start mb-3 mt-2">
+      <section
+        data-testid="about-section"
+        class="flex flex-col justify-items-center gap-3"
+      >
+        <div
+          data-testid="about-header"
+          class="flex flex-col items-center justify-center gap-5 sm:flex-row sm:justify-start mb-3 mt-2"
+        >
           <img
             height="95"
             width="95"
@@ -13,7 +19,10 @@ export default function About() {
             alt="Picture of the author (Gustavo Maltez)"
             src="https://github.com/gustavomaltez.png?size=190"
           />
-          <h1 class="text-2xl sm:text-3xl font-bold">
+          <h1
+            data-testid="about-title"
+            class="text-2xl sm:text-3xl font-bold"
+          >
             Hello! <br class="hidden sm:block" />
             I'm Gustavo Maltez :)
           </h1>

@@ -11,5 +11,10 @@ _fresh/
 # npm dependencies
 node_modules/
 
-#claude
+# Claude
 .claude/settings.local.json
+
+# Playwright
+.playwright-results/
+playwright-report/
+test-results/

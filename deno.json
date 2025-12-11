@@ -10,7 +10,11 @@
     "start": "deno serve -A _fresh/server.js",
     "update": "deno run -A -r jsr:@fresh/update .",
     "prepare": "deno run -A npm:husky",
-    "lint-staged": "deno run -A npm:lint-staged"
+    "lint-staged": "deno run -A npm:lint-staged",
+    "e2e": "npx playwright test",
+    "e2e:ui": "npx playwright test --ui",
+    "e2e:headed": "npx playwright test --headed",
+    "e2e:debug": "npx playwright test --debug"
   },
   "lint": {
     "rules": {
@@ -54,7 +58,12 @@
     "proseWrap": "preserve",
     "jsx.bracketPosition": "nextLine"
   },
-  "exclude": ["**/_fresh/*", "vite.config.ts"],
+  "exclude": [
+    "**/_fresh/*",
+    "vite.config.ts",
+    "playwright.config.ts",
+    "e2e/**/*"
+  ],
   "imports": {
     "@utils": "./utils/index.ts",
     "@models": "./models/index.ts",
@@ -73,7 +82,9 @@
     "tailwindcss": "npm:tailwindcss@^4.1.17",
     "@tailwindcss/vite": "npm:@tailwindcss/vite@^4.1.17",
     "husky": "npm:husky@^9.1.7",
-    "lint-staged": "npm:lint-staged@^15.5.1"
+    "lint-staged": "npm:lint-staged@^15.5.1",
+    "@playwright/test": "npm:@playwright/test@^1.49.1",
+    "@axe-core/playwright": "npm:@axe-core/playwright@^4.10.1"
   },
   "compilerOptions": {
     "skipLibCheck": true,
