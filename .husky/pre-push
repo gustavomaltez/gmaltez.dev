@@ -21,9 +21,9 @@ do
     range="$remote_sha..$local_sha"
   fi
 
-  # Check for Co-authored-by in commit messages
+  # Check for Co-authored-by trailer in commit messages (must be at start of line)
   co_authored_commits=$(git log --format="%H %s" "$range" 2>/dev/null | while read hash subject; do
-    if git log -1 --format="%B" "$hash" | grep -qi "Co-authored-by"; then
+    if git log -1 --format="%B" "$hash" | grep -qiE "^Co-authored-by:"; then
       echo "$hash"
     fi
   done)
