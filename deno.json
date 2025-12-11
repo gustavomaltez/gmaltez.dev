@@ -1,6 +1,7 @@
 {
   "nodeModulesDir": "manual",
   "tasks": {
+    "test": "deno test --no-check --allow-read",
     "pre-commit": "echo '🔍 Running pre-commit checks...' && deno fmt --check && echo '✅ Format check passed' && deno lint && echo '✅ Lint check passed' && deno check **/*.ts **/*.tsx && echo '✅ Type check passed' && deno task build && echo '🎉 All pre-commit checks passed!'",
     "fix-all": "echo '🔧 Fixing all issues...' && deno fmt && echo '✅ Code formatted' && deno lint --fix && echo '✅ Lint issues auto-fixed' && echo '💡 Run \"deno task check\" to verify all fixes'",
     "check": "deno fmt --check . && deno lint . && deno check **/*.ts **/*.tsx",
