@@ -89,7 +89,11 @@ export default define.page<typeof handler>(
             data-testid="blog-content"
             class="post-content"
             // deno-lint-ignore react-no-danger
-            dangerouslySetInnerHTML={{ __html: Markdown.render(post.content) }}
+            dangerouslySetInnerHTML={{
+              __html: Markdown.render(post.content, {
+                proxyAssets: Deno.env.get("ENABLE_ASSET_PROXY") === "true",
+              }),
+            }}
           />
         </article>
       </>

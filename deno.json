@@ -72,6 +72,8 @@
     "@components": "./components/index.ts",
     "prismjs": "npm:prismjs@^1.29.0",
     "@types/prismjs": "npm:@types/prismjs@^1.26.0",
+    "markdown-it": "npm:markdown-it@^14.1.0",
+    "@types/markdown-it": "npm:@types/markdown-it@^14.1.2",
     "zod": "npm:zod@^3.24.0",
     "marked": "npm:marked@^15.0.0",
     "fresh": "jsr:@fresh/core",
